@@ -32,6 +32,8 @@ A continuación se detalla un resumen de los distintos comandos ejecutados duran
 - ```git commit -am mensaje_commit``` - Commit de todos los archivos trackeados. Dada la simplicidad de esta etapa del proyecto, y como los cambios a los archivos fueron generalmente pequeños, se optó por no mover a staging los archivos modificados y directamente moverlos a la rama local.
 - ```git push``` - Mueve los cambios locales al repositorio remoto.
 - ```git branch main``` seguido de ```git merge rama_con_cambios``` - Argega los cambios de la rama_con_cambios a la rama main (se realiza desde el repositorio remoto).
+- ```git restore --staged nombre_archivo``` - Remueve del área de staging un archivo.
+- ```git reset HEAD~N``` - Elimina los últimos N commits de la rama, siendo N la cantidad de commits a eliminar.
 
 Adicionalmente se agregó al archivo ```.git/info/exclude``` la extensión ```.DS_Store```. Archivos de este tipo son utilizados por el sistema operativo y no son necesarios para el proyecto, por lo que se decidió agregarlos al archivo exclude y que no fueran trackeados por Git.
 
