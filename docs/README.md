@@ -66,13 +66,28 @@ Para la definición de las ramas de desarrollo, se utilizó como fuente referenc
 
 ## Elicitación
 
-Evidencia de actividades de investigación
+### Actividades de investigación
+
+Para identificar las necesidades de los interesados en la aplicación de registro de gastos, se utilizaron tres técnicas de elicitación:
+
+- Entrevista
+- Cuestionario
+- Análisis de GUI - ingeniería reversa
+
+A continuación se detalla el proceso llevado a cabo para cada técnica de elicitación y se proporciona evidencia de su realización. Por último se abordan los resultados y la reflexión basada en estos.
+
+#### Entrevista
+
+#### Cuestionario
+
+#### Análisis de GUI - ingeniería reversa
 
 Referencias a fuentes de información
 
-Caracterización de usuarios: User Personas
 
-Modelo conceptual del problema
+### Caracterización de usuarios: User Personas
+
+### Modelo conceptual del problema
 
 ## Especificación
 
