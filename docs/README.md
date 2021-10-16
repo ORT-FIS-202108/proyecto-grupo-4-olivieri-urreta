@@ -103,7 +103,7 @@ A continuación se detallan características y funciones que pueden ser de mayor
 - Agregar imagenes de comprobantes/recibos a un gasto. [Captura Splitwise 5](../docs/investigacion/capturas-splitwise/adjuntar-imagenes.png)
 - Compartir gastos con otros usuarios. (Fuera del alcance de este proyecto)
 - Multiples grupos de gastos, por ejemplo 'Gastos Casa', 'Gastos trabajo', 'Gastos vacaciones', etc.
-- Registrar gastos en monedas diferentes a Pesos y Dólares. [Captura Splitwise 6](../docs/investigacion/capturas-splitwise/múltiples-monedas.png)
+- Registrar gastos en monedas diferentes a Pesos y Dólares. [Captura Splitwise 6](../docs/investigacion/capturas-splitwise/multiples-monedas.png)
 
 Referencias a fuentes de información
 
