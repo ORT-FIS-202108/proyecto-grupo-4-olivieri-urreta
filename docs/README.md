@@ -48,12 +48,11 @@ Para el proyecto se definieron ramas agrupadas en las dos áreas detalladas más
   - Readme - *Rama para el documento principal del informe donde se aborda cada punto de la letra del proyecto para la [ entrega 1](../letra.md).*
   - Elicitación - *Rama para los documentos y archivos generados durante las diferentes actividades de elicitación. Se crearan a su vez sub-ramas para cada técnica de elicitación que se lleve a cabo, las cuales se nombraran con el siguiente criterio:  
   ```elicitacion-nombre_tecnica```*
-  - Especificaciones - *Rama para los documentos e imágenes generados durante la definición de las especificaciones basadas en los resultados de la elicitación. Una vez finalizadas las tareas en las sub-ramas, se integrarán a esta rama.*
-    - Requerimientos - *Rama para los documentos de requerimientos, funcionales y no fucionales. Sub-ramas se integrarán a esta rama luego de definidos los requerimientos.*
-      - Funcionales - *Rama para requerimientos funcionales*
-      - No funcionales - *Rama para requerimientos no funcionales*
-    - User Stories - *Rama user stories*
-    - Bocetos UI - *Rama para bocetos de UI*
+  - Especificaciones - *Ramas para los documentos e imágenes generados durante la definición de las especificaciones basadas en los resultados de la elicitación. En esta rama se abordaran las siguientes áreas:*
+    - *Requerimientos (funcionales y no fucionales)*
+    - *User Stories*
+    - *Use Cases*
+    - *Prototipos (Bocetos de UI)*
   
 #### Desarrollo
 - Main - *Rama principal del proyecto a la cual se le integrarán las sub-ramas una vez finalizado todo el desarrollo.*
@@ -89,7 +88,7 @@ En este proyecto la aplicación que se analizó es [Splitwise](https://www.split
 
 A continuación se detallan características y funciones que pueden ser de mayor y menor valor para los usuarios.
 
-**Funcionalidades útiles** 
+**Funcionalidades con potencial valor** 
 - Categorías de gastos predeterminadas - [Captura Splitwise 1](../docs/investigacion/capturas-splitwise/ingreso-gasto-nuevo.jpg) y [Captura Splitwise 2](../docs/investigacion/capturas-splitwise/categorias-gastos.png)
 - Regisrar gastos por fecha - [Captura Splitwise 3](../docs/investigacion/capturas-splitwise/config-gasto-recurrente.jpg)
 - Registrar gastos recurrentes - [Captura Splitwise 3](../docs/investigacion/capturas-splitwise/config-gasto-recurrente.jpg)
@@ -100,7 +99,6 @@ A continuación se detallan características y funciones que pueden ser de mayor
 
 **Funcionalidades fuera de alcance o menor valor** 
 - Agregar imagenes de comprobantes/recibos a un gasto. [Captura Splitwise 5](../docs/investigacion/capturas-splitwise/adjuntar-imagenes.png)
-- Compartir gastos con otros usuarios. (Fuera del alcance de este proyecto)
 - Multiples grupos de gastos, por ejemplo 'Gastos Casa', 'Gastos trabajo', 'Gastos vacaciones', etc.
 - Registrar gastos en monedas diferentes a Pesos y Dólares. [Captura Splitwise 6](../docs/investigacion/capturas-splitwise/multiples-monedas.png)
 
@@ -111,11 +109,16 @@ Utilizando la información recabada con la técnica de elicitación Cuestionario
 - [User Persona 25 años](./investigacion/user-persona-25.png)
 - [User Persona 35 años](./investigacion/user-persona-35.png)
 
+
 ### Modelo conceptual del problema
 
+En base a los requerimientos del proyecto (letra del proyecto) y al proceso de elicitación y se desarrollo el siguiente modelo conceptual del sistema, que se utilizará en conjunto con los resultados de la investigación para definir los requerimientos y características del sistema a desarrolla.
 
+El modelo conceptual se encuentra en el siguiente [link]().
 
 ### Resultados y reflexión
+
+Luego de comparar los resultados de el *Análisis de GUI - ingeniería reversa* el *Cuestionario*, el *Modelo Conceptual*, y la carecterización de usuarios *User Personas*, se obtuvieron datos que nos permitirán definr requerimientos que cumplan con los objetivos, vision y alcance del proyecto.
 
 Los resultados de ambas técnicas de elicitación evidencian que algunas de las características más importantes de la aplicación son la facilidad de uso y simplicidad, a la vez que se pueda utilizar en dispositivos desktop y móviles. La funcionalidad de programar gastos y/o agregar recordatorios, junto con poder agrupar los gastos por categorías aparecieron en los resultados de ambas técnicas de elicitación.
 
@@ -123,11 +126,19 @@ El resultado general del proceso de elicitación fue muy positivo ya que se obtu
 
 ## Especificación
 
-Definición de requerimientos funcionales y no funcionales
+### Requerimientos
 
-User Stories / Use Cases detallados
 
-Bocetos de IU
+
+
+### User Stories
+
+### Use Cases
+
+### Prototipado
+
+
+
 
 ## Validación y verificación
 
