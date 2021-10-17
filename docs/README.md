@@ -131,6 +131,7 @@ El resultado general del proceso de elicitación fue muy positivo ya que se obtu
 Con los resultados obtenidos del proceso de investigación, se definieron los requerimientos Funcionales y No Funcionales detallados debajo. Para la creación de todos ellos se aplicaron los conceptos vistos en clase para ambos tipos de requerimientos.
 
 #### Funcionales
+
 - RF01 - El sistema debe permitir crear una cuenta.
 - RF02 - El sistema debe requerir usuario y contraseña para mostrar e ingresar gastos.
 - RF03 - Los usuarios pueden registrar un gasto con descripción, precio y fecha.
@@ -175,7 +176,7 @@ Para ver en detalle cada User Story (usuario, narrativa, criterios de aceptació
 
 ### Use Cases
 
-
+Con lo Requerimientos y User Stories ya definidos, se procede a desarrollar los Use Cases respectivos a cada User Story. En el siguiente [link](/docs/use-cases/use-cases.pdf) se detallan el *actor*, el *curso normal* y el *curso alternativo* de cada Use Case.
 
 ### Prototipado
 
