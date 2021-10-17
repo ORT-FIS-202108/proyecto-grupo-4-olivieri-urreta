@@ -1,29 +1,125 @@
 # Informe académico entrega 1
+
+Proyecto: 202108 MisGastos  
+Autores: Giovanni Olivieri (205237), Diego Urreta (238422)  
+Grupo: N3A  
+Docentes: Gabriela Sánchez, Miguel Sánchez  
+Repositorio Git: [Grupo 4 - Olivieri/Urreta](https://github.com/ORT-FIS-202108/proyecto-grupo-4-olivieri-urreta.git)  
 Fecha de entrega: 18-oct-2021
 
 ## Repositorio Git
 
-Creación y uso de repositorios locales y remotos
+**Creación y uso de repositorios locales y remotos**
 
-Comandos Git ejecutados desde terminal y desde el IDE
+Para el proyecto se utilizó el servicio de repositorio remoto GitHub, y cada estudiante trabajó offline en repositorios locales clonados del repositorio remoto.
+
+Para clonar el repositorio remoto al repositorio local se utilizó el siguiente comando de git:  
+```git clone https://github.com/ORT-FIS-202108/proyecto-grupo-4-olivieri-urreta.git```
+
+**Comandos Git ejecutados desde terminal y desde el IDE**
+
+Una vez que se realiaron cambion en los distintos archivos y documentos del proyect, se utilizó la terminal del Visual Studio Code IDE para ejecutar los comandos de Git y agregar los cambios a las ramas locales y remotas.
+
+A continuación se detalla un resumen de los distintos comandos ejecutados durante el proyecto y el objetivo de cada uno.
+
+- ```git pull``` - Actualizar rama local con los últimos cambios de la rama remota.
+- ```git branch``` - Listar todas las ramas del proyecto.
+- ```git branch nombre_rama``` - Creación de una nueva rama.
+- ```git checkout nombre_rama``` - Cambio de rama seleccionada.
+- ```git status``` - Listar archivos nuevos o modificados, y cuales estan trackeados y cuales no. 
+- ```git add nombre_archivo``` - Una vez realizados cambios en un archivo, se agrega el archivo a la área de staging.
+- ```git commit -m mensaje_commit``` - Commit de los archivos en el área de staging a la rama local.
+- ```git commit -am mensaje_commit``` - Commit de todos los archivos trackeados. Dada la simplicidad de esta etapa del proyecto, y como los cambios a los archivos fueron generalmente pequeños, se optó por no mover a staging los archivos modificados y directamente moverlos a la rama local.
+- ```git push``` - Mueve los cambios locales al repositorio remoto.
+- ```git branch main``` seguido de ```git merge rama_con_cambios``` - Argega los cambios de la rama_con_cambios a la rama main (se realiza desde el repositorio remoto).
+- ```git restore --staged nombre_archivo``` - Remueve del área de staging un archivo.
+- ```git reset HEAD~N``` - Elimina los últimos N commits de la rama, siendo N la cantidad de commits a eliminar.
+
+Adicionalmente se agregó al archivo ```.git/info/exclude``` la extensión ```.DS_Store```. Archivos de este tipo son utilizados por el sistema operativo y no son necesarios para el proyecto, por lo que se decidió agregarlos al archivo exclude y que no fueran trackeados por Git.
 
 ## Versionado
 
-Buenas prácticas de versionado
+### Uso de ramas
 
-Uso de ramas separadas de 'main'
+Para el proyecto se definieron ramas agrupadas en las dos áreas detalladas más abajo. Aunque en esta estapa del proyecto solo se trabajó en *Investigación y Requerimientos*, ya se definieron las ramas que se utilizarán durante la etapa de *Desarrollo*. 
 
-Resumen de commits y evolución del proyecto
+#### Investigación y requerimientos
+- Informe - *Rama principal del informe académico, a la cual se integrarán todas las sub-ramas una vez completadas las etapas de elicitación, especificación de requerimientos, validación, verificación y reflexión.*
+  - Readme - *Rama para el documento principal del informe donde se aborda cada punto de la letra del proyecto para la [ entrega 1](../letra.md).*
+  - Elicitación - *Rama para los documentos y archivos generados durante las diferentes actividades de elicitación. Se crearan a su vez sub-ramas para cada técnica de elicitación que se lleve a cabo, las cuales se nombraran con el siguiente criterio:  
+  ```elicitacion-nombre_tecnica```*
+  - Especificaciones - *Rama para los documentos e imágenes generados durante la definición de las especificaciones basadas en los resultados de la elicitación. Una vez finalizadas las tareas en las sub-ramas, se integrarán a esta rama.*
+    - Requerimientos - *Rama para los documentos de requerimientos, funcionales y no fucionales. Sub-ramas se integrarán a esta rama luego de definidos los requerimientos.*
+      - Funcionales - *Rama para requerimientos funcionales*
+      - No funcionales - *Rama para requerimientos no funcionales*
+    - User Stories - *Rama user stories*
+    - Bocetos UI - *Rama para bocetos de UI*
+  
+#### Desarrollo
+- Main - *Rama principal del proyecto a la cual se le integrarán las sub-ramas una vez finalizado todo el desarrollo.*
+- Develop - *Esta rama se origina del último release de la rama Main. Se utiliza para el desarrollo y de esta se originan todas las ramas Feature. Una vez que se finaliza el desarrollo de una feature, su rama se integra a la rama Develop.*
+- Hotfix-nombre_hotfix - *Rama que se utilizará para abordar bugs críticos que sean necesarios resolver inmediatamente. Esta rama se origina de la rama Main y una vez solucionados los bugs, se integrará a la rama Main y a la rama Develop.*
+- Feature-nombre_feature - *Rama utilizada para el desarrollo de nuevas características del software. Se origina de la rama Develop y luego de culminado el desarrollo, se la integra nuevamente a la rama Develop.*
+- Release-version - *Una vez que se completó todo el desarrollo en la rama Develop, se crea una rama Release-version a partir de la rama Develop. A partir de ese momento sólo se agregrán cambios para solucionar bugs, y una vez resueltos estos se integrará a la rama Main y a la Develop.*
+
+Para la definición de las ramas de desarrollo, se utilizó como fuente referencia el [Manual de buenas prácticas al trabajar con Git](https://david-estevez.gitbooks.io/the-git-the-bad-and-the-ugly/content/es/buenas-practicas-al-trabajar-con-git.html).
+
+### Resumen de commits y evolución del proyecto
 
 ## Elicitación
 
-Evidencia de actividades de investigación
+### Actividades de investigación
 
-Referencias a fuentes de información
+Para identificar las necesidades de los interesados en la aplicación de registro de gastos, se utilizaron dos técnicas de elicitación:
 
-Caracterización de usuarios: User Personas
+- Cuestionario
+- Análisis de GUI - ingeniería reversa
 
-Modelo conceptual del problema
+A continuación se detalla el proceso llevado a cabo para cada técnica de elicitación y se proporciona evidencia de su realización. Por último se abordan los resultados y la reflexión basada en estos.
+
+#### Cuestionario
+
+Para obtener la mayor cantidad posible de feedback de potenciales usuarios, se optó por la técnica de elicitación Cuestionario. Todos los detalles de este proceso de elicitación se encuentran en el siguiente [link](investigacion/cuestionario/README.md).
+
+#### Análisis de GUI - ingeniería reversa
+
+Este técnica consite en analizar aplicaciones ya existentes que brindan funciones y servicios similares a los queremos brindar con nuestra aplicación. Esto nos permitirá identificar funciones y características que puedan ser de mayor valor para los usuarios. 
+
+En este proyecto la aplicación que se analizó es [Splitwise](https://www.splitwise.com/), una aplicación gratuita para llevar un registro de gastos compartidos con otras personas.
+
+A continuación se detallan características y funciones que pueden ser de mayor y menor valor para los usuarios.
+
+**Funcionalidades útiles** 
+- Categorías de gastos predeterminadas - [Captura Splitwise 1](../docs/investigacion/capturas-splitwise/ingreso-gasto-nuevo.jpg) y [Captura Splitwise 2](../docs/investigacion/capturas-splitwise/categorias-gastos.png)
+- Regisrar gastos por fecha - [Captura Splitwise 3](../docs/investigacion/capturas-splitwise/config-gasto-recurrente.jpg)
+- Registrar gastos recurrentes - [Captura Splitwise 3](../docs/investigacion/capturas-splitwise/config-gasto-recurrente.jpg)
+- Ver resumen de gastos en formato lista o formato pie chart. [Captura Splitwise 4](../docs/investigacion/capturas-splitwise/resumen-gastos.png)
+- Resumen de gastos por categoría - [Captura Splitwise 4](../docs/investigacion/capturas-splitwise/resumen-gastos.png)
+- Posibilidad de registrar gastos en dos monedas diferentes (Pesos/Dólares).
+- Totales por moneda.
+
+**Funcionalidades fuera de alcance o menor valor** 
+- Agregar imagenes de comprobantes/recibos a un gasto. [Captura Splitwise 5](../docs/investigacion/capturas-splitwise/adjuntar-imagenes.png)
+- Compartir gastos con otros usuarios. (Fuera del alcance de este proyecto)
+- Multiples grupos de gastos, por ejemplo 'Gastos Casa', 'Gastos trabajo', 'Gastos vacaciones', etc.
+- Registrar gastos en monedas diferentes a Pesos y Dólares. [Captura Splitwise 6](../docs/investigacion/capturas-splitwise/multiples-monedas.png)
+
+### Caracterización de usuarios: User Personas
+
+Utilizando la información recabada con la técnica de elicitación Cuestionario, se crearon las siguientes User Personas:
+
+- [User Persona 25 años](./investigacion/user-persona-25.png)
+- [User Persona 35 años](./investigacion/user-persona-35.png)
+
+### Modelo conceptual del problema
+
+
+
+### Resultados y reflexión
+
+Los resultados de ambas técnicas de elicitación evidencian que algunas de las características más importantes de la aplicación son la facilidad de uso y simplicidad, a la vez que se pueda utilizar en dispositivos desktop y móviles. La funcionalidad de programar gastos y/o agregar recordatorios, junto con poder agrupar los gastos por categorías aparecieron en los resultados de ambas técnicas de elicitación.
+
+El resultado general del proceso de elicitación fue muy positivo ya que se obtuvo suficiente información para definir tanto requerimientos funcionales como requerimientos no funcionales, y continuar adelante con las especificaciones de la aplicación.
 
 ## Especificación
 
