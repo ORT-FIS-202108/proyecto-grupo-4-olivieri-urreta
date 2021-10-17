@@ -128,12 +128,55 @@ El resultado general del proceso de elicitación fue muy positivo ya que se obtu
 
 ### Requerimientos
 
+Con los resultados obtenidos del proceso de investigación, se definieron los requerimientos Funcionales y No Funcionales detallados debajo. Para la creación de todos ellos se aplicaron los conceptos vistos en clase para ambos tipos de requerimientos.
 
+#### Funcionales
 
+- RF01 - El sistema debe permitir crear una cuenta.
+- RF02 - El sistema debe requerir usuario y contraseña para mostrar e ingresar gastos.
+- RF03 - Los usuarios pueden registrar un gasto con descripción, precio y fecha.
+- RF04 - El sistema debe implementar un calendario de pagos.
+- RF05 - Los usuarios deben recibir recordatorios de pagos (e-mail).
+- RF06 - Llevar un control de estado de cuenta bancario. 
+- RF07 - Los usuarios pueden configurar un gasto como recurrente.
+- RF08 - Los usuarios pueden seleccionar una categoría de gasto para cada gasto ingresado.
+- RF09 - El sistema permite visualizar un resumen de gastos por mes (gráficas, o listados).
+- RF10 - Los usuarios pueden compartir gastos entre ellos (verificar si es posible o si nos complicaría mucho).
+- RF11 - Los usuarios pueden seleccionar una vista de listado o pie chart para los resúmenes de gastos.
+- RF12 - El sistema muestra total en pesos y total en dólares si hay gastos ingresados en más de una moneda.
+
+#### No Funcionales
+
+- RNF01 - Toda funcionalidad del sistema debe responder al usuario en menos de 5 segundos.
+- RNF02 - El sistema debe ser capaz de operar adecuadamente con hasta 150.000 usuarios con sesiones concurrentes.
+- RNF03 - El sistema utilizará servidores en la nube para respaldar su información.
+- RNF04 - Los permisos de acceso al sistema podrán ser cambiados unicamente por el administrador de acceso a datos.
+- RNF05 - El sistema debe contar con guías de usuario estructuradas adecuadamente.
+- RNF06 - La aplicación web debe tener un diseño *Responsive*.
+- RNF07 - El sistema debe ser estable, y el promedio máximo de duración de fallas debe ser no máximo de 15 minutos. 
+- RNF08 - El sistema debe ser compatible con los navegadores Google Chrome y Firefox.
+- RNF09 - El sistema será desarrollado en HTML, CSS y JS.
 
 ### User Stories
 
+En base a los requerimientos detallados anteriormente se crearon las User Stories correspondientes, explicando cual es el valor que cada funcionalidad le brindará al usuario. A continuación se proporciona un resumen las User Stories creadas con una referencia al requerimiento del cual se desprende cada User Story. 
+
+| ID User Story | Título                                           | # Requerimiento |
+| :---          | :---                                             | :----:          |
+| 1             | Crear una cuenta                                 | RF01            |
+| 2             | Ingresar a una cuenta                            | RF02            |
+| 3             | Ingresar un gasto/ingreso                        | RF03            |
+| 4             | Visualizar calendario de pagos                   | RF04            |
+| 5             | Recibir email con notificaciones y recordatorios | RF05            |
+| 6             | Visualizar categorías                            | RF08            |
+| 7             | Compartir gastos                                 | RF10            |
+| 8             | Diferenciar monedas                              | RF12            |
+
+Para ver en detalle cada User Story (usuario, narrativa, criterios de aceptación) dirigirse al siguiente [link](/docs/user-stories/user-stories.pdf).
+
 ### Use Cases
+
+Con lo Requerimientos y User Stories ya definidos, se procede a desarrollar los Use Cases respectivos a cada User Story. En el siguiente [link](/docs/use-cases/use-cases.pdf) se detallan el *actor*, el *curso normal* y el *curso alternativo* de cada Use Case.
 
 ### Prototipado
 
