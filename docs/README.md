@@ -70,17 +70,12 @@ Para la definición de las ramas de desarrollo, se utilizó como fuente referenc
 
 ### Actividades de investigación
 
-Para identificar las necesidades de los interesados en la aplicación de registro de gastos, se utilizaron tres técnicas de elicitación:
+Para identificar las necesidades de los interesados en la aplicación de registro de gastos, se utilizaron dos técnicas de elicitación:
 
-- Entrevista
 - Cuestionario
 - Análisis de GUI - ingeniería reversa
 
 A continuación se detalla el proceso llevado a cabo para cada técnica de elicitación y se proporciona evidencia de su realización. Por último se abordan los resultados y la reflexión basada en estos.
-
-
-
-#### Entrevista
 
 #### Cuestionario
 
@@ -92,7 +87,7 @@ En este proyecto la aplicación que se analizó es [Splitwise](https://www.split
 
 A continuación se detallan características y funciones que pueden ser de mayor y menor valor para los usuarios.
 
-**Funciones de mayor valor** 
+**Funcionalidades útiles** 
 - Categorías de gastos predeterminadas - [Captura Splitwise 1](../docs/investigacion/capturas-splitwise/ingreso-gasto-nuevo.jpg) y [Captura Splitwise 2](../docs/investigacion/capturas-splitwise/categorias-gastos.png)
 - Regisrar gastos por fecha - [Captura Splitwise 3](../docs/investigacion/capturas-splitwise/config-gasto-recurrente.jpg)
 - Registrar gastos recurrentes - [Captura Splitwise 3](../docs/investigacion/capturas-splitwise/config-gasto-recurrente.jpg)
@@ -101,13 +96,14 @@ A continuación se detallan características y funciones que pueden ser de mayor
 - Posibilidad de registrar gastos en dos monedas diferentes (Pesos/Dólares).
 - Totales por moneda.
 
-**Funciones de menor valor** 
+**Funcionalidades fuera de alcance o menor valor** 
 - Agregar imagenes de comprobantes/recibos a un gasto. [Captura Splitwise 5](../docs/investigacion/capturas-splitwise/adjuntar-imagenes.png)
 - Compartir gastos con otros usuarios. (Fuera del alcance de este proyecto)
 - Multiples grupos de gastos, por ejemplo 'Gastos Casa', 'Gastos trabajo', 'Gastos vacaciones', etc.
 - Registrar gastos en monedas diferentes a Pesos y Dólares. [Captura Splitwise 6](../docs/investigacion/capturas-splitwise/multiples-monedas.png)
 
-Referencias a fuentes de información
+### Resultados y reflexión
+
 
 
 ### Caracterización de usuarios: User Personas
