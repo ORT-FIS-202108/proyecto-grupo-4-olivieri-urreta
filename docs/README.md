@@ -79,6 +79,8 @@ A continuación se detalla el proceso llevado a cabo para cada técnica de elici
 
 #### Cuestionario
 
+Para obtener la mayor cantidad posible de feedback de potenciales usuarios, se optó por la técnica de elicitación Cuestionario. Todos los detalles de este proceso de elicitación se encuentran en el siguiente [link](investigacion/cuestionario/README.md).
+
 #### Análisis de GUI - ingeniería reversa
 
 Este técnica consite en analizar aplicaciones ya existentes que brindan funciones y servicios similares a los queremos brindar con nuestra aplicación. Esto nos permitirá identificar funciones y características que puedan ser de mayor valor para los usuarios. 
@@ -102,13 +104,22 @@ A continuación se detallan características y funciones que pueden ser de mayor
 - Multiples grupos de gastos, por ejemplo 'Gastos Casa', 'Gastos trabajo', 'Gastos vacaciones', etc.
 - Registrar gastos en monedas diferentes a Pesos y Dólares. [Captura Splitwise 6](../docs/investigacion/capturas-splitwise/multiples-monedas.png)
 
-### Resultados y reflexión
-
-
-
 ### Caracterización de usuarios: User Personas
 
+Utilizando la información recabada con la técnica de elicitación Cuestionario, se crearon las siguientes User Personas:
+
+- [User Persona 25 años](./investigacion/user-persona-25.png)
+- [User Persona 35 años](./investigacion/user-persona-35.png)
+
 ### Modelo conceptual del problema
+
+
+
+### Resultados y reflexión
+
+Los resultados de ambas técnicas de elicitación evidencian que algunas de las características más importantes de la aplicación son la facilidad de uso y simplicidad, a la vez que se pueda utilizar en dispositivos desktop y móviles. La funcionalidad de programar gastos y/o agregar recordatorios, junto con poder agrupar los gastos por categorías aparecieron en los resultados de ambas técnicas de elicitación.
+
+El resultado general del proceso de elicitación fue muy positivo ya que se obtuvo suficiente información para definir tanto requerimientos funcionales como requerimientos no funcionales, y continuar adelante con las especificaciones de la aplicación.
 
 ## Especificación
 
