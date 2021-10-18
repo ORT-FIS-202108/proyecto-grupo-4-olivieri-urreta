@@ -65,7 +65,7 @@ Para la definición de las ramas de desarrollo, se utilizó como fuente referenc
 
 ### Resumen de commits y evolución del proyecto
 
-Luego de finalizadas todas las actividiades del proyecto y previo al merge de la rama *informe* con la rama *main*, se ejecutará el comando ```git log --oneline --reverse`` para obtener un resumen de todos los commits del proyecto.
+Luego de finalizadas todas las actividiades del proyecto y previo al merge de la rama *informe* con la rama *main*, se ejecutará el comando ```git log --oneline --reverse``` para obtener un resumen de todos los commits del proyecto.
 
 A continuación se agrega el resumen de commits (en orden ascendente) y como estos se relacionan con la evolución del proyecto. 
 
