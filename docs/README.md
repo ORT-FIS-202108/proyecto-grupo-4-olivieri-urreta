@@ -225,11 +225,16 @@ Teniendo las User Stories y Requerimientos ya definidos, se pudo comenzar a trab
 
 ## Validación y verificación
 
-Para verificar y validar el proyecto realizamos entrevistas al azar a dos personas ajenas al mismo. Fueron enviados los prototipos y los requerimientos funcionales para su análisis. Los feedbacks obtenidos fueron de mucha utilidad ya que serán tenidos en cuenta a la hora del desarrollo y para evaluar requerimientos. 
+Para verificar y validar el proyecto realizamos entrevistas al azar a tres personas ajenas al mismo. Fueron enviados los prototipos y los requerimientos funcionales para su análisis. Los feedbacks obtenidos fueron de mucha utilidad ya que serán tenidos en cuenta a la hora del desarrollo y para evaluar requerimientos. 
 
 Feedback – Florencia Cosentini
 
 “La verdad que según los bocetos recibidos la aplicación tiene muy buen aspecto, lo único que le agregaría es un poco más de distintos colores para identificar los pie chart. Parecería ser muy simple e intuitiva como les había comentado en la encuesta. El único detalle que veo y que agregaría es que si se habilita la opción de compartir gastos yo pueda enviar un link de referencia a la otra persona para que se registre y no tenga por qué estar siempre registrada”
+
+Feedback - Sebastián Martinez
+
+"Me gusto mucho especialmente por el hecho de que podria tener los datos sicronizados tanto en mi computadora como en mi celular, y según los requisitos que detallaron cumplen más que de sobra mis expectativas. No tengo comentarios para hacerles ya que los prototipos y requerimientos me parecen muy completos, estoy deseando poder verla en marcha"
+
 
 Feedback – Carla ********
 
