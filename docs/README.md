@@ -225,9 +225,14 @@ Teniendo las User Stories y Requerimientos ya definidos, se pudo comenzar a trab
 
 ## Validación y verificación
 
-Verificar la especificación
+Para verificar y validar el proyecto realizamos entrevistas al azar a dos personas ajenas al mismo. Fueron enviados los prototipos y los requerimientos funcionales para su análisis. Los feedbacks obtenidos fueron de mucha utilidad ya que serán tenidos en cuenta a la hora del desarrollo y para evaluar requerimientos. 
 
-Validar la solución con personas no involucradas en el proyecto
+Feedback – Florencia Cosentini
+
+“La verdad que según los bocetos recibidos la aplicación tiene muy buen aspecto, lo único que le agregaría es un poco más de distintos colores para identificar los pie chart. Parecería ser muy simple e intuitiva como les había comentado en la encuesta. El único detalle que veo y que agregaría es que si se habilita la opción de compartir gastos yo pueda enviar un link de referencia a la otra persona para que se registre y no tenga por qué estar siempre registrada”
+
+Feedback – Carla ********
+
 
 ## Reflexión
 
