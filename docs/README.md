@@ -225,13 +225,22 @@ Teniendo las User Stories y Requerimientos ya definidos, se pudo comenzar a trab
 
 ## Validación y verificación
 
-Verificar la especificación
+Para verificar y validar el proyecto realizamos entrevistas al azar a dos personas ajenas al mismo. Fueron enviados los prototipos y los requerimientos funcionales para su análisis. Los feedbacks obtenidos fueron de mucha utilidad ya que serán tenidos en cuenta a la hora del desarrollo y para evaluar requerimientos. 
 
-Validar la solución con personas no involucradas en el proyecto
+Feedback – Florencia Cosentini
+
+“La verdad que según los bocetos recibidos la aplicación tiene muy buen aspecto, lo único que le agregaría es un poco más de distintos colores para identificar los pie chart. Parecería ser muy simple e intuitiva como les había comentado en la encuesta. El único detalle que veo y que agregaría es que si se habilita la opción de compartir gastos yo pueda enviar un link de referencia a la otra persona para que se registre y no tenga por qué estar siempre registrada”
+
+Feedback – Carla ********
+
 
 ## Reflexión
 
 Haber trabajado en este proyecto desde cero, cambió significativamente nuestras perspectivas de lo que implica el proceso de desarrollo de software. Nos ayudó a comprender que no solo escribir código es importante para entregar software de calidad y que cumpla con las expectativas de los usuarios. También nos resultó evidente el rol clave que juegan las etapas inciales del proyecto para disminuir el trabajo innecesario en etapas posteriores.
+
+Con respecto a la división de tareas, el método que útilizamos fue dividirnos partes del proyecto y luego de finalizada la tarea se subían los cambios al repositorio remoto. Luego de subidos los cambios el otro se encargaba de verificar y/o testear que lo realizado por el otro integrante estaba correcto o si debia ser modificado.
+
+Este método que utilizamos nos parecio de mucha utilidad y pretendemos mantenerlo para la próxima entrega ya que ambos integrantes conocemos la totalidad del proyecto y pudimos identificar detalles que si no hubieran sido verificados posteriormente no estarian correctos. 
 
 A continuación se realiza un breve repaso de las Técnicas aplicadas y se proporciona una reflexión sobre los aprendizajes de cada área. 
 
