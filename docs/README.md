@@ -114,7 +114,7 @@ Utilizando la información recabada con la técnica de elicitación Cuestionario
 
 En base a los requerimientos del proyecto (letra del proyecto) y al proceso de elicitación y se desarrollo el siguiente modelo conceptual del sistema, que se utilizará en conjunto con los resultados de la investigación para definir los requerimientos y características del sistema a desarrolla.
 
-El modelo conceptual se encuentra en el siguiente [link]().
+El modelo conceptual se encuentra en el siguiente [link](./investigacion/mapa-conceptual/mapa-conceptual.jpg).
 
 ### Resultados y reflexión
 
@@ -128,17 +128,101 @@ El resultado general del proceso de elicitación fue muy positivo ya que se obtu
 
 ### Requerimientos
 
+Con los resultados obtenidos del proceso de investigación, se definieron los requerimientos Funcionales y No Funcionales detallados debajo. Para la creación de todos ellos se aplicaron los conceptos vistos en clase para ambos tipos de requerimientos.
 
+#### Funcionales
 
+- RF01 - El sistema debe permitir crear una cuenta.
+- RF02 - El sistema debe requerir usuario y contraseña para mostrar e ingresar gastos.
+- RF03 - Los usuarios pueden registrar un gasto con descripción, precio y fecha.
+- RF04 - El sistema debe implementar un calendario de pagos.
+- RF05 - Los usuarios deben recibir recordatorios de pagos (e-mail).
+- RF06 - Llevar un control de estado de cuenta bancario. 
+- RF07 - Los usuarios pueden configurar un gasto como recurrente.
+- RF08 - Los usuarios pueden seleccionar una categoría de gasto para cada gasto ingresado.
+- RF09 - El sistema permite visualizar un resumen de gastos por mes (gráficas, o listados).
+- RF10 - Los usuarios pueden compartir gastos entre ellos (verificar si es posible o si nos complicaría mucho).
+- RF11 - Los usuarios pueden seleccionar una vista de listado o pie chart para los resúmenes de gastos.
+- RF12 - El sistema muestra total en pesos y total en dólares si hay gastos ingresados en más de una moneda.
+
+#### No Funcionales
+
+- RNF01 - Toda funcionalidad del sistema debe responder al usuario en menos de 5 segundos.
+- RNF02 - El sistema debe ser capaz de operar adecuadamente con hasta 150.000 usuarios con sesiones concurrentes.
+- RNF03 - El sistema utilizará servidores en la nube para respaldar su información.
+- RNF04 - Los permisos de acceso al sistema podrán ser cambiados unicamente por el administrador de acceso a datos.
+- RNF05 - El sistema debe contar con guías de usuario estructuradas adecuadamente.
+- RNF06 - La aplicación web debe tener un diseño *Responsive*.
+- RNF07 - El sistema debe ser estable, y el promedio máximo de duración de fallas debe ser no máximo de 15 minutos. 
+- RNF08 - El sistema debe ser compatible con los navegadores Google Chrome y Firefox.
+- RNF09 - El sistema será desarrollado en HTML, CSS y JS.
 
 ### User Stories
 
+En base a los requerimientos detallados anteriormente se crearon las User Stories correspondientes, explicando cual es el valor que cada funcionalidad le brindará al usuario. A continuación se proporciona un resumen las User Stories creadas con una referencia al requerimiento del cual se desprende cada User Story. 
+
+| ID User Story | Título                                           | # Requerimiento |
+| :---          | :---                                             | :----:          |
+| 1             | Crear una cuenta                                 | RF01            |
+| 2             | Ingresar a una cuenta                            | RF02            |
+| 3             | Ingresar un gasto/ingreso                        | RF03            |
+| 4             | Visualizar calendario de pagos                   | RF04            |
+| 5             | Recibir email con notificaciones y recordatorios | RF05            |
+| 6             | Visualizar categorías                            | RF08            |
+| 7             | Compartir gastos                                 | RF10            |
+| 8             | Diferenciar monedas                              | RF12            |
+
+Para ver en detalle cada User Story (usuario, narrativa, criterios de aceptación) dirigirse al siguiente [link](/docs/user-stories/user-stories.pdf).
+
 ### Use Cases
+
+Con lo Requerimientos y User Stories ya definidos, se procede a desarrollar los Use Cases respectivos a cada User Story. En el siguiente [link](/docs/use-cases/use-cases.pdf) se detallan el *actor*, el *curso normal* y el *curso alternativo* de cada Use Case.
 
 ### Prototipado
 
+Teniendo las User Stories y Requerimientos ya definidos, se pudo comenzar a trabajar en los bocetos de interfaz de usario. Se utilizaron herramientas digitales para generar los prototipos ya que esto facilitaba la rápida iteración de los diseños una vez recibido feedback de potenciales usuarios. A continuación se listan los bocetos creados para cada User Story y se detallan los cambios entre versiones. En la última versión de cada boceto se incluye también los cursos normales y alternos en caso de que aplique.
+
+#### Crear una cuenta - User Story ID #1
+
+  - Boceto inicial - [Creación Cuenta v1](./bocetosiu/creacion-cuenta-v1.jpeg)
+  - Se agregan más campos al formulario y nombre de la app - [Creación Cuenta v2](./bocetosiu/creacion-cuenta-v2.jpeg)
+  - Labels cambiadas a placeholders, boton de cerrar - [Creación Cuenta v3](./bocetosiu/creacion-cuenta-v3.png)
+
+#### Ingresar a una cuenta - User Story ID #2
+
+  - Boceto inicial - [Ingresar a cuenta v1](./bocetosiu/ingreso-a-cuenta-v1.jpeg)
+  - Se agrega link para cambiar contraseña y nombre de la app - [Ingresar a cuenta v2](./bocetosiu/ingreso-a-cuenta-v2.jpeg)
+  - Labels cambiadas a placeholders y se cambia botón de registrarse a link para resaltar el botón de ingresar - [Ingresar a cuenta v3](./bocetosiu/ingreso-a-cuenta-v3.png)
+
+#### Ingresar un gasto/ingreso - User Story ID #3
+
+  - Boceto inicial - [Ingresar gasto/ingreso v1](./bocetosiu/registro-gasto-v1.jpeg)
+  - Se agrega campo para monto y campo para nombre del gasto (diferente a la descripción) - [Ingresar gasto/ingreso v2](./bocetosiu/registro-gasto-v2.jpeg)
+  - Se colocan en misma línea botones de moneda y monto, y fecha y categoría para darle una apariencia más simple. También se cambian dropdowns por botones que abran una ventana modal - [Ingresar gasto/ingreso v3](./bocetosiu/registro-gasto-v3.jpeg)
+  - Se agrega opción de registrar gasto o ingreso. Se cambia botón de cancelar por un botón más simple y ubicado en parte superior de la pantalla - [Ingresar gasto/ingreso v4](./bocetosiu/registro-gasto-v4.png)
+  - Versión final con ventanas que se abren a partir de botones de categoría y fecha. Botón de moneda no abre una ventana, sino que cambia de Pesos a Dólares o viceversa - [Ingresar gasto/ingreso v5](./bocetosiu/registro-gasto-v5.png)
+
+#### Visualizar calendario de pagos - User Story ID #4
+
+  - Boceto inicial - [Visualizar calendario de pagos v1](./bocetosiu/visualizar-calendario-pagos-v1.jpeg)
+  - Se elimina la columna de fecha, y se dividen las filas por día (gastos diferentes en el mismo día aparecen bajo el mismo día) - [Visualizar calendario de pagos v2](./bocetosiu/visualizar-calendario-pagos-v2.jpeg)
+  - Se cambia dropdown de mes, por un carrusel de meses (si se hace click sobre el mes, se abre una lista con meses). Se muestra boton de agregar gasto debajo de la lista para un fácil acceso a esta funcionalidad - [Visualizar calendario de pagos v3](./bocetosiu/visualizar-calendario-pagos-v3.png)
+  - Se agrega toggle para ver en formato lista o en formato gráfico de torta (pie chart). Se detalla visualización en opcion pie chart - [Visualizar calendario de pagos v4](./bocetosiu/visualizar-calendario-pagos-v4.png)
+  - En vista lista se agrega debajo del mes el total para el mes seleccionado - [Visualizar calendario de pagos v5](./bocetosiu/visualizar-calendario-pagos-v5.png)
 
 
+#### Visualizar categorías - User Story ID #6
+
+  - Boceto inicial - [Visualizar categorías v1](./bocetosiu/seleccion-categoria-v1.jpeg)
+  - Se cambia de seleccionar con radio buttons y hacer click en boto 'Seleccionar', a simplemente seleccionar con hacer click en el ítem de la lista. Esto también remplaza el botón volver. Se utiliza área de radio buttons para mostrar un ícono de la categoría. Por último, se agrega una barra de búsqueda y un botón de retroceder en caso de que no se seleccione una categoría - [Visualizar categorías v2](./bocetosiu/seleccion-categoria-v2.png)
+
+#### Compartir gastos - User Story ID #7
+
+  - Se agrega a boceto de *Ingresar un gasto/ingreso* un botón para compartir gasto que abre una nueva ventana para agregar una direccion de email - [Ingresar gasto/ingreso v6](./bocetosiu/registro-gasto-v6.png)
+
+#### Diferenciar monedas - User Story ID #8
+
+  - En *Ingresar un gasto/ingreso* ya se abordó esta función, pero se agrega opción de ver por moneda en *Visualizar calendario de pagos*. Se agrega un toggle *Pesos/Dólares* para cambiar la moneda para la que se desea visualizar el calendario de pagos (se agrega a vista lista y pie chart) - [Visualizar calendario de pagos v6](./bocetosiu/visualizar-calendario-pagos-v6.png)
 
 ## Validación y verificación
 
