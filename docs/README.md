@@ -231,9 +231,30 @@ Validar la solución con personas no involucradas en el proyecto
 
 ## Reflexión
 
-Detalle del trabajo individual
+Haber trabajado en este proyecto desde cero, cambió significativamente nuestras perspectivas de lo que implica el proceso de desarrollo de software. Nos ayudó a comprender que no solo escribir código es importante para entregar software de calidad y que cumpla con las expectativas de los usuarios. También nos resultó evidente el rol clave que juegan las etapas inciales del proyecto para disminuir el trabajo innecesario en etapas posteriores.
 
-Técnicas aplicadas y aprendizajes
+A continuación se realiza un breve repaso de las Técnicas aplicadas y se proporciona una reflexión sobre los aprendizajes de cada área. 
 
+#### Versionado
 
+Ambos coincidimos que es el área en la que más aprendimos. Al inicio fue un proceso desafiante ya que consideramos que es una habilidad que se gana con la práctica. Los primeros commits que realizamos se podría decir que se encuentran dentro de lo que serían buenas prácticas de versionado, pero a medida que fuimos avanzando en el trabajo fuimos comprendiendo cada vez mejor que commandos ejecutar, que significaban las respuestas de Git cuando nos encontrabamos con un error, y como manejar las ramas entre otras cosas.
 
+A pesar del aprendizaje que tuvimos en esta área, consideramos que deberíamos seguir practicando para la próxima etapa del proyecto, en particular en el uso de las ramas. Un ejemplo de esto es que las ramas que fuimos creando no las creamos desde sub-ramas, sino que en algunos casos las creamos directamente desde el main o cualquier otra rama sin tener presente lo que eso implicaba. Este tipo de errores nos dificulba saber bien donde teníamos las últimas versiones de los documentos y se perdía mucho tiempo buscando en cual rama estaba el documento que buscabamos.
+
+Otro aspecto que aprendimos casi al final del proyecto, fue como traer al repositorio local ramas nuevas del repositorio remoto. Al comienzo no comprendíamos por que no nos aparecian todos los cambios y ramas en nuestros repositorios locales incluso luego de realizar un git pull. Por último, otro aspecto a mejorar es la realización de los commits desde el Visual Studio Code, ya que algunos commits fueron enviados sin comentarios simplemente con el mensaje commit, punto que tendremos en cuenta en la próxima entrega.
+
+En resumen, fue muy interesante poder aplicar Git en un proyecto real y podemos decir que ahora si podemos trabajar más comodos con Git.
+
+#### Elicitación
+
+Para la elicitación utilizamos dos técnicas, *Cuestionario* y *Ingeniería Reversa*. Inicialmente teniamos pensado utlizar una técnica más, *Entrevista*, pero nos dimos cuenta que para el tipo de aplicación que estamos desarrollando no era tan necesario hacerle una entrevista a un usuario específico (esto aplicaría más en el caso de una persona que realiza una tarea dentro de una empresa, y la entrevista sería sobre sus procesos de trabajo). Además, el Cuestionario ya nos iba a brindar mucha información de varios potenciales usuarios.
+
+Si bien de la técnica de *Ingeniería Reversa* se obtuvo algo de información útil, nos sorprendió muchísimo la cantidad de personas que respondieron nuestra encuesta y el feedback adicional que nos brindaron en la sección de comentarios libre. Este feedback fue clave para validar algunas ideas que ya teníamos para los requerimientos y a su vez adicionar otros puntos que no se nos habían ocurrido y los potenciales usuarios consideraban de alta importancia. Ambos coincidimos en que fue un gran acierto utilizar la técnica de Cuestionario para este proyecto, y de hacerlo simple y corto para que las personas lo completaran en pocos minutos y sin mucho esfuerzo.
+
+El aprendizaje que nos llevamos del proceso de elicitación, es la importancia de aplicar la técnica correcta para el proyecto en el que estamos trabajando y el tipo de cliente/usuario final. Con esto nos referimos a que lo que puede funcionar para un proyecto posiblement no funcione para otro, pero cuando se utiliza la técnica adecuada y con las características adecuadas se puede extraer mucha información de alto valor para nuestro proyecto. 
+
+#### Especificación
+
+Luego de la etapa de elicitación, la definición de Requerimientos, User Stories, Use Cases y Prototipos nos resultó bastante fluida ya que la elicitación nos brindó la información que necesitabamos y sólo debiamos construir sobre ella. Al seguir los pasos de primero denifir los Requerimientos, luego las User Stories y por último los Use Cases sentimos que era un proceso incremental que construía sobre lo ya definido agregando otras 'capas' de detalle al proyecto. 
+
+Por último, el bocetado fue una etapa de mucho trabajo, ya que se crearon varias versiones para diferentes funcionalidades, y en cada iteración se le pedía feedback a personas cercanas y ajenas al proyecto. Este fue un proceso muy laborioso pero consideramos que el resultado final quedó muy pulido y estamos conformes con los bocetos finales. En conclusión, el iterar en los diseños tiene un alto valor que se ve en el producto final.
