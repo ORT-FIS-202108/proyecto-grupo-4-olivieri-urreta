@@ -236,7 +236,11 @@ Feedback – Carla ********
 
 ## Reflexión
 
-Detalle del trabajo individual
+- Detalle del trabajo individual
+
+Al ser dos integrantes el método que útilizamos fue dividir las tareas a realizar, y luego una vez finalizado cada uno se encargaba de verificar y/o testear que lo realizado por el otro integrante estaba correcto o debia ser modificado.
+
+Este método que utilizamos nos parecio de mucha utilidad y pretendemos mantenerlo para la próxima entrega ya que ambos integrantes conocemos la totalidad del proyecto y pudimos identificar detalles que si no hubieran sido verificados posteriormente no estarian correctos. 
 
 Técnicas aplicadas y aprendizajes
 
