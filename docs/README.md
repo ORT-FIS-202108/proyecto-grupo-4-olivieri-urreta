@@ -106,9 +106,8 @@ A continuación se detallan características y funciones que pueden ser de mayor
 
 Utilizando la información recabada con la técnica de elicitación Cuestionario, se crearon las siguientes User Personas:
 
-- [User Persona 25 años](./investigacion/user-persona-25.png)
-- [User Persona 35 años](./investigacion/user-persona-35.png)
-
+- [User Persona 25 años](./investigacion/user-persona/user-persona-25.png)
+- [User Persona 35 años](./investigacion/user-persona/user-persona-35.png)
 
 ### Modelo conceptual del problema
 
