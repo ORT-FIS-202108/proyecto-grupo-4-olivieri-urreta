@@ -65,6 +65,48 @@ Para la definición de las ramas de desarrollo, se utilizó como fuente referenc
 
 ### Resumen de commits y evolución del proyecto
 
+Luego de finalizadas todas las actividiades del proyecto y previo al merge de la rama *informe* con la rama *main*, se ejecutará el comando ```git log --oneline --reverse`` para obtener un resumen de todos los commits del proyecto.
+
+A continuación se agrega el resumen de commits (en orden ascendente) y como estos se relacionan con la evolución del proyecto. 
+
+**Versionado y uso de Git**
+- b5a8258 docs: se agregó al informe detalles de creación del repositorio, comandos git utilizados y definición de ramas
+- ed985ff docs: se revirtieron cambios de readme investigación
+
+**Elicitación**
+- 0df74d9 docs: se agregó punteo general de sección de elicitación
+- 3a6547c commit on 'elicitacion-user-personas'
+- 39e3969 commit on elicitacion-user-personas
+- ba72c24 docs: Analisis ing. reversa completado y documentado en readme
+- a212728 Se crea carpeta y agregan capturas de splitwise para ing. reversa
+- 41a7dac (origin/elicitacion-ing_reversa, elicitacion-ing_reversa) docs: Se corrigió link de Captura Splitwise 6
+- 85afaf9 docs: se agregaron más comandos de git utilizados
+- 4bcea93 commit elicitacion-cuestionario
+- 642e022 docs: Correcciones a sección elicitación
+- 3781d08 commit elicitacion-cuestionario
+- 1eca173 commit elicitacion-cuestionario
+- 5408a94 (origin/elicitacion-cuestionario, elicitacion-cuestionario) commit elicitacion-cuestionario
+- 7542870 (origin/elicitacion-user-personas) commit elicitacion-user-personas
+- 8f7f327 Corrección de README de investigación
+- 840f837 User personas agregadas
+- cd8c78c Se documentan resultados de elicitación y se agregan User Personas
+- 0ace853 (origin/elicitacion-mapa-conceptual) commit on elicitacion-mapa-conceptual
+- 8e5f43e (origin/especificacion-user-stories, especificacion-user-stories) commit on especificacion-user-stories
+- 1f0d56f (origin/especificacion-use-cases) commit on especifiacion-use-cases
+- 9929c6b (origin/readme, readme) Correcciones a seccion ramas y especificacion
+- 6a57be0 Se agregan requerimientos y se les vincula user stories
+- 7f3cf6c (origin/especificacion-requerimientos, especificacion-requerimientos) Se vincula documento de Use Cases
+- 7a438c0 Se reemplazó imagen mapa conceptual
+- 1345876 (origin/especificacion-prototipos, especificacion-prototipos) Se agregaron bocetos y detalle de sus versiones
+- 01f9231 Se corrige link a imágenes de user personas
+
+**Reflexión final**
+- 7ecb3e6 commit on informe
+- 5b8b175 commit on informe
+- 39a0dde Reflexión final y resumen de técnicas aplicadas
+- 0a5356b Cambios y merge de repo remoto a reflexion final
+- 1613150 (HEAD -> informe, origin/informe) se agregó feedback en validacion-verificacion
+
 ## Elicitación
 
 ### Actividades de investigación
@@ -235,9 +277,9 @@ Feedback - Sebastián Martinez
 
 "Me gusto mucho especialmente por el hecho de que podria tener los datos sicronizados tanto en mi computadora como en mi celular, y según los requisitos que detallaron cumplen más que de sobra mis expectativas. No tengo comentarios para hacerles ya que los prototipos y requerimientos me parecen muy completos, estoy deseando poder verla en marcha"
 
+Feedback – Carla Del Pup
 
-Feedback – Carla ********
-
+"Me gusta mucho poder agregar gastos por categorías. Así sé si estoy gastando mucho en cosas que no son imprescindibles y puedo ajustar mi conducta. Me resulta útil poder programar gastos fijos además, porque sirve para cuando se compran cosas en cuotas. Lo único que me confunde es cómo elegir sí es un gasto o un ingreso lo que estoy agregando."
 
 ## Reflexión
 
