@@ -4,7 +4,7 @@
 |-----------
 | Fundamentos de Ingeniería de Software
 ID M4A - Docente: Alejandro Adorjan
-Estudiantes: 
+Estudiantes: Diego Urreta, Giovanni Olivieri
 
 Lectura: 30-ago-2021
 
