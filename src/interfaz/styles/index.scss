@@ -1,6 +1,6 @@
 @use "@material/theme" with (
-  $primary: #00bcd4,
-  $secondary: #f44336,
+  $primary: #7b1fa2,
+  $secondary: #00796b,
   $background: #c7c7c7,
 );
 @use '@material/button/mdc-button';
@@ -23,7 +23,10 @@
 @use "@material/menu/mdc-menu";
 @use "@material/select/styles";
 @use "@material/snackbar/mdc-snackbar";
+@use "@material/fab";
+// @use "@material/tooltip";
 
+@include fab.core-styles;
 @include card.core-styles;
 @include textfield.core-styles;
 
@@ -32,7 +35,7 @@ html {
 }
 
 body {
-  font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Roboto';
   margin: 0px auto;
 }
 
@@ -45,12 +48,29 @@ body {
   @include icon-button.core-styles;
 }
 
+.img-topbar {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.mdc-top-app-bar__title {
+  size: 22px;
+}
+
+.mdc-tab-bar {
+  background-color: #00796b;
+}
+
+// .mdc-tab :hover{
+//   background-color: #004c40;
+// }
+
 section {
   text-align: center;
 }
 
 .content {
-  margin: 10rem auto;
+  margin: 5rem auto;
   padding-bottom: 20rem;
   text-align: center;
 }
@@ -59,12 +79,12 @@ section {
   display: none;
 }
 
-.mdc-tab {
-    background-color: #67daff;
+.mdc-tab__content .mdc-tab__text-label {
+    color: white;
 }
 
-.mdc-tab__content .mdc-tab__text-label {
-    color: black;
+.mdc-tab .mdc-tab__icon {
+  color: white;
 }
 
 .mdc-text-field {
@@ -76,5 +96,40 @@ section {
 }
 
 .mdc-snackbar__actions .mdc-button__label {
-  color: #67daff;
+  color: "secondary";
+}
+
+.md-fab-bottom-right{
+  position: fixed !important;
+  right: 50px;
+  bottom: 50px;
+}
+
+.mdc-top-app-bar__title {
+  padding-bottom: 0;
+}
+
+.seleccion-mes {
+  margin-left: 24px;
+  display:flex;
+  align-items:center;
+}
+
+.mdc-list-group {
+  width: 600px;
+  margin: auto;
+}
+
+.mdc-list-group__subheader {
+  color: #616161;
+  text-align: left;
+  margin-bottom: 0px;
+  padding-bottom: 0;
+}
+
+.mdc-list {
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
