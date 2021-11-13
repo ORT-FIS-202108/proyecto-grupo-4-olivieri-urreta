@@ -22,7 +22,7 @@ export default class Usuario {
   static validarDatosUsuario(email, password) {
     let datosValidos = false;
     const pattern = /[a-zA-Z0-9\.!$%^&+_-]+@{1}[a-zA-Z0-9]+\.{1}[a-zA-Z0-9]+$/;
-    if (email != '' && pattern.test(email) && password != '' && typeof(email) === 'string' && typeof(password) === 'string') {
+    if (email != '' && pattern.test(email) && password != '') {
       datosValidos = true;
     }
     return datosValidos;
