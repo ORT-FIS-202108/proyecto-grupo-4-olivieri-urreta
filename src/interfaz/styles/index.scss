@@ -1,5 +1,5 @@
 @use "@material/theme" with (
-  $primary: #7b1fa2,
+  $primary: #512da8,
   $secondary: #00796b,
   $background: #c7c7c7,
 );
@@ -35,7 +35,7 @@ html {
 }
 
 body {
-  font-family: 'Roboto';
+  font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0px auto;
 }
 
