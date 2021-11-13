@@ -1,4 +1,4 @@
-import Usuario from "./usuario.mjs";
+import Usuario from './usuario.mjs';
 
 /**
  * Clase Sistema de la aplicación.
@@ -21,9 +21,9 @@ export default class Sistema {
    * @return {boolean} Retorna true si se pudo registrar, y false si no.
    */
   registroUsuario(email, password) {
-    let datosValidos = Usuario.validarDatosUsuario(email, password);
+    const datosValidos = Usuario.validarDatosUsuario(email, password);
     if (datosValidos) {
-      let usuario = new Usuario(usuario, password);
+      const usuario = new Usuario(usuario, password);
       this.agregarUsuario(usuario);
     }
     return datosValidos;
