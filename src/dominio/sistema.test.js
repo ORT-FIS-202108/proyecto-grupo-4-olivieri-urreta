@@ -22,3 +22,21 @@ describe('Registro de usuario', () => {
     expect(sistema.registroUsuario('user@mail.com', 'fghi')).toBe(false);
   });
 });
+
+// describe('Creación de usuario', () => {
+//   test('email y password vacíos', () => {
+//     expect(Usuario.crearUsuario('', '')).toBe(false);
+//   });
+//   test('email vacío / password válido', () => {
+//     expect(Usuario.crearUsuario('', 'pswd1')).toBe(false);
+//   });
+//   test('email válido / password vacío', () => {
+//     expect(Usuario.crearUsuario('abc@mail.com', 'pswd1')).toBe(false);
+//   });
+//   test('email válido / password válido', () => {
+//     expect(Usuario.crearUsuario('abc@mail.com', 'pswd1')).toBe(false);
+//   });
+//   test('email inválido / password válido', () => {
+//     expect(Usuario.crearUsuario('abcmail.com', 'pswd1')).toBe(false);
+//   });
+// });

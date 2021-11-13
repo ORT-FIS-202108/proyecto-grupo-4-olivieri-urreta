@@ -1,35 +1,26 @@
 /* eslint-disable max-len */
 import Usuario from './usuario.mjs';
 
-describe('Creación de usuario', () => {
-  test('email y password vacíos', () => {
-    expect(Usuario.crearUsuario('', '')).toBe(false);
+describe('Valdadción de email y password', () => {
+  test('email y password inválidos', () => {
+    expect(Usuario.validarDatosUsuario('abc@@ail.com', '')).toBe(false);
   });
-  test('email vacío / password válido', () => {
-    expect(Usuario.crearUsuario('', 'pswd1')).toBe(false);
+  test('email sin @ / password válido', () => {
+    expect(Usuario.validarDatosUsuario('abcmail.com', 'abc')).toBe(false);
   });
-  test('email válido / password vacío', () => {
-    expect(Usuario.crearUsuario('abc@mail.com', 'pswd1')).toBe(false);
+  test('email sin punto despues de @ / password válido', () => {
+    expect(Usuario.validarDatosUsuario('abc@mailcom', 'abc')).toBe(false);
+  });
+  test('email con @ y punto juntos / password válido', () => {
+    expect(Usuario.validarDatosUsuario('abc@.com', 'abc')).toBe(false);
+  });
+  test('email sin top-level domain / password válido', () => {
+    expect(Usuario.validarDatosUsuario('abc@mail.', 'abc')).toBe(false);
+  });
+  test('email válido / password inválido', () => {
+    expect(Usuario.validarDatosUsuario('abc@mail.com', '')).toBe(false);
   });
   test('email válido / password válido', () => {
-    expect(Usuario.crearUsuario('abc@mail.com', 'pswd1')).toBe(false);
-  });
-  test('email inválido / password válido', () => {
-    expect(Usuario.crearUsuario('abcmail.com', 'pswd1')).toBe(false);
-  });
-});
-
-describe('Valdadción de formato email', () => {
-  test('email sin @', () => {
-    expect(Usuario.validarEmail('abcmail.com')).toBe(false);
-  });
-  test('email sin punto despues de @', () => {
-    expect(Usuario.validarEmail('abc@mailcom')).toBe(false);
-  });
-  test('email con @ y punto juntos', () => {
-    expect(Usuario.validarEmail('abc@.com')).toBe(false);
-  });
-  test('email sin top-level domain', () => {
-    expect(Usuario.validarEmail('abc@mail.')).toBe(false);
+    expect(Usuario.validarDatosUsuario('abc@mail.com', 'a')).toBe(false);
   });
 });

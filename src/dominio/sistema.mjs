@@ -1,3 +1,5 @@
+import Usuario from "./usuario.mjs";
+
 /**
  * Clase Sistema de la aplicación.
  * Esta clase es el único punto de entrada para la lógica de negocio
@@ -14,12 +16,24 @@ export default class Sistema {
   /**
    * Registro de usuario.
    * Recibe un usuario y contraseña e intenta crear un usuario.
-   * @param {string} usuario Nombre de usuario ingresado.
+   * @param {string} email Identificador único (email) de usuario ingresado.
    * @param {string} password Contraseña ingresada.
    * @return {boolean} Retorna true si se pudo registrar, y false si no.
    */
-  registroUsuario(usuario, password) {
-    return true;
+  registroUsuario(email, password) {
+    let datosValidos = Usuario.validarDatosUsuario(email, password);
+    if (datosValidos) {
+      let usuario = new Usuario(usuario, password);
+      this.agregarUsuario(usuario);
+    }
+    return datosValidos;
+  }
+  /**
+   * Agrega un usuario a la lista de usuarios.
+   * @param {Usuario} usuario Usuario a agregar en la lista.
+   */
+  agregarUsuario(usuario) {
+    this.usuarios.push(usuario);
   }
   /**
    * Login de usuario

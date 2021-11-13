@@ -14,29 +14,17 @@ export default class Usuario {
     this.idUsuario = sigId++;
   }
   /**
-   * Creación de usuario
-   * @param {string} email Identificador del usuario.
-   * @param {string} password Contraseña del usuario.
-   * @return {boolean} Retorna si el usuario se creó o no.
+   * Valida datos para la creación de un usuario.
+   * @param {string} email Email a validar.
+   * @param {string} password Password a validar.
+   * @return {boolean} Retorna si el string y el password son válidos.
    */
-  static crearUsuario(email, password) {
-    let usuarioCreado = false;
-    if (this.validarEmail(email) && password != '') {
-      usuarioCreado = true;
-    }
-    return usuarioCreado;
-  }
-  /**
-   * Valida el email de usuario
-   * @param {string} email Email a validar
-   * @return {boolean} Retorna si el string es un email válido.
-   */
-  static validarEmail(email) {
-    let emailValido = false;
+  static validarDatosUsuario(email, password) {
+    let datosValidos = false;
     const pattern = /[a-zA-Z0-9\.!$%^&+_-]+@{1}[a-zA-Z0-9]+\.{1}[a-zA-Z0-9]+$/;
-    if (email != '' && pattern.test(email)) {
-      emailValido = true;
+    if (email != '' && pattern.test(email) && password != '' && typeof(email) === 'string' && typeof(password) === 'string') {
+      datosValidos = true;
     }
-    return emailValido;
+    return datosValidos;
   }
 }
