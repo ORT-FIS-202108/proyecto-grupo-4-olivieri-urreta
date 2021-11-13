@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import Sistema from './sistema.mjs';
 
-describe('tests de registroUsuario', () => {
+describe('Registro de usuario', () => {
   const sistema = new Sistema();
   test('registro con usaurio y password vacios', () => {
     expect(sistema.registroUsuario('', '')).toBe(false);
