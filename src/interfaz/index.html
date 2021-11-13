@@ -10,9 +10,110 @@
 
 <body>
 
-  <header></header>
 
-  <main></main>
+   <header class="mdc-top-app-bar">
+    <div class="mdc-top-app-bar__row">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+        <img src="img/MisGastos.png" alt="MisGastos" class="img-topbar">
+        <span class="mdc-top-app-bar__title"> MisGastos </span>
+      </section>
+    </div>
+
+    <div class="mdc-tab-bar" role="tablist">
+      <div class="mdc-tab-scroller">
+        <div class="mdc-tab-scroller__scroll-area">
+          <div class="mdc-tab-scroller__scroll-content">
+
+            <button class="mdc-tab mdc-tab--active sample-content-tab" role="tab" aria-selected="true" tabindex="0">
+              <span class="mdc-tab__content">
+                <span class="mdc-tab__text-label">Iniciar Sesión</span>
+              </span>
+              <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                <span
+                  class="mdc-tab-indicator__content mdc-tab-indicator__content--underline sample-content-tab-indicator"></span>
+              </span>
+              <span class="mdc-tab__ripple"></span>
+            </button>
+
+            <button class="mdc-tab sample-content-tab" role="tab" aria-selected="false" tabindex="1">
+              <span class="mdc-tab__content">
+                <span class="mdc-tab__text-label">Crear Usuario</span>
+              </span>
+              <span class="mdc-tab-indicator">
+                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+              </span>
+              <span class="mdc-tab__ripple"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header> 
+
+  <main class="mdc-top-app-bar--fixed-adjust">
+    <section class="content">
+      <div class="wrapper fadeInDown">
+        <div id="formContent">        
+          
+      
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img src="img/user-icon.svg" id="icon" alt="User Icon" />
+          </div>
+      
+          <!-- Login Form -->
+          <form>
+            <input type="text" id="login" class="fadeIn second" name="login" placeholder="Usuario">
+            <input type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
+            <input type="submit" class="fadeIn fourth" value="INICIAR SESION">
+          </form>
+      
+          <!-- Remind Password -->
+          <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+          </div>
+      
+        </div>
+    </section>
+     <section class="content sample-content--hidden">
+      <div class="wrapper fadeInDown">
+        <div id="formContent">        
+          
+      
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img src="img/new-user.svg" id="icon" alt="User Icon" />
+          </div>
+      
+          <!-- Login Form -->
+          <form>
+            <p>Ingrese sus datos</p>
+            <input type="text" id="nombre" class="fadeIn second" name="new-user" placeholder="Nombre">
+            <input type="text" id="apellido" class="fadeIn third" name="new-user" placeholder="Apellido">
+            <input type="text" id="email" class="fadeIn fourth" name="new-user" placeholder="Email">
+            <input type="text" id="password" class="fadeIn fourth" name="new-user" placeholder="Contraseña">
+            <input type="text" id="password" class="fadeIn fourth" name="new-user" placeholder="Repetir Contraseña">
+            <input type="submit" class="fadeIn five" value="CREAR USUARIO">
+          </form>      
+          
+      
+        </div>
+    </section> 
+  </main>
+
+  <aside class="mdc-snackbar">
+    <div class="mdc-snackbar__surface" role="status" aria-relevant="additions">
+      <div class="mdc-snackbar__label" aria-atomic="false">
+      </div>
+      <div class="mdc-snackbar__actions" aria-atomic="true">
+        <button type="button" class="mdc-button mdc-snackbar__action">
+          <div class="mdc-button__ripple"></div>
+          <span class="mdc-button__label">Cerrar</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
 
 </body>
 <script src="bundle.js" async></script>
