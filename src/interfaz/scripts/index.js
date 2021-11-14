@@ -4,10 +4,10 @@ import { MDCTabBar } from '@material/tab-bar';
 import { MDCTextField } from '@material/textfield';
 import { MDCSelect } from '@material/select';
 import {MDCSnackbar} from '@material/snackbar';
-import ListaPeliculas from '../../dominio/lista-peliculas.mjs';
-import Pelicula from '../../dominio/pelicula.mjs';
+//import ListaPeliculas from '../../dominio/lista-peliculas.mjs';
+//import Pelicula from '../../dominio/pelicula.mjs';
 
-const listaPeliculas = new ListaPeliculas();
+//const listaPeliculas = new ListaPeliculas();
 
 const topAppBarElement = document.querySelector('.mdc-top-app-bar');
 const topAppBar = new MDCTopAppBar(topAppBarElement);
@@ -23,24 +23,24 @@ tabBar.listen("MDCTabBar:activated", (activatedEvent) => {
   });
 });
 
-const textFieldTitle = new MDCTextField(document.getElementById('title'));
-const textFieldYear = new MDCTextField(document.getElementById('year'));
-const selectGenre = new MDCSelect(document.querySelector('.mdc-select'));
+//const textFieldTitle = new MDCTextField(document.getElementById('title'));
+//const textFieldYear = new MDCTextField(document.getElementById('year'));
+//const selectGenre = new MDCSelect(document.querySelector('.mdc-select'));
 
-const addButton = new MDCRipple(document.getElementById('addButton'));
-addButton.listen('click', () => {
-  let title = textFieldTitle.value;
-  let year = textFieldYear.value;
-  let genre = selectGenre.value;
-  try {
-    let newPelicula = new Pelicula(title, genre, year);
-    listaPeliculas.agregar(newPelicula);
-  } catch (error) {
-    const snackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
-    snackbar.labelText = error.message;
-    snackbar.open();
-  } finally {
-    let peliculas = listaPeliculas.getPeliculas();
-    console.log(peliculas);
-  }
-})
+// const addButton = new MDCRipple(document.getElementById('addButton'));
+// addButton.listen('click', () => {
+//   let title = textFieldTitle.value;
+//   let year = textFieldYear.value;
+//   let genre = selectGenre.value;
+//   try {
+//     let newPelicula = new Pelicula(title, genre, year);
+//     listaPeliculas.agregar(newPelicula);
+//   } catch (error) {
+//     const snackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
+//     snackbar.labelText = error.message;
+//     snackbar.open();
+//   } finally {
+//     let peliculas = listaPeliculas.getPeliculas();
+//     console.log(peliculas);
+//   }
+// })
