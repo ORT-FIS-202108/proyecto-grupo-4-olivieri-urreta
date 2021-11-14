@@ -5,7 +5,10 @@
   <title>MisGastos</title>
   <link rel="icon" type="image/png" href="img/MisGastos.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="bundle.css">
+  <link rel="stylesheet" href="bundle.css">  
+  <script type="module" src="../dominio/sistema.mjs"></script> 
+  <script type="module" src="scripts/login.js"></script>
+  
 </head>
 
 <body>
@@ -62,10 +65,10 @@
           </div>
       
           <!-- Login Form -->
-          <form>
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="Usuario">
-            <input type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
-            <input type="submit" class="fadeIn fourth" value="INICIAR SESION">
+          <form action="#" method="get" id="loginform">
+            <input type="text" id="luser" class="fadeIn second" name="login" placeholder="Usuario" required>
+            <input type="text" id="lpassword" class="fadeIn third" name="login" placeholder="Contraseña" required>
+            <input type="button" class="fadeIn fourth" id="lbutton" value="INICIAR SESION">
           </form>
       
           <!-- Remind Password -->
@@ -86,14 +89,14 @@
           </div>
       
           <!-- Login Form -->
-          <form>
+          <form action="#" method="get" id="fcreateuser">
             <p>Ingrese sus datos</p>
-            <input type="text" id="nombre" class="fadeIn second" name="new-user" placeholder="Nombre">
-            <input type="text" id="apellido" class="fadeIn third" name="new-user" placeholder="Apellido">
-            <input type="text" id="email" class="fadeIn fourth" name="new-user" placeholder="Email">
-            <input type="text" id="password" class="fadeIn fourth" name="new-user" placeholder="Contraseña">
-            <input type="text" id="password" class="fadeIn fourth" name="new-user" placeholder="Repetir Contraseña">
-            <input type="submit" class="fadeIn five" value="CREAR USUARIO">
+            <input type="text" id="cnombre" class="fadeIn second" name="new-user" placeholder="Nombre" required>
+            <input type="text" id="capellido" class="fadeIn third" name="new-user" placeholder="Apellido" required>
+            <input type="text" id="cemail" class="fadeIn fourth" name="new-user" placeholder="Email" required>
+            <input type="text" id="cpassword" class="fadeIn fourth" name="new-user" placeholder="Contraseña" required>
+            <input type="text" id="rcpassword" class="fadeIn fourth" name="new-user" placeholder="Repetir Contraseña" required>            
+            <input type="button" class="fadeIn five" id="cbutton" value="Crear Usuario">
           </form>      
           
       
