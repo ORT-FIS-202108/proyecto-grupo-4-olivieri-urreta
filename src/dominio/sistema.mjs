@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+import Gasto from './gasto.mjs';
 import Usuario from './usuario.mjs';
 
 /**
@@ -11,7 +13,8 @@ export default class Sistema {
    */
   constructor() {
     this.usuarios = [];
-    this.registros = [];
+    this.gastos = [];
+    this.usuarioLogueado;
   }
   /**
    * Registro de usuario.
@@ -21,12 +24,13 @@ export default class Sistema {
    * @return {boolean} Retorna true si se pudo registrar, y false si no.
    */
   registroUsuario(email, password) {
-    const datosValidos = Usuario.validarDatosUsuario(email, password);
-    if (datosValidos) {
+    const mensaje = Usuario.validarDatosUsuario(email, password);
+    if (mensaje === 'Datos válidos') {
       const usuario = new Usuario(usuario, password);
       this.agregarUsuario(usuario);
+      mensaje = 'Usuario creado.';
     }
-    return datosValidos;
+    return mensaje;
   }
   /**
    * Agrega un usuario a la lista de usuarios.
@@ -44,20 +48,54 @@ export default class Sistema {
    * @return {boolean} True si datos son correctos, false si son incorrectos.
    */
   iniciarSesion(usuario, password) {
+    this.usuarioLogueado = this.obtenerIdUsuario(usuario);
     return true;
   }
   /**
    * Registro de Gastos/Ingresos
    * Recibe un importe, tipo, la fecha, categoria,
    * y si es recurrente o no. Retorna si se pudo guardar o no el registro.
-   * @param {int} importe Importe del registro.
-   * @param {bool} tipo Determina si el registro es un gasto o un ingreso.
+   * @param {string} nombre Nombre del gasto.
+   * @param {Number} monto Importe del gasto.
    * @param {date} fecha Fecha del registro.
-   * @param {int} categoria Enumerado con la categoría del registro.
-   * @return {string} Retorna registro exitoso si se pudo guardar, sino
-   * retorna el error evitó que se guardara el registro.
+   * @param {Number} categoria Enumerado con la categoría del registro.
+   * @param {string} repetir Determina si el gasto es recurrente
+   * y cada cuanto tiempo se repite {unico, semanal, quincenal, mensual, anual}.
+   * @return {string} Retorna 'Gasto guardado' si se pudo guardar,
+   * sino retorna el error evitó que se guardara el gasto.
    */
-  registrarGastoIngreso(importe, tipo, fecha, categoria) {
-    return false;
+  registrarGasto(nombre, monto, fecha, categoria, repetir) {
+    const validacionDatos = Gasto.validarDatos(nombre, monto);
+    let mensaje = 'Gasto guardado';
+    if (validacionDatos === 'Datos validos') {
+      if ('fecha not a date') {
+        fecha = new Date();
+      }
+      if (categoria < 0 || categoria > 6) {
+        categoria = 0;
+      }
+      if (!repetir.match(/^(unico|semanal|quincenal|mensual|anual)$/)) {
+        repetir = unico;
+      }
+      const gasto = new Gasto(nombre, monto, fecha, categoria, this.usuarioLogueado, repetir);
+      this.gastos.push(gasto);
+    } else {
+      mensaje = validacionDatos;
+    }
+    return mensaje;
+  }
+  /**
+   * Verifica si existe en la listaUsuarios un usuario con el id recibido.
+   * @param {Number} id Id del usuario a verificar.
+   * @return {boolean} Retorna si encontró o no un usuario con ese id.
+   */
+  existeUsuario(id) {
+    let existe = false;
+    for (let i = 0; i < this.usuarios.length && !existe; i++) {
+      if (this.usuarios[i] === id) {
+        existe = true;
+      }
+    }
+    return existe;
   }
 }
