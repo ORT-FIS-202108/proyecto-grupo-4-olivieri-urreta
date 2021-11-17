@@ -47,15 +47,15 @@ describe('Pruebas registrar gasto', () => {
   sistema.usuarios.push(new Usuario('usr@test.com', 'pswd'));
   test('registro sin datos', () => {
     const res = sistema.registrarGasto('', '', '', '', '', '');
-    expect(res).not. toBe('Gasto guardado');
+    expect(res).not.toBe('Gasto guardado');
   });
   test('registro sin nombre', () => {
     const res = sistema.registrarGasto('', 150, '20/06/2021', 0, 1, 'unico');
     expect(res).not.toBe('Gasto guardado');
   });
-  test('registro monto NaN', () => {
+  test('registro con monto NaN', () => {
     const res = sistema.registrarGasto('gasto prueba', 'x', '20/06/2021', 0, 1, 'unico');
-    expect(res).toBe('El monto ingresado no es válido');
+    expect(res).toBe('El monto ingresado no es válido. Ingrese un número mayor que 0.');
   });
   test('registro sin fecha', () => {
     const res = sistema.registrarGasto('gasto prueba', 200, '', 0, 1, 'unico');
@@ -68,19 +68,18 @@ describe('Pruebas registrar gasto', () => {
     const res = sistema.registrarGasto('gasto prueba', 200, '20/06/2021', 999, 1, 'unico');
     expect(res).toBe('Gasto guardado');
   });
-  // test('registro con idUsuario inválido', () => {
-  //   const res = sistema.registrarGasto('gasto prueba', 200, '20/06/2021', 0, 'x', 'unico');
-  //   expect(res).toBe('El usuario no es válido');
-  // });
-  // test('registro con idUsuario no existente', () => {
-  //   const res = sistema.registrarGasto('gasto prueba', 200, '20/06/2021', 0, 500, 'unico');
-  //   expect(res).toBe('El usuario no es válido');
-  // });
-  test('registro valor reperir inválido', () => {
+  test('registro con repetir válido', () => {
+    const res = sistema.registrarGasto('gasto prueba', 200, '20/06/2021', 0, 'mensual');
+    const gastoParaRepetir = sistema.gastos[sistema.gastoParaRepetir.length - 1];
+    const gasto = sistema.gastos[sistema.gastos.length - 1];
+    expect(res).toBe('Gasto guardado');
+    expect(gastoParaRepetir.idGasto).toBe(gasto.id);
+  });
+  test('registro con reperir inválido', () => {
     const res = sistema.registrarGasto('gasto prueba', 200, '20/06/2021', 0, 1, 'abc');
     const gasto = sistema.gastos[sistema.gastos.length - 1];
     expect(res).toBe('Gasto guardado');
-    expect(gasto.repetir).toBe('unico');
+    expect(sistema.existeGastoParaRepetir(gasto.id)).toBe(false);
   });
   test('registro válido', () => {
     const res = sistema.registrarGasto('gasto prueba', 200, '20/06/2021', 0, 1, 'unico');
