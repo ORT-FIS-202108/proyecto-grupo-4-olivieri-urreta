@@ -8,6 +8,20 @@ import Sistema from '../../dominio/sistema.mjs';
 
 window.addEventListener('load', carga);
 const sistema = new Sistema();
+const nombresMes = [
+  'Enero',
+  'Febrero',
+  'Marzo',
+  'Abril',
+  'Mayo',
+  'Junio',
+  'Julio',
+  'Agosto',
+  'Setiembre',
+  'Octubre',
+  'Noviembre',
+  'Diciembre',
+];
 
 /**
  * Función que maneja los eventos de la aplicación
@@ -15,6 +29,7 @@ const sistema = new Sistema();
  */
 function carga() {
   document.getElementById('btn-logout').addEventListener('click', logout);
+  document.getElementById('mes-anterior').addEventListener('click', cargarMesAnterior);
 }
 
 /**
@@ -32,6 +47,11 @@ function logout() {
   document.getElementById('content-home').style.display = 'none';
 }
 
+function cargarMesAnterior() {
+  const mesActual = document.getElementById('mes-seleccionado').innerText;
+
+  document.getElementById('mes-seleccionado').innerText = 'Diciembre';
+}
 
 // document.getElementById("tab-iniciar-sesion").style.display = "none";
 // document.getElementById("tab-crear-usuario").style.display = "none";
