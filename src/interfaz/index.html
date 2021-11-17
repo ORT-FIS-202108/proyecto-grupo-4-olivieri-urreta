@@ -6,16 +6,35 @@
   <link rel="icon" type="image/png" href="img/MisGastos.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="bundle.css">
+  <script type="module" src="../dominio/sistema.mjs"></script>
+  <script type="module" src="scripts/login.js"></script>
+
 </head>
 
 <body>
 
 
-   <header class="mdc-top-app-bar">
+  <header class="mdc-top-app-bar">
     <div class="mdc-top-app-bar__row">
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
         <img src="img/MisGastos.png" alt="MisGastos" class="img-topbar">
         <span class="mdc-top-app-bar__title"> MisGastos </span>
+        <div class="seleccion-mes">
+          <button class="mdc-icon-button material-icons">
+            chevron_left
+          </button>
+          <button class="mdc-icon-button material-icons">
+            chevron_right
+          </button>
+          <span id="mes-seleccionado">
+            Mes Seleccionado
+          </span>
+        </div>
+      </section>
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+        <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">logout
+        </button>
+      </section>
       </section>
     </div>
 
@@ -24,7 +43,8 @@
         <div class="mdc-tab-scroller__scroll-area">
           <div class="mdc-tab-scroller__scroll-content">
 
-            <button class="mdc-tab mdc-tab--active sample-content-tab" role="tab" aria-selected="true" tabindex="0">
+            <button class="mdc-tab mdc-tab--active sample-content-tab" role="tab" aria-selected="true" tabindex="0"
+              id="tab-iniciar-sesion">
               <span class="mdc-tab__content">
                 <span class="mdc-tab__text-label">Iniciar Sesión</span>
               </span>
@@ -35,7 +55,8 @@
               <span class="mdc-tab__ripple"></span>
             </button>
 
-            <button class="mdc-tab sample-content-tab" role="tab" aria-selected="false" tabindex="1">
+            <button class="mdc-tab sample-content-tab" role="tab" aria-selected="false" tabindex="1"
+              id="tab-crear-usuario">
               <span class="mdc-tab__content">
                 <span class="mdc-tab__text-label">Crear Usuario</span>
               </span>
@@ -44,61 +65,120 @@
               </span>
               <span class="mdc-tab__ripple"></span>
             </button>
+
+            <button class="mdc-tab mdc-tab--active sample-content-tab" role="tab" aria-selected="true" tabindex="0"
+              id="tab-lista-gastos">
+              <span class="mdc-tab__content">
+                <span class="mdc-tab__text-label">Gastos del Mes</span>
+              </span>
+              <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                <span
+                  class="mdc-tab-indicator__content mdc-tab-indicator__content--underline sample-content-tab-indicator"></span>
+              </span>
+              <span class="mdc-tab__ripple"></span>
+            </button>
           </div>
         </div>
       </div>
     </div>
-  </header> 
+  </header>
 
   <main class="mdc-top-app-bar--fixed-adjust">
-    <section class="content">
-      <div class="wrapper fadeInDown">
-        <div id="formContent">        
-          
-      
-          <!-- Icon -->
-          <div class="fadeIn first">
-            <img src="img/user-icon.svg" id="icon" alt="User Icon" />
+    <button class="mdc-fab md-fab-bottom-right" aria-label="add">
+      <div class="mdc-fab__ripple"></div>
+      <span class="mdc-fab__icon material-icons">add</span>
+    </button>
+
+    <div id="content-login">
+      <section class="content">
+        <div class="wrapper fadeInDown">
+          <div id="formContent">
+
+
+            <!-- Icon -->
+            <div class="fadeIn first">
+              <img src="img/user-icon.svg" id="icon" alt="User Icon" />
+            </div>
+
+            <!-- Login Form -->
+            <form action="#" method="get" id="loginform">
+              <input type="text" id="luser" class="fadeIn second" name="login" placeholder="Usuario" required>
+              <input type="text" id="lpassword" class="fadeIn third" name="login" placeholder="Contraseña" required>
+              <input type="button" class="fadeIn fourth" id="lbutton" value="INICIAR SESION">
+            </form>
+
+            <!-- Remind Password -->
+            <div id="formFooter">
+              <a class="underlineHover" href="#">Forgot Password?</a>
+            </div>
+
           </div>
-      
-          <!-- Login Form -->
-          <form>
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="Usuario">
-            <input type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
-            <input type="submit" class="fadeIn fourth" value="INICIAR SESION">
-          </form>
-      
-          <!-- Remind Password -->
-          <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
+      </section>
+      <section class="content sample-content--hidden">
+        <div class="wrapper fadeInDown">
+          <div id="formContent">
+
+
+            <!-- Icon -->
+            <div class="fadeIn first">
+              <img src="img/new-user.svg" id="icon" alt="User Icon" />
+            </div>
+
+            <!-- Login Form -->
+            <form action="#" method="get" id="fcreateuser">
+              <p>Ingrese sus datos</p>
+              <input type="text" id="cnombre" class="fadeIn second" name="new-user" placeholder="Nombre" required>
+              <input type="text" id="capellido" class="fadeIn third" name="new-user" placeholder="Apellido" required>
+              <input type="text" id="cemail" class="fadeIn fourth" name="new-user" placeholder="Email" required>
+              <input type="text" id="cpassword" class="fadeIn fourth" name="new-user" placeholder="Contraseña" required>
+              <input type="text" id="rcpassword" class="fadeIn fourth" name="new-user" placeholder="Repetir Contraseña"
+                required>
+              <input type="button" class="fadeIn five" id="cbutton" value="Crear Usuario">
+            </form>
+
+
           </div>
-      
+      </section>
+    </div>
+    <div id="content-home">
+      <section class="content sample-content--hidden">
+
+        <h3><span>Total del mes: $</span><span id="suma-total-mes"></span></h3>
+        <div class="mdc-list-group">
+          <h3 class="mdc-list-group__subheader">Octubre 15</h3>
+          <ul class="mdc-list">
+            <li class="mdc-list-item" tabindex="0">
+              <span class="mdc-list-item__ripple"></span>
+              <span class="mdc-list-item__text">line item</span>
+            </li>
+            <li class="mdc-list-item">
+              <span class="mdc-list-item__ripple"></span>
+              <span class="mdc-list-item__text">line item</span>
+            </li>
+            <li class="mdc-list-item">
+              <span class="mdc-list-item__ripple"></span>
+              <span class="mdc-list-item__text">line item</span>
+            </li>
+          </ul>
+          <h3 class="mdc-list-group__subheader">Octubre 12</h3>
+          <ul class="mdc-list">
+            <li class="mdc-list-item">
+              <span class="mdc-list-item__ripple"></span>
+              <span class="mdc-list-item__text">line item</span>
+            </li>
+            <li class="mdc-list-item">
+              <span class="mdc-list-item__ripple"></span>
+              <span class="mdc-list-item__text">line item</span>
+            </li>
+            <li class="mdc-list-item">
+              <span class="mdc-list-item__ripple"></span>
+              <span class="mdc-list-item__text">line item</span>
+            </li>
+          </ul>
         </div>
-    </section>
-     <section class="content sample-content--hidden">
-      <div class="wrapper fadeInDown">
-        <div id="formContent">        
-          
-      
-          <!-- Icon -->
-          <div class="fadeIn first">
-            <img src="img/new-user.svg" id="icon" alt="User Icon" />
-          </div>
-      
-          <!-- Login Form -->
-          <form>
-            <p>Ingrese sus datos</p>
-            <input type="text" id="nombre" class="fadeIn second" name="new-user" placeholder="Nombre">
-            <input type="text" id="apellido" class="fadeIn third" name="new-user" placeholder="Apellido">
-            <input type="text" id="email" class="fadeIn fourth" name="new-user" placeholder="Email">
-            <input type="text" id="password" class="fadeIn fourth" name="new-user" placeholder="Contraseña">
-            <input type="text" id="password" class="fadeIn fourth" name="new-user" placeholder="Repetir Contraseña">
-            <input type="submit" class="fadeIn five" value="CREAR USUARIO">
-          </form>      
-          
-      
-        </div>
-    </section> 
+
+      </section>
+    </div>
   </main>
 
   <aside class="mdc-snackbar">
