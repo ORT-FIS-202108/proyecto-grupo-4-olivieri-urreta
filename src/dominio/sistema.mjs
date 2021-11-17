@@ -12,10 +12,10 @@ export default class Sistema {
    * Constructor de la clase Sistema.
    */
   constructor() {
-    this.usuarios = [];
-    this.gastos = [];
-    this.gastosParaRepetir = [];
-    this.usuarioLogueado;
+    this.usuarios = []; // Lista de usuario registrados.
+    this.gastos = []; // Lista de gastos
+    this.gastosParaRepetir = []; // Lista de gastos que se repiten en una determinada fecha.
+    this.usuarioLogueado; // Usuario que está utilizando la aplicación.
   }
   /**
    * Registro de usuario.
@@ -93,15 +93,16 @@ export default class Sistema {
    */
   agregarGastoParaRepetir(idGasto, repetir) {
     if (!this.existeGastoParaRepetir(idGasto)) {
-      const fecha = new Date();
+      const fecha = this.obtenerGastoPorId(idGasto).fecha;
       switch (repetir) {
         case 'semanal':
           fecha.setDate(fecha.getDate() + 7);
           break;
         case 'quincenal':
           fecha.setDate(fecha.getDate() + 15);
+          break;
         case 'mensual':
-          if (fecha.getDate() === 30) {
+          if (fecha.getDate() === 31) {
             fecha.setMonth(fecha.getMonth() + 2);
             fecha.setDate(0);
           } else {
@@ -134,16 +135,32 @@ export default class Sistema {
   }
   /**
    * Verifica si existe en la listaUsuarios un usuario con el id recibido.
-   * @param {Number} id Id del usuario a verificar.
+   * @param {Number} idUsuario Id del usuario a verificar.
    * @return {boolean} Retorna si encontró o no un usuario con ese id.
    */
-  existeUsuario(id) {
+  existeUsuario(idUsuario) {
     let existe = false;
     for (let i = 0; i < this.usuarios.length && !existe; i++) {
-      if (this.usuarios[i] === id) {
+      if (this.usuarios[i].id === idUsuario) {
         existe = true;
       }
     }
     return existe;
+  }
+  /**
+   * Recibe un id de usuario y si existe ese usuario en la lista de usuario lo retorna.
+   * @param {Number} idGasto Id del usuario a buscar.
+   * @return {Usuario} Null si no se encontró el usuario o el usuario si lo encuentra.
+   */
+  obtenerGastoPorId(idGasto) {
+    let gasto = null;
+    let existe = false;
+    for (let i = 0; i < this.gastos.length && !existe; i++) {
+      if (this.gastos[i].id === idGasto) {
+        gasto = this.gastos[i];
+        existe = true;
+      }
+    }
+    return gasto;
   }
 }

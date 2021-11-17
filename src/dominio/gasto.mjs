@@ -10,16 +10,16 @@ export default class Gasto {
      * @param {Number} monto Importe del gasto.
      * @param {Date} fecha Fecha que se realizó el gasto.
      * @param {Number} categoria Una de las categorías del listado de categorías de Sistema.
-     * @param {Number} idusuario Id del usuario que registró el gasto.
+     * @param {Number} idUsuario Id del usuario que registró el gasto.
      * @property {Number} id Id único del gasto (auotgenerado).
      * @return {Gasto} Retorna el gasto creado.
      */
-  constructor(nombre, monto, fecha, categoria, idusuario) {
+  constructor(nombre, monto, fecha, categoria, idUsuario) {
     this.nombre = nombre;
     this.monto = monto;
     this.fecha = fecha;
     this.categoria = categoria;
-    this.idUsuario = idusuario;
+    this.idUsuario = idUsuario;
     this.id = proxId++;
     return this;
   }

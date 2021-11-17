@@ -90,24 +90,74 @@ describe('Pruebas registrar gasto', () => {
 
 describe('Pruebas agregar gastos para repetir', () => {
   const sistema = new Sistema();
+  sistema.usuarioLogueado = 1;
   test('Repetir semanal', () => {
-    const idGasto = (new Gasto('gasto prueba', 200, '20/06/2021', 0, 1, '')).id;
+    const fecha = new Date('2021-7-23');
+    sistema.registrarGasto('gasto prueba', 200, fecha, 0, '');
+    const idGasto = (sistema.gastos[sistema.gastos.length - 1]).id;
     sistema.agregarGastoParaRepetir(idGasto, 'semanal');
     expect(sistema.existeGastoParaRepetir(idGasto)).toBe(true);
+    const fechaEnListaRepetir = sistema.gastosParaRepetir[sistema.gastosParaRepetir.length - 1].fecha;
+    fecha.setDate(fecha.getDate() + 7);
+    expect(fechaEnListaRepetir).toBe(fecha);
   });
   test('Repetir quincenal', () => {
-    const idGasto = (new Gasto('gasto prueba', 200, '20/06/2021', 0, 1, '')).id;
+    const fecha = new Date('2022-2-20');
+    sistema.registrarGasto('gasto prueba', 200, fecha, 0, '');
+    const idGasto = (sistema.gastos[sistema.gastos.length - 1]).id;
     sistema.agregarGastoParaRepetir(idGasto, 'quincenal');
     expect(sistema.existeGastoParaRepetir(idGasto)).toBe(true);
+    const fechaEnListaRepetir = sistema.gastosParaRepetir[sistema.gastosParaRepetir.length - 1].fecha;
+    fecha.setDate(fecha.getDate() + 15);
+    expect(fechaEnListaRepetir).toBe(fecha);
   });
-  test('Repetir mensual', () => {
-    const idGasto = (new Gasto('gasto prueba', 200, '20/06/2021', 0, 1, '')).id;
+  test('Repetir mensual hasta el 30', () => {
+    const fecha = new Date('2022-2-29');
+    sistema.registrarGasto('gasto prueba', 200, fecha, 0, '');
+    const idGasto = (sistema.gastos[sistema.gastos.length - 1]).id;
     sistema.agregarGastoParaRepetir(idGasto, 'mensual');
     expect(sistema.existeGastoParaRepetir(idGasto)).toBe(true);
+    const fechaEnListaRepetir = sistema.gastosParaRepetir[sistema.gastosParaRepetir.length - 1].fecha;
+    if (fecha.getDate() === 31) {
+      fecha.setMonth(fecha.getMonth() + 2);
+      fecha.setDate(0);
+    } else {
+      fecha.setMonth(fecha.getMonth() + 1);
+    }
+    expect(fechaEnListaRepetir).toBe(fecha);
+  });
+  test('Repetir mensual despues del 30', () => {
+    const fecha = new Date('2022-1-31');
+    sistema.registrarGasto('gasto prueba', 200, fecha, 0, '');
+    const idGasto = (sistema.gastos[sistema.gastos.length - 1]).id;
+    sistema.agregarGastoParaRepetir(idGasto, 'mensual');
+    expect(sistema.existeGastoParaRepetir(idGasto)).toBe(true);
+    const fechaEnListaRepetir = sistema.gastosParaRepetir[sistema.gastosParaRepetir.length - 1].fecha;
+    if (fecha.getDate() === 31) {
+      fecha.setMonth(fecha.getMonth() + 2);
+      fecha.setDate(0);
+    } else {
+      fecha.setMonth(fecha.getMonth() + 1);
+    }
+    expect(fechaEnListaRepetir).toBe(fecha);
   });
   test('Repetir anual', () => {
-    const idGasto = (new Gasto('gasto prueba', 200, '20/06/2021', 0, 1, '')).id;
+    const fecha = new Date('2021-7-23');
+    sistema.registrarGasto('gasto prueba', 200, fecha, 0, '');
+    const idGasto = (sistema.gastos[sistema.gastos.length - 1]).id;
     sistema.agregarGastoParaRepetir(idGasto, 'anual');
     expect(sistema.existeGastoParaRepetir(idGasto)).toBe(true);
+    const fechaEnListaRepetir = sistema.gastosParaRepetir[sistema.gastosParaRepetir.length - 1].fecha;
+    fecha.setFullYear(fecha.getFullYear() + 1);
+    expect(fechaEnListaRepetir).toBe(fecha);
   });
 });
+
+// describe('Pruebas existe usuario', () => {
+//   test('Existe usuario', () => {
+
+//   });
+//   test('No existe usuario', () => {
+
+//   });
+// })

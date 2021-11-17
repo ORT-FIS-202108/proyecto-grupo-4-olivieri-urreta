@@ -1,4 +1,4 @@
-const sigId = 1; // Contador para asignación de ids.
+let sigId = 1; // Contador para asignación de ids.
 /**
  * Clase que maneja las funciones de usuarios.
  */
