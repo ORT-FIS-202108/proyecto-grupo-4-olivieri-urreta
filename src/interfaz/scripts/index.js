@@ -5,10 +5,9 @@ import { MDCTextField } from '@material/textfield';
 import { MDCSelect } from '@material/select';
 import {MDCSnackbar} from '@material/snackbar';
 import Sistema from '../../dominio/sistema.mjs';
-//import ListaPeliculas from '../../dominio/lista-peliculas.mjs';
-//import Pelicula from '../../dominio/pelicula.mjs';
+import Usuario from '../../dominio/usuario.mjs';
 
-//const listaPeliculas = new ListaPeliculas();
+/* Hide - Hidden de crear usuario/ iniciar sesión */
 
 const topAppBarElement = document.querySelector('.mdc-top-app-bar');
 const topAppBar = new MDCTopAppBar(topAppBarElement);
@@ -24,24 +23,52 @@ tabBar.listen("MDCTabBar:activated", (activatedEvent) => {
   });
 });
 
-//const textFieldTitle = new MDCTextField(document.getElementById('title'));
-//const textFieldYear = new MDCTextField(document.getElementById('year'));
-//const selectGenre = new MDCSelect(document.querySelector('.mdc-select'));
+/* Creación de sistema */
+let sistema = new Sistema();
 
-// const addButton = new MDCRipple(document.getElementById('addButton'));
-// addButton.listen('click', () => {
-//   let title = textFieldTitle.value;
-//   let year = textFieldYear.value;
-//   let genre = selectGenre.value;
-//   try {
-//     let newPelicula = new Pelicula(title, genre, year);
-//     listaPeliculas.agregar(newPelicula);
-//   } catch (error) {
-//     const snackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
-//     snackbar.labelText = error.message;
-//     snackbar.open();
-//   } finally {
-//     let peliculas = listaPeliculas.getPeliculas();
-//     console.log(peliculas);
-//   }
-// })
+window.addEventListener('load', inicio);
+
+/* Usuarios hardcodeados */
+sistema.registroUsuario('test@test.com', '1234');
+sistema.registroUsuario('test2@test.com', '1234');
+
+/*  Comienzo funciones  */
+
+function inicio() {
+  
+  document.getElementById('lbutton').addEventListener('submit', login, false);
+  document.getElementById('cbutton').addEventListener('submit', create, false);
+}
+
+function login() {
+  let usuario = document.getElementById('luser').value;
+  let passwd = document.getElementById('lpassword').value;
+  if (loginform.reportValidity()) {    
+    if(validarDatosUsuario(usuario, passwd)){
+      ;
+      alert('Bienvenido!');
+      //mostrar el home
+    } else{
+      alert('El usuario es incorrecto o no existe!');
+    }
+    
+  } else{
+    alert('El usuario es incorrecto o no existe!');
+  }
+}
+
+function create() {   
+    if (fcreateuser.reportValidity()) {
+    let nombre = document.getElementById('cnombre').value;
+    let apellido = document.getElementById('capellido').value;
+    let email = document.getElementById('cemail').value;
+    let password = document.getElementById('cpassword').value;
+    let rpassword = document.getElementById('rcpassword').value;
+    if(!existeUsuario(email))
+    alert('El usuario fue creado correctamente!');    
+    } else{
+      alert('El email ya se encuentra registrado!');
+    }
+  }
+
+

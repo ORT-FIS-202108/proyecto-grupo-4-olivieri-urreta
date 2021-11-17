@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 import Usuario from './usuario.mjs';
 
 /**
@@ -10,8 +12,10 @@ export default class Sistema {
    * Constructor de la clase Sistema.
    */
   constructor() {
-    this.usuarios = [];
-    this.registros = [];
+    this.usuarios = []; // Lista de usuario registrados.
+    this.gastos = []; // Lista de gastos
+    this.gastosParaRepetir = []; // Lista de gastos que se repiten en una determinada fecha.
+    this.usuarioLogueado; // Id del usuario que está utilizando la aplicación. Si es 0, no hay usuario logueado.
   }
   /**
    * Registro de usuario.
@@ -21,12 +25,13 @@ export default class Sistema {
    * @return {boolean} Retorna true si se pudo registrar, y false si no.
    */
   registroUsuario(email, password) {
-    const datosValidos = Usuario.validarDatosUsuario(email, password);
-    if (datosValidos) {
+    const mensaje = Usuario.validarDatosUsuario(email, password);
+    if (mensaje === 'Datos válidos') {
       const usuario = new Usuario(usuario, password);
       this.agregarUsuario(usuario);
+      mensaje = 'Usuario creado.';
     }
-    return datosValidos;
+    return mensaje;
   }
   /**
    * Agrega un usuario a la lista de usuarios.
@@ -44,20 +49,21 @@ export default class Sistema {
    * @return {boolean} True si datos son correctos, false si son incorrectos.
    */
   iniciarSesion(usuario, password) {
+    this.usuarioLogueado = this.obtenerIdUsuario(usuario);
     return true;
   }
-  /**
-   * Registro de Gastos/Ingresos
-   * Recibe un importe, tipo, la fecha, categoria,
-   * y si es recurrente o no. Retorna si se pudo guardar o no el registro.
-   * @param {int} importe Importe del registro.
-   * @param {bool} tipo Determina si el registro es un gasto o un ingreso.
-   * @param {date} fecha Fecha del registro.
-   * @param {int} categoria Enumerado con la categoría del registro.
-   * @return {string} Retorna registro exitoso si se pudo guardar, sino
-   * retorna el error evitó que se guardara el registro.
+   /**
+   * Verifica si existe en la listaUsuarios un usuario con el id recibido.
+   * @param {Number} idUsuario Id del usuario a verificar.
+   * @return {boolean} Retorna si encontró o no un usuario con ese id.
    */
-  registrarGastoIngreso(importe, tipo, fecha, categoria) {
-    return false;
-  }
+    existeUsuario(idUsuario) {
+      let existe = false;
+      for (let i = 0; i < this.usuarios.length && !existe; i++) {
+        if (this.usuarios[i].id === idUsuario) {
+          existe = true;
+        }
+      }
+      return existe;
+    }
 }
