@@ -15,7 +15,7 @@ export default class Sistema {
     this.usuarios = []; // Lista de usuario registrados.
     this.gastos = []; // Lista de gastos
     this.gastosParaRepetir = []; // Lista de gastos que se repiten en una determinada fecha.
-    this.usuarioLogueado; // Usuario que está utilizando la aplicación.
+    this.usuarioLogueado; // Id del usuario que está utilizando la aplicación. Si es 0, no hay usuario logueado.
   }
   /**
    * Registro de usuario.
