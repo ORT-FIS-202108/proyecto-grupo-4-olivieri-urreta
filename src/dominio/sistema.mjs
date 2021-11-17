@@ -126,7 +126,7 @@ export default class Sistema {
   existeGastoParaRepetir(idGasto) {
     let existe = false;
     for (let i = 0; i < this.gastosParaRepetir.length; i++) {
-      if (element.idGasto === idGasto) {
+      if (this.gastosParaRepetir[i].idGasto === idGasto) {
         existe = true;
       }
     }

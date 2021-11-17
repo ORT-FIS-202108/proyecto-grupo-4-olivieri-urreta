@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+import Gasto from './gasto.mjs';
 import Sistema from './sistema.mjs';
 import Usuario from './usuario.mjs';
 
@@ -70,7 +71,7 @@ describe('Pruebas registrar gasto', () => {
   });
   test('registro con repetir válido', () => {
     const res = sistema.registrarGasto('gasto prueba', 200, '20/06/2021', 0, 'mensual');
-    const gastoParaRepetir = sistema.gastos[sistema.gastoParaRepetir.length - 1];
+    const gastoParaRepetir = sistema.gastosParaRepetir[sistema.gastosParaRepetir.length - 1];
     const gasto = sistema.gastos[sistema.gastos.length - 1];
     expect(res).toBe('Gasto guardado');
     expect(gastoParaRepetir.idGasto).toBe(gasto.id);
@@ -84,5 +85,29 @@ describe('Pruebas registrar gasto', () => {
   test('registro válido', () => {
     const res = sistema.registrarGasto('gasto prueba', 200, '20/06/2021', 0, 1, 'unico');
     expect(res).toBe('Gasto guardado');
+  });
+});
+
+describe('Pruebas agregar gastos para repetir', () => {
+  const sistema = new Sistema();
+  test('Repetir semanal', () => {
+    const idGasto = (new Gasto('gasto prueba', 200, '20/06/2021', 0, 1, '')).id;
+    sistema.agregarGastoParaRepetir(idGasto, 'semanal');
+    expect(sistema.existeGastoParaRepetir(idGasto)).toBe(true);
+  });
+  test('Repetir quincenal', () => {
+    const idGasto = (new Gasto('gasto prueba', 200, '20/06/2021', 0, 1, '')).id;
+    sistema.agregarGastoParaRepetir(idGasto, 'quincenal');
+    expect(sistema.existeGastoParaRepetir(idGasto)).toBe(true);
+  });
+  test('Repetir mensual', () => {
+    const idGasto = (new Gasto('gasto prueba', 200, '20/06/2021', 0, 1, '')).id;
+    sistema.agregarGastoParaRepetir(idGasto, 'mensual');
+    expect(sistema.existeGastoParaRepetir(idGasto)).toBe(true);
+  });
+  test('Repetir anual', () => {
+    const idGasto = (new Gasto('gasto prueba', 200, '20/06/2021', 0, 1, '')).id;
+    sistema.agregarGastoParaRepetir(idGasto, 'anual');
+    expect(sistema.existeGastoParaRepetir(idGasto)).toBe(true);
   });
 });
