@@ -82,6 +82,16 @@ describe('Pruebas agregar gastos para repetir', () => {
     fecha.setDate(fecha.getDate() + 7);
     expect(fechaEnListaRepetir).toBe(fecha);
   });
+  test('Agregar gasto a repetir con id existente', () => {
+    const idExistente = sistema.gastosParaRepetir[0].idGasto;
+    const fechaAntes = sistema.gastosParaRepetir[0].fecha;
+    const largoListaAntes = sistema.gastosParaRepetir.length;
+    const largoListaDespues = sistema.gastosParaRepetir.length;
+    sistema.agregarGastoParaRepetir(idExistente, 'quincenal');
+    const fechaDespues = sistema.gastosParaRepetir[0].fecha;
+    expect(largoListaAntes === largoListaDespues).toBe(true);
+    expect(fechaDespues).toBe(fechaAntes);
+  });
   test('Repetir quincenal', () => {
     const fecha = new Date('2022-2-20');
     sistema.registrarGasto('gasto prueba', 200, fecha, 0, '');
