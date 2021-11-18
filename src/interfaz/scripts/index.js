@@ -25,7 +25,6 @@ tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
 
 /* Creación de sistema */
 const sistema = new Sistema();
-sistema;
 
 window.addEventListener('load', inicio);
 
@@ -63,21 +62,17 @@ function login() {
  */
 function crearUsuario() {
   if (fcreateuser.reportValidity()) {
+    let mensaje;
     const nombre = document.getElementById('cnombre').value;
     const apellido = document.getElementById('capellido').value;
     const email = document.getElementById('cemail').value;
     const password = document.getElementById('cpassword').value;
-    const rpassword = document.getElementById('rcpassword').value;
-    if (validarDatosUsuario(email, password, password2) == 'Datos válidos') {
-      if (!existeUsuario(email)) {
-        let usuario = new Usuario(email, password, nombre, apellido);
-        sistema.agregarUsuario(usuario);
-        alert('El usuario fue creado correctamente!');
-      } else {
-        alert('El email ya se encuentra registrado');
-      }
+    const repetirPassword = document.getElementById('rcpassword').value;
+    if (password != repetirPassword) {
+      mensaje = 'Las contraseñas deben conincidir';
     } else {
-      alert(validarDatosUsuario(email, password, password2));
+      mensaje = sistema.registrarUsuario(email, password, nombre, apellido);
     }
+    alert(mensaje);
   }
 }

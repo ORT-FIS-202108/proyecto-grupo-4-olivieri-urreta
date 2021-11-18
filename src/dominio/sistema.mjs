@@ -17,7 +17,27 @@ export default class Sistema {
     this.gastosParaRepetir = []; // Lista de gastos que se repiten en una determinada fecha.
     this.usuarioLogueado; // Id del usuario que está utilizando la aplicación. Si es 0, no hay usuario logueado.
   }
-
+  /**
+   * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
+   * @param {string} email Email del usuario.
+   * @param {string} password Contraseña del usuario.
+   * @param {string} nombre Nombre del usuario.
+   * @param {string}apellido Apellido del usuario.
+   * @return {string} Mensaje con resultado del registro. Devuelve el error específico si no se pudo registrar.
+   */
+  registrarUsuario(email, password, nombre, apellido) {
+    let mensaje = '¡El usuario fue creado correctamente!';
+    if (existeUsuario(email)) {
+      mensaje = 'El email ya se encuentra registrado';
+    } else {
+      mensaje = Usuario.validarDatosUsuario(email, password);
+      if (mensaje === 'Datos válidos') {
+        const usuario = new Usuario(email, password, nombre, apellido);
+        sistema.agregarUsuario(usuario);
+      }
+    }
+    return mensaje;
+  }
   /**
    * Agrega un usuario a la lista de usuarios.
    * @param {Usuario} usuario Usuario a agregar en la lista.
@@ -34,7 +54,7 @@ export default class Sistema {
   existeUsuario(email) {
     let existe = false;
     for (let i = 0; i < this.usuarios.length && !existe; i++) {
-      if (this.usuarios[i].email == email) {
+      if (this.usuarios[i].email === email) {
         existe = true;
       }
     }
