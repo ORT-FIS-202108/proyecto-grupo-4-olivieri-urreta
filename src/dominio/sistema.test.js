@@ -48,9 +48,9 @@ describe('Verificar Contraseña', () => {
   // No se verifica si se ingresa indice incorrecto, o contraseña vacia
   // ya que se verifica antes de llegar a esta función
   test('indice correcto contraseña mal', () => {
-    expect(sistema.verificarPass(0, '4321')).toBe(false);
+    expect(sistema.verificarPassword(0, '4321')).toBe(false);
   });
   test('indice y contraseña correctos', () => {
-    expect(sistema.verificarPass(0, '1234')).toBe(true);
+    expect(sistema.verificarPassword(0, '1234')).toBe(true);
   });
 });
