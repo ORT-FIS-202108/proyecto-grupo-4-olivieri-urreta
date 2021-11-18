@@ -7,31 +7,25 @@ import {MDCSnackbar} from '@material/snackbar';
 import Sistema from '../../dominio/sistema.mjs';
 import Usuario from '../../dominio/usuario.mjs';
 
-/* Hide - Hidden de crear usuario/ iniciar sesión */
-
-const topAppBarElement = document.querySelector('.mdc-top-app-bar');
-const topAppBar = new MDCTopAppBar(topAppBarElement);
-
-const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
-tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
-  document.querySelectorAll('.content').forEach((element, index) => {
-    if (index === activatedEvent.detail.index) {
-      element.classList.remove('sample-content--hidden');
-    } else {
-      element.classList.add('sample-content--hidden');
-    }
-  });
-});
-
-/* Creación de sistema */
+window.addEventListener('load', inicio);
 const sistema = new Sistema();
 
 window.addEventListener('load', inicio);
 
 /* Usuarios hardcodeados */
-const usuario1 = new Usuario('test@test.com', '1234', 'pepe', 'grillo');
+const usuario1 = sistema.registrarUsuario(
+    'test@test.com',
+    '1234',
+    'pepe',
+    'grillo',
+);
 sistema.agregarUsuario(usuario1);
-const usuario2 = new Usuario('test2@test.com', '1234', 'mickey', 'mouse');
+const usuario2 = sistema.registrarUsuario(
+    'test2@test.com',
+    '1234',
+    'mickey',
+    'mouse',
+);
 sistema.agregarUsuario(usuario2);
 
 /*  Comienzo funciones  */
@@ -41,6 +35,7 @@ sistema.agregarUsuario(usuario2);
  */
 function inicio() {
   document.getElementById('lbutton').addEventListener('click', login);
+  // document.getElementById('lbutton').addEventListener('click', login);
   document.getElementById('cbutton').addEventListener('click', crearUsuario);
 }
 /**
@@ -55,7 +50,7 @@ function login() {
   if (loginform.reportValidity()) {
     mensaje = sistema.loginUsuario(usuario, password);
   } else {
-    mensaje = 'Por favor complete todos los campos!';
+    mensaje = 'Por favor complete todos los campos';
   }
   alert(mensaje);
   if (mensaje === '¡Bienvenido!') {
