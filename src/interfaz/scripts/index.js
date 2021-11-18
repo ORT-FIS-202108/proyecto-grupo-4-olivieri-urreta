@@ -8,9 +8,6 @@ import Sistema from '../../dominio/sistema.mjs';
 
 window.addEventListener('load', inicio);
 const sistema = new Sistema();
-
-window.addEventListener('load', inicio);
-const sistema = new Sistema();
 /* Usuarios hardcodeados */
 const usuario1 = sistema.registrarUsuario(
     'test@test.com',
