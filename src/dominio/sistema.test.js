@@ -1,42 +1,63 @@
 /* eslint-disable max-len */
 import Sistema from './sistema.mjs';
+import Usuario from './usuario.mjs';
 
-describe('Registro de usuario', () => {
+describe('Existe Usuario', () => {
   const sistema = new Sistema();
-  test('registro con usaurio y password vacios', () => {
-    expect(sistema.registroUsuario('', '')).toBe(false);
+  const usuario1 = new Usuario('test@test.com', '1234', 'pepe', 'grillo');
+  sistema.agregarUsuario(usuario1);
+
+  test('email vacio', () => {
+    expect(sistema.existeUsuario('')).toBe(false);
   });
-  test('registro con usuario vacio', () => {
-    expect(sistema.registroUsuario('', 'abcd')).toBe(false);
+  test('email correcto', () => {
+    expect(sistema.existeUsuario('test@test.com')).toBe(true);
   });
-  test('registro con formato de usuario inválido', () => {
-    expect(sistema.registroUsuario('nombreusuario', 'abcd')).toBe(false);
-  });
-  test('registro con password vacio', () => {
-    expect(sistema.registroUsuario('user@mail.com', '')).toBe(false);
-  });
-  test('registro válido', () => {
-    expect(sistema.registroUsuario('user@mail.com', 'abcd')).toBe(true);
-  });
-  test('registro con usaurio ya existente', () => {
-    expect(sistema.registroUsuario('user@mail.com', 'fghi')).toBe(false);
+  test('email incorrecto', () => {
+    expect(sistema.existeUsuario('noexiste@test.com')).toBe(false);
   });
 });
 
-// describe('Creación de usuario', () => {
-//   test('email y password vacíos', () => {
-//     expect(Usuario.crearUsuario('', '')).toBe(false);
-//   });
-//   test('email vacío / password válido', () => {
-//     expect(Usuario.crearUsuario('', 'pswd1')).toBe(false);
-//   });
-//   test('email válido / password vacío', () => {
-//     expect(Usuario.crearUsuario('abc@mail.com', 'pswd1')).toBe(false);
-//   });
-//   test('email válido / password válido', () => {
-//     expect(Usuario.crearUsuario('abc@mail.com', 'pswd1')).toBe(false);
-//   });
-//   test('email inválido / password válido', () => {
-//     expect(Usuario.crearUsuario('abcmail.com', 'pswd1')).toBe(false);
-//   });
-// });
+describe('Indice Usuario', () => {
+  const sistema = new Sistema();
+  const usuario1 = new Usuario('test@test.com', '1234', 'pepe', 'grillo');
+  sistema.agregarUsuario(usuario1);
+  const usuario2 = new Usuario('test2@test.com', '12345', 'mickey', 'mouse');
+  sistema.agregarUsuario(usuario2);
+
+  test('email vacio', () => {
+    expect(sistema.indiceUsuario('')).toBe(-1);
+  });
+  test('email correcto indice 1', () => {
+    expect(sistema.indiceUsuario('test@test.com')).toBe(0);
+  });
+  test('email incorrecto', () => {
+    expect(sistema.indiceUsuario('noexiste@test.com')).toBe(-1);
+  });
+  test('email correcto indice 2', () => {
+    expect(sistema.indiceUsuario('test2@test.com')).toBe(1);
+  });
+});
+
+
+describe('Verificar Contraseña', () => {
+  const sistema = new Sistema();
+  const usuario1 = new Usuario('test@test.com', '1234', 'pepe', 'grillo');
+  sistema.agregarUsuario(usuario1);
+  const usuario2 = new Usuario('test2@test.com', '12345', 'mickey', 'mouse');
+  sistema.agregarUsuario(usuario2);
+  
+  // No se verifica si se ingresa indice incorrecto, o contraseña vacia
+  // ya que se verifica antes de llegar a esta función
+
+  test('indice correcto contraseña mal', () => {
+    expect(sistema.verificarPass(0,'4321')).toBe(false);
+  });  
+  test('indice y contraseña correctos', () => {
+    expect(sistema.verificarPass(0,'1234')).toBe(true);
+  });
+});
+
+
+
+

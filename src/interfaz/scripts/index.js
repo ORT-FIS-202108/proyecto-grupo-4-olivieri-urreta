@@ -32,8 +32,10 @@ sistema;
 window.addEventListener('load', inicio);
 
 /* Usuarios hardcodeados */
-sistema.registroUsuario('test@test.com', '1234');
-sistema.registroUsuario('test2@test.com', '1234');
+const usuario1 = new Usuario('test@test.com', '1234', 'pepe', 'grillo');
+sistema.agregarUsuario(usuario1);
+const usuario2 = new Usuario('test2@test.com', '1234', 'mickey', 'mouse');
+sistema.agregarUsuario(usuario2);
 
 /*  Comienzo funciones  */
 
