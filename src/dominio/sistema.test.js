@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-import Gasto from './gasto.mjs';
 import Sistema from './sistema.mjs';
 import Usuario from './usuario.mjs';
 
@@ -24,24 +23,6 @@ describe('Pruebas registro de usuario', () => {
     expect(sistema.registroUsuario('user@mail.com', 'fghi')).toBe(false);
   });
 });
-
-// describe('Pruebas creación de usuario', () => {
-//   test('email y password vacíos', () => {
-//     expect(Usuario.crearUsuario('', '')).toBe(false);
-//   });
-//   test('email vacío / password válido', () => {
-//     expect(Usuario.crearUsuario('', 'pswd1')).toBe(false);
-//   });
-//   test('email válido / password vacío', () => {
-//     expect(Usuario.crearUsuario('abc@mail.com', 'pswd1')).toBe(false);
-//   });
-//   test('email válido / password válido', () => {
-//     expect(Usuario.crearUsuario('abc@mail.com', 'pswd1')).toBe(false);
-//   });
-//   test('email inválido / password válido', () => {
-//     expect(Usuario.crearUsuario('abcmail.com', 'pswd1')).toBe(false);
-//   });
-// });
 
 describe('Pruebas registrar gasto', () => {
   const sistema = new Sistema();
@@ -152,12 +133,3 @@ describe('Pruebas agregar gastos para repetir', () => {
     expect(fechaEnListaRepetir).toBe(fecha);
   });
 });
-
-// describe('Pruebas existe usuario', () => {
-//   test('Existe usuario', () => {
-
-//   });
-//   test('No existe usuario', () => {
-
-//   });
-// })
