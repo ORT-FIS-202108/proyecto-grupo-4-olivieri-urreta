@@ -6,13 +6,25 @@ import {MDCSelect} from '@material/select';
 import {MDCSnackbar} from '@material/snackbar';
 import Sistema from '../../dominio/sistema.mjs';
 
+window.addEventListener('load', inicio);
+const sistema = new Sistema();
 
 window.addEventListener('load', inicio);
 const sistema = new Sistema();
 /* Usuarios hardcodeados */
-const usuario1 = new Usuario('test@test.com', '1234', 'pepe', 'grillo');
+const usuario1 = sistema.registrarUsuario(
+    'test@test.com',
+    '1234',
+    'pepe',
+    'grillo',
+);
 sistema.agregarUsuario(usuario1);
-const usuario2 = new Usuario('test2@test.com', '1234', 'mickey', 'mouse');
+const usuario2 = sistema.registrarUsuario(
+    'test2@test.com',
+    '1234',
+    'mickey',
+    'mouse',
+);
 sistema.agregarUsuario(usuario2);
 /**
  * Función que maneja los eventos de la aplicación
@@ -20,6 +32,7 @@ sistema.agregarUsuario(usuario2);
  */
 function inicio() {
   document.getElementById('lbutton').addEventListener('click', login);
+  // document.getElementById('lbutton').addEventListener('click', login);
   document.getElementById('cbutton').addEventListener('click', crearUsuario);
   document.getElementById('btn-logout').addEventListener('click', logout);
 }
@@ -35,7 +48,7 @@ function login() {
   if (loginform.reportValidity()) {
     mensaje = sistema.loginUsuario(usuario, password);
   } else {
-    mensaje = 'Por favor complete todos los campos!';
+    mensaje = 'Por favor complete todos los campos';
   }
   alert(mensaje);
   if (mensaje === '¡Bienvenido!') {
