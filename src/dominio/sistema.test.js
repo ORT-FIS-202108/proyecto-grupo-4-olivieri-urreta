@@ -56,11 +56,7 @@ describe('Login usuario', () => {
     expect(sistema.loginUsuario('mickey@disney.com', 'disneyyyyyy')).toBe('Usuario o contraseña incorrectos');
   });
   test('email y password válidos', () => {
-    // expect(sistema.indiceUsuario('mickey@disney.com')).toBe(0);
-    // expect(sistema.usuarios[sistema.indiceUsuario('mickey@disney.com')].password).toBe(0);
     expect(sistema.loginUsuario('mickey@disney.com', 'disney')).toBe('¡Bienvenido!');
-    // expect(sistema.indiceUsuario('mickey@disney.com')).toBe('¡Bienvenido!');
-    // expect(sistema.existeUsuario(0)).toBe('¡Bienvenido!');
   });
 });
 

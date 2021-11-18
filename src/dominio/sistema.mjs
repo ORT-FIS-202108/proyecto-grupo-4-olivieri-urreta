@@ -70,7 +70,7 @@ export default class Sistema {
   loginUsuario(email, password) {
     let mensaje = 'Usuario o contraseña incorrectos';
     const indiceUsuario = this.indiceUsuario(email);
-    if (this.existeUsuario(indiceUsuario)) {
+    if (email != '' && password != '' && indiceUsuario != -1) {
       if (this.verificarPassword(indiceUsuario, password)) {
         mensaje = '¡Bienvenido!';
         this.usuarioLogueado = indiceUsuario;
@@ -99,7 +99,6 @@ export default class Sistema {
    * @return {boolean} Retorna si la contraseña coincide o no.
    */
   verificarPassword(i, password) {
-    const resultado = this.usuarios[i].password === password;
-    return resultado;
+    return this.usuarios[i].password === password;
   }
 }
