@@ -39,25 +39,18 @@ describe('Indice Usuario', () => {
   });
 });
 
-
 describe('Verificar Contraseña', () => {
   const sistema = new Sistema();
   const usuario1 = new Usuario('test@test.com', '1234', 'pepe', 'grillo');
   sistema.agregarUsuario(usuario1);
   const usuario2 = new Usuario('test2@test.com', '12345', 'mickey', 'mouse');
   sistema.agregarUsuario(usuario2);
-  
   // No se verifica si se ingresa indice incorrecto, o contraseña vacia
   // ya que se verifica antes de llegar a esta función
-
   test('indice correcto contraseña mal', () => {
-    expect(sistema.verificarPass(0,'4321')).toBe(false);
-  });  
+    expect(sistema.verificarPass(0, '4321')).toBe(false);
+  });
   test('indice y contraseña correctos', () => {
-    expect(sistema.verificarPass(0,'1234')).toBe(true);
+    expect(sistema.verificarPass(0, '1234')).toBe(true);
   });
 });
-
-
-
-

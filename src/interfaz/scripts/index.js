@@ -1,5 +1,3 @@
-//eslint-disable;
-//require-jsdoc;
 import {MDCRipple} from '@material/ripple';
 import {MDCTopAppBar} from '@material/top-app-bar';
 import {MDCTabBar} from '@material/tab-bar';
@@ -40,18 +38,16 @@ sistema.agregarUsuario(usuario2);
 /*  Comienzo funciones  */
 
 function inicio() {
-  
   document.getElementById('lbutton').addEventListener('click', login);
-  document.getElementById('cbutton').addEventListener('click', create);
+  document.getElementById('cbutton').addEventListener('click', crearUsuario);
 }
 
 function login() {
- 
   const usuario = document.getElementById('luser').value;
   const passwd = document.getElementById('lpassword').value;
   if (loginform.reportValidity()) {
     let indexUser = indiceUsuario(usuario);
-    if (indexUser > -1 && verificarPass(indexUser, passwd)) {      
+    if (indexUser > -1 && verificarPass(indexUser, passwd)) {
       alert('Bienvenido!');
       // mostrar el home
     } else {
@@ -61,26 +57,27 @@ function login() {
     alert('Por favor complete todos los campos!');
   }
 }
-
-function create() {
+/**
+ * Funcion para tomar datos del form de registro y pasrlos
+ * a la función registrar usuario de Sistema.
+ */
+function crearUsuario() {
   if (fcreateuser.reportValidity()) {
     const nombre = document.getElementById('cnombre').value;
     const apellido = document.getElementById('capellido').value;
     const email = document.getElementById('cemail').value;
     const password = document.getElementById('cpassword').value;
     const rpassword = document.getElementById('rcpassword').value;
-    if(validarDatosUsuario(email,password,password2) == 'Datos válidos'){
+    if (validarDatosUsuario(email, password, password2) == 'Datos válidos') {
       if (!existeUsuario(email)) {
         let usuario = new Usuario(email, password, nombre, apellido);
         sistema.agregarUsuario(usuario);
         alert('El usuario fue creado correctamente!');
-      }else{
-        alert('El email ya se encuentra registrado')
+      } else {
+        alert('El email ya se encuentra registrado');
       }
     } else {
-      alert(validarDatosUsuario(email,password,password2));
+      alert(validarDatosUsuario(email, password, password2));
     }
-
-    }
-    
+  }
 }

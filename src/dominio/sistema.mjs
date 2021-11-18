@@ -26,52 +26,44 @@ export default class Sistema {
     this.usuarios.push(usuario);
   }
 
-   /**
+  /**
    * Verifica si existe en la listaUsuarios un usuario con el email recibido.
    * @param {string} email Id del usuario a verificar.
    * @return {boolean} Retorna si encontró o no un usuario con ese email.
    */
-    existeUsuario(email) {
-      let existe = false;
-      for (let i = 0; i < this.usuarios.length && !existe; i++) {
-        if (this.usuarios[i].email == email) {
-          existe = true;
-        }
+  existeUsuario(email) {
+    let existe = false;
+    for (let i = 0; i < this.usuarios.length && !existe; i++) {
+      if (this.usuarios[i].email == email) {
+        existe = true;
       }
-      return existe;
     }
+    return existe;
+  }
 
-    /**
+  /**
    * Devuelve el indice del usuario.
    * @param {string} email email del usuario a verificar.
    * @return {integer} Retorna el indice del usuario, si no existe retorna -1.
    */
-     indiceUsuario(email) {
-     
-      let existe = -1;
-      for (let i = 0; i < this.usuarios.length && existe == -1; i++) {
-        if (this.usuarios[i].email == email) {
-          existe = i;
-        }
+  indiceUsuario(email) {
+    let existe = -1;
+    for (let i = 0; i < this.usuarios.length && existe == -1; i++) {
+      if (this.usuarios[i].email == email) {
+        existe = i;
       }
-      return existe;
     }
+    return existe;
+  }
 
-      /**
+  /**
    * Verifica la contraseña del usuario.
-   * @param {integer} indice recibe el indice para verificar si la contraseña coinicide.
+   * @param {integer} i recibe el indice para verificar si la contraseña coinicide.
    * @param {string} password recibe la contraseña para verificar si la contraseña coinicide.
    * @return {boolean} Retorna si la contraseña coincide o no.
    */
-       verificarPass(i, passwd) {
-        let resultado = this.usuarios[i].password == passwd
-        return resultado;
-        
-        
-        
-      }
-
-
-
-
+  verificarPass(i, password) {
+    const resultado = this.usuarios[i].password == password;
+    return resultado;
+  }
 }

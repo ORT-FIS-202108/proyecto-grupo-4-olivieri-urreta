@@ -1,4 +1,3 @@
-//let sigId = 1; // Contador para asignación de ids.
 /**
  * Clase que maneja las funciones de usuarios.
  */
@@ -34,7 +33,7 @@ export default class Usuario {
     if (password == '') {
       mensaje = 'El formato del password ingresado no es válido.';
     }
-    if (password != password2){
+    if (password != password2) {
       mensaje = 'Las contraseñas deben conincidir';
     }
     return mensaje;
