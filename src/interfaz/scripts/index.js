@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import {MDCRipple} from '@material/ripple';
 import {MDCTopAppBar} from '@material/top-app-bar';
 import {MDCTabBar} from '@material/tab-bar';
@@ -6,8 +7,16 @@ import {MDCSelect} from '@material/select';
 import {MDCSnackbar} from '@material/snackbar';
 import Sistema from '../../dominio/sistema.mjs';
 
+// INICIO DEL SITIO
+
+// Event listner para la carga inicial del sitio.
 window.addEventListener('load', carga);
+// Instancia de Sistema.
 const sistema = new Sistema();
+// Mes actual
+let mmSeleccionado = (new Date()).getMonth();
+let yySeleccionado = (new Date()).getFullYear();
+// Listado de meses para mostrar por UI.
 const nombresMes = [
   'Enero',
   'Febrero',
@@ -28,8 +37,10 @@ const nombresMes = [
  * Muestra/oculta secciones y maneja eventos click de los botones.
  */
 function carga() {
+  document.getElementById('mes-seleccionado').innerText = nombresMes[mmSeleccionado] + ' ' + yySeleccionado;
   document.getElementById('btn-logout').addEventListener('click', logout);
   document.getElementById('mes-anterior').addEventListener('click', cargarMesAnterior);
+  document.getElementById('mes-siguiente').addEventListener('click', cargarMesSiguiente);
 }
 
 /**
@@ -47,10 +58,29 @@ function logout() {
   document.getElementById('content-home').style.display = 'none';
 }
 
+/**
+ * Carga la información para el mes anterior al actualmente seleccionado.
+ */
 function cargarMesAnterior() {
-  const mesActual = document.getElementById('mes-seleccionado').innerText;
-
-  document.getElementById('mes-seleccionado').innerText = 'Diciembre';
+  if (mmSeleccionado === 0) {
+    mmSeleccionado = 11;
+    yySeleccionado--;
+  } else {
+    mmSeleccionado--;
+  }
+  document.getElementById('mes-seleccionado').innerText = nombresMes[mmSeleccionado] + ' ' + yySeleccionado;
+}
+/**
+ * Carga la información para el mes siguiente al actualmente seleccionado.
+ */
+function cargarMesSiguiente() {
+  if (mmSeleccionado === 11) {
+    mmSeleccionado = 0;
+    yySeleccionado++;
+  } else {
+    mmSeleccionado++;
+  }
+  document.getElementById('mes-seleccionado').innerText = nombresMes[mmSeleccionado] + ' ' + yySeleccionado;
 }
 
 // document.getElementById("tab-iniciar-sesion").style.display = "none";
