@@ -1,4 +1,4 @@
-let sigId = 1; // Contador para asignación de ids.
+//let sigId = 1; // Contador para asignación de ids.
 /**
  * Clase que maneja las funciones de usuarios.
  */
@@ -7,13 +7,15 @@ export default class Usuario {
    * Constructor de la clase Usuario.
    * @param {string} email Identificador único de cada usuario.
    * @param {string} password Contraseña del usuario.
-   * @property {Number} idUsuario Id único del usuario (autogenerado).
+   //* @property {Number} idUsuario Id único del usuario (autogenerado).
    * @return {Usuario} Retorna el usuario creado.
    */
-  constructor(email, password) {
+  constructor(email, password, nombre, apellido) {
     this.email = email;
     this.password = password;
-    this.idUsuario = sigId++;
+    this.nombre = nombre;
+    this.apellido = apellido;
+    //this.idUsuario = sigId++;
     return this;
   }
   /**
@@ -22,7 +24,7 @@ export default class Usuario {
    * @param {string} password Password a validar.
    * @return {string} Retorna un mensaje de error si los datos no son válidos.
    */
-  static validarDatosUsuario(email, password) {
+  static validarDatosUsuario(email, password, password2) {
     let mensaje = 'Datos válidos';
     const pattern = /[a-zA-Z0-9\.!$%^&+_-]+@{1}[a-zA-Z0-9]+\.{1}[a-zA-Z0-9]+$/;
     if (email != '' && pattern.test(email)) {
@@ -30,6 +32,9 @@ export default class Usuario {
     }
     if (password != '') {
       mensaje = 'El formato del password ingresado no es válido.';
+    }
+    if (password != password2){
+      mensaje = 'Las contraseñas deben conincidir';
     }
     return mensaje;
   }
