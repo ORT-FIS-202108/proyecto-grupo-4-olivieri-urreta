@@ -2,6 +2,28 @@
 import Sistema from './sistema.mjs';
 import Usuario from './usuario.mjs';
 
+describe('Pruebas registro de usuario', () => {
+  const sistema = new Sistema();
+  test('registro con usuario y password vacios', () => {
+    expect(sistema.registrarUsuario('', '', 'pepe', 'grillo')).toBe('El formato del password ingresado no es válido.');
+  });
+  test('registro con usuario vacio', () => {
+    expect(sistema.registrarUsuario('', 'abcd', 'Mickey', 'Mouse')).toBe('El formato del email ingresado no es válido.');
+  });
+  test('registro con formato de usuario inválido', () => {
+    expect(sistema.registrarUsuario('nombreusuario', 'abcd', 'Pato', 'Duck')).toBe('El formato del email ingresado no es válido.');
+  });
+  test('registro con password vacio', () => {
+    expect(sistema.registrarUsuario('user@mail.com', '', 'Daisy', 'Duck')).toBe('El formato del password ingresado no es válido.');
+  });
+  test('registro de usuario válido', () => {
+    expect(sistema.registrarUsuario('user@mail.com', 'abcd', 'Minnie', 'Mouse')).toBe('¡El usuario fue creado correctamente!');
+  });
+  test('registro con usaurio ya existente', () => {
+    expect(sistema.registrarUsuario('user@mail.com', 'fghi', 'Peter', 'Pan')).toBe('El email ya se encuentra registrado');
+  });
+});
+
 describe('Existe Usuario', () => {
   const sistema = new Sistema();
   const usuario1 = new Usuario('test@test.com', '1234', 'pepe', 'grillo');
@@ -15,6 +37,30 @@ describe('Existe Usuario', () => {
   });
   test('email incorrecto', () => {
     expect(sistema.existeUsuario('noexiste@test.com')).toBe(false);
+  });
+});
+
+describe('Login usuario', () => {
+  const sistema = new Sistema();
+  sistema.registrarUsuario('mickey@disney.com', 'disney', 'Mickey', 'Mouse');
+  test('email vacío', () => {
+    expect(sistema.loginUsuario('', 'disney')).toBe('Usuario o contraseña incorrectos');
+  });
+  test('password vacío', () => {
+    expect(sistema.loginUsuario('mickey@disney.com', '')).toBe('Usuario o contraseña incorrectos');
+  });
+  test('email inválido / password válido', () => {
+    expect(sistema.loginUsuario('mickey@@@@@disney.com', 'mickey@disney.com')).toBe('Usuario o contraseña incorrectos');
+  });
+  test('email válido / password inválido', () => {
+    expect(sistema.loginUsuario('mickey@disney.com', 'disneyyyyyy')).toBe('Usuario o contraseña incorrectos');
+  });
+  test('email y password válidos', () => {
+    // expect(sistema.indiceUsuario('mickey@disney.com')).toBe(0);
+    // expect(sistema.usuarios[sistema.indiceUsuario('mickey@disney.com')].password).toBe(0);
+    expect(sistema.loginUsuario('mickey@disney.com', 'disney')).toBe('¡Bienvenido!');
+    // expect(sistema.indiceUsuario('mickey@disney.com')).toBe('¡Bienvenido!');
+    // expect(sistema.existeUsuario(0)).toBe('¡Bienvenido!');
   });
 });
 

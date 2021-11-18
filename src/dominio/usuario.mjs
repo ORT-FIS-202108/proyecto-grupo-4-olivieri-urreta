@@ -26,10 +26,10 @@ export default class Usuario {
   static validarDatosUsuario(email, password) {
     let mensaje = 'Datos válidos';
     const pattern = /[a-zA-Z0-9\.!$%^&+_-]+@{1}[a-zA-Z0-9]+\.{1}[a-zA-Z0-9]+$/;
-    if (email != '' && !pattern.test(email)) {
+    if (email === '' || !pattern.test(email)) {
       mensaje = 'El formato del email ingresado no es válido.';
     }
-    if (password == '') {
+    if (password === '') {
       mensaje = 'El formato del password ingresado no es válido.';
     }
     return mensaje;

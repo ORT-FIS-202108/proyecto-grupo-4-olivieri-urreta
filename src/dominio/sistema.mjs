@@ -11,8 +11,8 @@ export default class Sistema {
    * Constructor de la clase Sistema.
    */
   constructor() {
-    this.usuarios = []; // Lista de usuario registrados.
-    this.gastos = []; // Lista de gastos
+    this.usuarios = []; // Lista de usuarios registrados.
+    this.gastos = []; // Lista de gastos.
     this.gastosParaRepetir = []; // Lista de gastos que se repiten en una determinada fecha.
     this.usuarioLogueado; // Indíce del usuario que está utilizando la aplicación. Si es -1, no hay usuario logueado.
   }
@@ -26,14 +26,16 @@ export default class Sistema {
    */
   registrarUsuario(email, password, nombre, apellido) {
     let mensaje = '¡El usuario fue creado correctamente!';
-    if (this.existeUsuario(email)) {
-      mensaje = 'El email ya se encuentra registrado';
-    } else {
-      mensaje = Usuario.validarDatosUsuario(email, password);
-      if (mensaje === 'Datos válidos') {
+    const validacionDatos = Usuario.validarDatosUsuario(email, password);
+    if (validacionDatos === 'Datos válidos') {
+      if (this.existeUsuario(email)) {
+        mensaje = 'El email ya se encuentra registrado';
+      } else {
         const usuario = new Usuario(email, password, nombre, apellido);
         this.agregarUsuario(usuario);
       }
+    } else {
+      mensaje = validacionDatos;
     }
     return mensaje;
   }
@@ -46,7 +48,7 @@ export default class Sistema {
   }
   /**
    * Verifica si existe en la listaUsuarios un usuario con el email recibido.
-   * @param {string} email Id del usuario a verificar.
+   * @param {string} email Email del usuario a verificar.
    * @return {boolean} Retorna si encontró o no un usuario con ese email.
    */
   existeUsuario(email) {
@@ -66,13 +68,13 @@ export default class Sistema {
    * sino un mensaje con el error.
    */
   loginUsuario(email, password) {
-    let mensaje;
+    let mensaje = 'Usuario o contraseña incorrectos';
     const indiceUsuario = this.indiceUsuario(email);
-    if (this.existeUsuario(indiceUsuario) && this.verificarPassword(indiceUsuario, password)) {
-      mensaje = '¡Bienvenido!';
-      this.usuarioLogueado = indiceUsuario;
-    } else {
-      mensaje = 'Usuario o contraseña incorrectos';
+    if (this.existeUsuario(indiceUsuario)) {
+      if (this.verificarPassword(indiceUsuario, password)) {
+        mensaje = '¡Bienvenido!';
+        this.usuarioLogueado = indiceUsuario;
+      }
     }
     return mensaje;
   }
@@ -83,8 +85,8 @@ export default class Sistema {
    */
   indiceUsuario(email) {
     let existe = -1;
-    for (let i = 0; i < this.usuarios.length && existe == -1; i++) {
-      if (this.usuarios[i].email == email) {
+    for (let i = 0; i < this.usuarios.length && existe === -1; i++) {
+      if (this.usuarios[i].email === email) {
         existe = i;
       }
     }
