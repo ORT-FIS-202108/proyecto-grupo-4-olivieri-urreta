@@ -9,9 +9,6 @@ import Usuario from '../../dominio/usuario.mjs';
 
 window.addEventListener('load', inicio);
 const sistema = new Sistema();
-
-window.addEventListener('load', inicio);
-
 /* Usuarios hardcodeados */
 const usuario1 = sistema.registrarUsuario(
     'test@test.com',
