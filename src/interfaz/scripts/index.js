@@ -35,25 +35,31 @@ const usuario2 = new Usuario('test2@test.com', '1234', 'mickey', 'mouse');
 sistema.agregarUsuario(usuario2);
 
 /*  Comienzo funciones  */
-
+/**
+ * Funciones al cargar la aplicación. Maneja los event listeners
+ * para clicks de botón y otras inputs de usuario.
+ */
 function inicio() {
   document.getElementById('lbutton').addEventListener('click', login);
   document.getElementById('cbutton').addEventListener('click', crearUsuario);
 }
-
+/**
+ * Inicio de sesión.
+ * Si los datos son válidos el usario ingresa a la aplicación,
+ * sino recibe un error.
+ */
 function login() {
   const usuario = document.getElementById('luser').value;
-  const passwd = document.getElementById('lpassword').value;
+  const password = document.getElementById('lpassword').value;
+  let mensaje;
   if (loginform.reportValidity()) {
-    let indexUser = indiceUsuario(usuario);
-    if (indexUser > -1 && verificarPass(indexUser, passwd)) {
-      alert('Bienvenido!');
-      // mostrar el home
-    } else {
-      alert('Usuario o contraseña incorrecto');
-    }
+    mensaje = sistema.loginUsuario(usuario, password);
   } else {
-    alert('Por favor complete todos los campos!');
+    mensaje = 'Por favor complete todos los campos!';
+  }
+  alert(mensaje);
+  if (mensaje === '¡Bienvenido!') {
+    mostrarHome();
   }
 }
 /**
