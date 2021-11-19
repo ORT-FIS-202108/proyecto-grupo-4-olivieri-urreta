@@ -1,22 +1,25 @@
 /* eslint-disable max-len */
-let proxId = 1; // Contador para el próximo Id.
+
 /**
  * Clase que maneja las funciones de los gastos.
  */
 export default class Gasto {
   /**
      * Constructor de la clase Gasto.
-     * @param {string} nombre Nombre que describe el gasto.
+     * @param {Intger} idGasto id unico del gasto
+     * @param {String} nombre Nombre que describe el gasto.
      * @param {Number} monto Importe del gasto.
      * @param {Date} fecha Fecha que se realizó el gasto.
      * @param {Number} categoria Una de las categorías del listado de categorías de Sistema.
      * @return {Gasto} Retorna el gasto creado.
      */
-  constructor(nombre, monto, fecha, categoria) {
+  constructor(idGasto, nombre, monto, fecha, categoria) {
+    this.idGasto = idGasto;
     this.nombre = nombre;
     this.monto = monto;
     this.fecha = fecha;
     this.categoria = categoria;
+    
     return this;
   }
   /**

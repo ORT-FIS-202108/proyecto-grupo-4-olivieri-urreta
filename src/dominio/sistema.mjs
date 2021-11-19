@@ -11,19 +11,20 @@ export default class Sistema {
   /**
    * Constructor de la clase Sistema.
    */
-  constructor() {
-    this.usuarios = []; // Lista de usuarios registrados.
-    this.gastosParaRepetir = []; // Lista de gastos que se repiten en una determinada fecha.
+   constructor() {
+    this.usuarios = []; // Lista de usuarios registrados.    
     this.usuarioLogueado; // usuario logeado
-  }
-  /**
-   * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
-   * @param {string} email Email del usuario.
-   * @param {string} password Contraseña del usuario.
-   * @param {string} nombre Nombre del usuario.
-   * @param {string}apellido Apellido del usuario.
-   * @return {string} Mensaje con resultado del registro. Devuelve el error específico si no se pudo registrar.
-   */
+    let idGasto = 1;
+
+ }
+ /**
+  * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
+  * @param {string} email Email del usuario.
+  * @param {string} password Contraseña del usuario.
+  * @param {string} nombre Nombre del usuario.
+  * @param {string}apellido Apellido del usuario.
+  * @return {string} Mensaje con resultado del registro. Devuelve el error específico si no se pudo registrar.
+  */
   registrarUsuario(email, password, nombre, apellido) {
     let mensaje = '¡El usuario fue creado correctamente!';
     const validacionDatos = Usuario.validarDatosUsuario(email, password);
@@ -126,6 +127,7 @@ export default class Sistema {
       }
       const gasto = new Gasto(nombre, monto, fecha, categoria, this.usuarioLogueado);
       this.gastos.push(gasto);
+      idGasto++;
       const pattern = /^(semanal|quincenal|mensual|anual)$/;
       if (pattern.test(repetir)) {
         this.agregarGastoParaRepetir(gasto.id, repetir);

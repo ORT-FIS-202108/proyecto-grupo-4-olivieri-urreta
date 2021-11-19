@@ -6,6 +6,7 @@ import {MDCTextField} from '@material/textfield';
 import {MDCSelect} from '@material/select';
 import {MDCSnackbar} from '@material/snackbar';
 import Sistema from '../../dominio/sistema.mjs';
+import * as moment from 'moment';
 
 window.addEventListener('load', inicio);
 const sistema = new Sistema();
@@ -49,12 +50,12 @@ const nombresMes = [
  */
 function inicio() {
   document.getElementById('lbutton').addEventListener('click', login);
-  // document.getElementById('lbutton').addEventListener('click', login);
   document.getElementById('cbutton').addEventListener('click', crearUsuario);
   document.getElementById('mes-seleccionado').innerText = nombresMes[mmSeleccionado] + ' ' + yySeleccionado;
   document.getElementById('btn-logout').addEventListener('click', logout);
   document.getElementById('mes-anterior').addEventListener('click', cargarMesAnterior);
   document.getElementById('mes-siguiente').addEventListener('click', cargarMesSiguiente);
+  document.getElementById('gbutton').addEventListener('click', agregarGasto);
 }
 /**
  * Inicio de sesión.
@@ -154,3 +155,23 @@ document.getElementById('suma-total-mes').innerText = '1.234';
      }
    });
  });
+
+ /*
+ Agrega gasto
+ */
+
+ function agregarGasto(){
+  if (fcreategasto.reportValidity()) {
+    let mensaje;
+    const nombre = document.getElementById('gnombre').value;
+    const monto = document.getElementById('gmonto').value;
+    const fecha = document.getElementById('gfecha').value;
+    const categoria = document.getElementById('categoria').value;   
+    if(moment(document.getElementById('gfecha').value, 'YYYY-MM-DD', true).isValid()){
+      alert('La fecha esta correcta');
+    }
+
+    
+  }
+}
+ 

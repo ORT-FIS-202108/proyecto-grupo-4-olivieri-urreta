@@ -200,12 +200,22 @@
               <input type="text" id="gnombre" class="fadeIn second" name="new-gasto" placeholder="Nombre" required>
               <input type="number" id="gmonto" class="fadeIn third" name="new-gasto" placeholder="Gasto" required>              
               <input type="date" id="gfecha" class="fadeIn fourth" name="new-gasto"  required>
-              <select id="categoria" name="new-gasto" required>
+              <select id="categoria" class="fadeIn fourth" name="new-gasto" required>
                 <option value="0">cat1</option>
                 <option value="1">cat2</option>
-              </select>              
+              </select>
+              <select id="recurrencia" class="fadeIn fourth" name="new-gasto" required>
+                <option value="0">No recurrente</option>
+                <option value="1">Semanal</option>
+                <option value="2">Quincenal</option>
+                <option value="3">Mensual</option>
+                <option value="4">Anual</option>  
+              </select>
+              <input type="text" id="gdescripcion" class="fadeIn fourth" name="new-gasto"  required>
+
               <input type="button" class="fadeIn five" id="gbutton" value="Confirmar">
             </form>
+            
 
 
           </div>
