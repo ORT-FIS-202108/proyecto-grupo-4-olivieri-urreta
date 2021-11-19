@@ -10,15 +10,13 @@ export default class Gasto {
      * @param {Number} monto Importe del gasto.
      * @param {Date} fecha Fecha que se realizó el gasto.
      * @param {Number} categoria Una de las categorías del listado de categorías de Sistema.
-     * @param {String} email Email del usuario que es utilizado como id del usuario.
      * @return {Gasto} Retorna el gasto creado.
      */
-  constructor(nombre, monto, fecha, categoria, email) {
+  constructor(nombre, monto, fecha, categoria) {
     this.nombre = nombre;
     this.monto = monto;
     this.fecha = fecha;
     this.categoria = categoria;
-    this.idusuario = email;
     return this;
   }
   /**

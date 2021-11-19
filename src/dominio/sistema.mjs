@@ -13,9 +13,8 @@ export default class Sistema {
    */
   constructor() {
     this.usuarios = []; // Lista de usuarios registrados.
-    this.gastos = []; // Lista de gastos.
     this.gastosParaRepetir = []; // Lista de gastos que se repiten en una determinada fecha.
-    this.usuarioLogueado; // Indíce del usuario que está utilizando la aplicación. Si es -1, no hay usuario logueado.
+    this.usuarioLogueado; // usuario logeado
   }
   /**
    * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
