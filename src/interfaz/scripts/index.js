@@ -9,7 +9,8 @@ import Sistema from '../../dominio/sistema.mjs';
 
 window.addEventListener('load', inicio);
 const sistema = new Sistema();
-/* Usuarios hardcodeados */
+const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
+// Usuarios hardcodeados
 const usuario1 = sistema.registrarUsuario(
     'test@test.com',
     '1234',
@@ -61,6 +62,7 @@ function inicio() {
  */
 function mostrarInterfazLogin() {
   tabBar.activateTab(0);
+  // cargarGastosMes();
   document.getElementById('tab-lista-gastos').classList.add('sample-content--hidden');
   document.getElementById('selector-mes').style.display = 'none';
   document.getElementById('logout-sitio').style.display = 'none';
@@ -83,6 +85,9 @@ function mostrarInterfazHome() {
   document.getElementById('btn-add-gasto').style.display = 'inline';
   document.getElementById('content-home').style.display = 'inline';
 }
+// function cargarGastosMes() {
+//   const listaGastosDelMes = sistema.obtenerGastosDeUsuario();
+// }
 /**
  * Inicio de sesión.
  * Si los datos son válidos el usario ingresa a la aplicación,
@@ -105,6 +110,7 @@ function login() {
 /**
  * Funcion para tomar datos del form de registro y pasrlos
  * a la función registrar usuario de Sistema.
+ * Muestra un mensaje si se registró (o no) con éxito.
  */
 function crearUsuario() {
   if (fcreateuser.reportValidity()) {
@@ -191,7 +197,6 @@ document.getElementById('suma-total-mes').innerText = '1.234';
 // function mostrarContentTabActiva() {
   // const topAppBarElement = document.querySelector('.mdc-top-app-bar');
   // const topAppBar = new MDCTopAppBar(topAppBarElement);
-  const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
   tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
     document.querySelectorAll('.content').forEach((element, index) => {
       if (index === activatedEvent.detail.index) {
