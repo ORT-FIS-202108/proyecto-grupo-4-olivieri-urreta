@@ -141,16 +141,16 @@ function cargarMesSiguiente() {
 // document.getElementById("tabs-login").style.display = "none";
 document.getElementById('suma-total-mes').innerText = '1.234';
 
-// const topAppBarElement = document.querySelector('.mdc-top-app-bar');
-// const topAppBar = new MDCTopAppBar(topAppBarElement);
+ const topAppBarElement = document.querySelector('.mdc-top-app-bar');
+ const topAppBar = new MDCTopAppBar(topAppBarElement);
 
-// const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
-// tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
-//   document.querySelectorAll('.content').forEach((element, index) => {
-//     if (index === activatedEvent.detail.index) {
-//       element.classList.remove('sample-content--hidden');
-//     } else {
-//       element.classList.add('sample-content--hidden');
-//     }
-//   });
-// });
+ const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
+ tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
+   document.querySelectorAll('.content').forEach((element, index) => {
+    if (index === activatedEvent.detail.index) {
+       element.classList.remove('sample-content--hidden');
+     } else {
+       element.classList.add('sample-content--hidden');
+     }
+   });
+ });

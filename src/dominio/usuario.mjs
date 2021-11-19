@@ -15,6 +15,7 @@ export default class Usuario {
     this.password = password;
     this.nombre = nombre;
     this.apellido = apellido;
+    this.gastos = [];
     return this;
   }
   /**
