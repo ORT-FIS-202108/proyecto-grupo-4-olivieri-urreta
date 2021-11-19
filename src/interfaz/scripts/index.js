@@ -60,6 +60,7 @@ function inicio() {
  * Muestra las secciones para iniciar sesión y registrar usuario.
  */
 function mostrarInterfazLogin() {
+  tabBar.activateTab(0);
   document.getElementById('tab-lista-gastos').classList.add('sample-content--hidden');
   document.getElementById('selector-mes').style.display = 'none';
   document.getElementById('logout-sitio').style.display = 'none';
@@ -72,6 +73,7 @@ function mostrarInterfazLogin() {
  */
 function mostrarInterfazHome() {
   cargarMesActual();
+  tabBar.activateTab(2);
   document.getElementById('tab-iniciar-sesion').classList.add('sample-content--hidden');
   document.getElementById('tab-crear-usuario').classList.add('sample-content--hidden');
   document.getElementById('tab-lista-gastos').classList.remove('sample-content--hidden');
@@ -118,6 +120,10 @@ function crearUsuario() {
       mensaje = sistema.registrarUsuario(email, password, nombre, apellido);
     }
     alert(mensaje);
+    if (mensaje === '¡El usuario fue creado correctamente!') {
+      tabBar.activateTab(0);
+      document.getElementById('fcreateuser').reset();
+    }
   }
 }
 /**
@@ -134,6 +140,7 @@ function logout() {
   document.getElementById('btn-add-gasto').style.display = 'none';
   document.getElementById('content-home').style.display = 'none';
   // Mostrar contenido del login
+  tabBar.activateTab(0);
   document.getElementById('tab-iniciar-sesion').classList.remove('sample-content--hidden');
   document.getElementById('tab-crear-usuario').classList.remove('sample-content--hidden');
 }

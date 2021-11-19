@@ -11,12 +11,12 @@ export default class Sistema {
   /**
    * Constructor de la clase Sistema.
    */
-   constructor() {
+  constructor() {
     this.usuarios = []; // Lista de usuarios registrados.
     this.gastosParaRepetir = []; // Lista de gastos que se repiten en una determinada fecha.
     this.usuarioLogueado; // usuario logeado
- }
- /**
+  }
+  /**
   * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
   * @param {string} email Email del usuario.
   * @param {string} password Contraseña del usuario.
