@@ -14,7 +14,7 @@ export default class Sistema {
   constructor() {
     this.usuarios = []; // Lista de usuarios registrados.
     this.gastosParaRepetir = []; // Lista de gastos que se repiten en una determinada fecha.
-    this.usuarioLogueado; // usuario logeado
+    this.usuarioLogueado; // Posición del usuario logeado en la lista de usuarios.
   }
   /**
   * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
@@ -197,5 +197,26 @@ export default class Sistema {
       }
     }
     return gasto;
+  }
+  /**
+   * Retorna una lista con los gastos registrados del usuario logueado,
+   * que se encuentren en el año y mes indicados (parámetros).
+   * @param {Number} mes Mes de los gastos a buscar.
+   * @param {Number} año Año de los gastos a buscar.
+   * @return {Gasto[]} Lista de gastos para el mes indicado.
+   */
+  obtenerGastosDelMes(mes, año) {
+    const gastosDelUsuario = this.usuarios[this.usuarioLogueado];
+    const listaGastosDelMes = [];
+    for (let i = 0; i < gastosDelUsuario.length; i++) {
+      const fechaUnGasto = gastosDelUsuario[i].fecha;
+      if (fechaUnGasto.getMonth() === mes && fechaUnGasto.getFullYear() === año) {
+        listaGastosDelMes.push(gastosDelUsuario[i]);
+      }
+    }
+    listaGastosDelMes.sort((a, b) => {
+      return b.fecha - a.fecha;
+    });
+    return listaGastosDelMes;
   }
 }

@@ -26,8 +26,8 @@ const usuario2 = sistema.registrarUsuario(
 );
 sistema.agregarUsuario(usuario2);
 // Mes y año actual
-let mmSeleccionado = (new Date()).getMonth();
-let yySeleccionado = (new Date()).getFullYear();
+let mesSeleccionado = (new Date()).getMonth();
+let añoSeleccionado = (new Date()).getFullYear();
 // Listado de meses para mostrar por UI.
 const nombresMes = [
   'Enero',
@@ -52,7 +52,7 @@ function inicio() {
   mostrarInterfazLogin();
   document.getElementById('lbutton').addEventListener('click', login);
   document.getElementById('cbutton').addEventListener('click', crearUsuario);
-  document.getElementById('mes-seleccionado').innerText = nombresMes[mmSeleccionado] + ' ' + yySeleccionado;
+  document.getElementById('mes-seleccionado').innerText = nombresMes[mesSeleccionado] + ' ' + añoSeleccionado;
   document.getElementById('btn-logout').addEventListener('click', logout);
   document.getElementById('mes-anterior').addEventListener('click', cargarMesAnterior);
   document.getElementById('mes-siguiente').addEventListener('click', cargarMesSiguiente);
@@ -140,7 +140,7 @@ function logout() {
   // Actualiza el id del usuario logueado
   sistema.usuarioLogueado = 0;
   // Oculta contenido del home.
-  document.getElementById('tab-lista-gastos').style.display = 'none';
+  document.getElementById('tab-lista-gastos').classList.add('sample-content--hidden');
   document.getElementById('selector-mes').style.display = 'none';
   document.getElementById('btn-logout').style.display = 'none';
   document.getElementById('btn-add-gasto').style.display = 'none';
@@ -155,35 +155,46 @@ function logout() {
  * Carga la información para el mes anterior al actualmente seleccionado.
  */
 function cargarMesActual() {
-  mmSeleccionado = (new Date()).getMonth();
-  yySeleccionado = (new Date()).getFullYear();
-  document.getElementById('mes-seleccionado').innerText = nombresMes[mmSeleccionado] + ' ' + yySeleccionado;
+  mesSeleccionado = (new Date()).getMonth();
+  añoSeleccionado = (new Date()).getFullYear();
+  document.getElementById('mes-seleccionado').innerText = nombresMes[mesSeleccionado] + ' ' + añoSeleccionado;
 }
 /**
  * Carga la información para el mes anterior al actualmente seleccionado.
  */
 function cargarMesAnterior() {
-  if (mmSeleccionado === 0) {
-    mmSeleccionado = 11;
-    yySeleccionado--;
+  if (mesSeleccionado === 0) {
+    mesSeleccionado = 11;
+    añoSeleccionado--;
   } else {
-    mmSeleccionado--;
+    mesSeleccionado--;
   }
-  document.getElementById('mes-seleccionado').innerText = nombresMes[mmSeleccionado] + ' ' + yySeleccionado;
+  document.getElementById('mes-seleccionado').innerText = nombresMes[mesSeleccionado] + ' ' + añoSeleccionado;
+  cargarGastosMes();
 }
 /**
  * Carga la información para el mes siguiente al actualmente seleccionado.
  */
 function cargarMesSiguiente() {
-  if (mmSeleccionado === 11) {
-    mmSeleccionado = 0;
-    yySeleccionado++;
+  if (mesSeleccionado === 11) {
+    mesSeleccionado = 0;
+    añoSeleccionado++;
   } else {
-    mmSeleccionado++;
+    mesSeleccionado++;
   }
-  document.getElementById('mes-seleccionado').innerText = nombresMes[mmSeleccionado] + ' ' + yySeleccionado;
+  document.getElementById('mes-seleccionado').innerText = nombresMes[mesSeleccionado] + ' ' + añoSeleccionado;
 }
-
+/**
+ * Carga la lista de gastos para el mes seleccionado y año seleccionados.
+ */
+function cargarGastosMes() {
+  const listaGastosDelMes = sistema.obtenerGastosDelMes(mesSeleccionado, añoSeleccionado);
+  if (listaGastosDelMes.length != 0) {
+    
+  } else {
+    
+  }
+}
 // document.getElementById("tab-iniciar-sesion").style.display = "none";
 // document.getElementById("tab-crear-usuario").style.display = "none";
 // document.getElementById("tab-lista-gastos").style.display = "none";
