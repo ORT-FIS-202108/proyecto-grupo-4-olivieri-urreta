@@ -24,7 +24,7 @@ const usuario2 = sistema.registrarUsuario(
     'mouse',
 );
 sistema.agregarUsuario(usuario2);
-// Mes actual
+// Mes y año actual
 let mmSeleccionado = (new Date()).getMonth();
 let yySeleccionado = (new Date()).getFullYear();
 // Listado de meses para mostrar por UI.
@@ -48,13 +48,38 @@ const nombresMes = [
  * Muestra/oculta secciones y maneja eventos click de los botones.
  */
 function inicio() {
+  mostrarInterfazLogin();
   document.getElementById('lbutton').addEventListener('click', login);
-  // document.getElementById('lbutton').addEventListener('click', login);
   document.getElementById('cbutton').addEventListener('click', crearUsuario);
   document.getElementById('mes-seleccionado').innerText = nombresMes[mmSeleccionado] + ' ' + yySeleccionado;
   document.getElementById('btn-logout').addEventListener('click', logout);
   document.getElementById('mes-anterior').addEventListener('click', cargarMesAnterior);
   document.getElementById('mes-siguiente').addEventListener('click', cargarMesSiguiente);
+}
+/**
+ * Muestra las secciones para iniciar sesión y registrar usuario.
+ */
+function mostrarInterfazLogin() {
+  document.getElementById('tab-lista-gastos').classList.add('sample-content--hidden');
+  document.getElementById('selector-mes').style.display = 'none';
+  document.getElementById('logout-sitio').style.display = 'none';
+  document.getElementById('btn-add-gasto').style.display = 'none';
+  document.getElementById('content-home').style.display = 'none';
+}
+/**
+ * Muestra las secciones para registrar gastos y visualizar
+ * listado de gastos por mes.
+ */
+function mostrarInterfazHome() {
+  cargarMesActual();
+  document.getElementById('tab-iniciar-sesion').classList.add('sample-content--hidden');
+  document.getElementById('tab-crear-usuario').classList.add('sample-content--hidden');
+  document.getElementById('tab-lista-gastos').classList.remove('sample-content--hidden');
+  document.getElementById('tab-lista-gastos').classList.remove('sample-content--hidden');
+  document.getElementById('selector-mes').style.display = 'flex';
+  document.getElementById('logout-sitio').style.display = 'inline';
+  document.getElementById('btn-add-gasto').style.display = 'inline';
+  document.getElementById('content-home').style.display = 'inline';
 }
 /**
  * Inicio de sesión.
@@ -72,7 +97,7 @@ function login() {
   }
   alert(mensaje);
   if (mensaje === '¡Bienvenido!') {
-    mostrarHome();
+    mostrarInterfazHome();
   }
 }
 /**
@@ -108,8 +133,19 @@ function logout() {
   document.getElementById('btn-logout').style.display = 'none';
   document.getElementById('btn-add-gasto').style.display = 'none';
   document.getElementById('content-home').style.display = 'none';
+  // Mostrar contenido del login
+  document.getElementById('tab-iniciar-sesion').classList.remove('sample-content--hidden');
+  document.getElementById('tab-crear-usuario').classList.remove('sample-content--hidden');
 }
 
+/**
+ * Carga la información para el mes anterior al actualmente seleccionado.
+ */
+function cargarMesActual() {
+  mmSeleccionado = (new Date()).getMonth();
+  yySeleccionado = (new Date()).getFullYear();
+  document.getElementById('mes-seleccionado').innerText = nombresMes[mmSeleccionado] + ' ' + yySeleccionado;
+}
 /**
  * Carga la información para el mes anterior al actualmente seleccionado.
  */
@@ -141,16 +177,21 @@ function cargarMesSiguiente() {
 // document.getElementById("tabs-login").style.display = "none";
 document.getElementById('suma-total-mes').innerText = '1.234';
 
-// const topAppBarElement = document.querySelector('.mdc-top-app-bar');
-// const topAppBar = new MDCTopAppBar(topAppBarElement);
-
-// const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
-// tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
-//   document.querySelectorAll('.content').forEach((element, index) => {
-//     if (index === activatedEvent.detail.index) {
-//       element.classList.remove('sample-content--hidden');
-//     } else {
-//       element.classList.add('sample-content--hidden');
-//     }
-//   });
-// });
+/**
+ * Muestra el contenido de la tab activa
+ * y oculta el contenido del resto de las tabs.
+ */
+// function mostrarContentTabActiva() {
+  // const topAppBarElement = document.querySelector('.mdc-top-app-bar');
+  // const topAppBar = new MDCTopAppBar(topAppBarElement);
+  const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
+  tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
+    document.querySelectorAll('.content').forEach((element, index) => {
+      if (index === activatedEvent.detail.index) {
+        element.classList.remove('sample-content--hidden');
+      } else {
+        element.classList.add('sample-content--hidden');
+      }
+    });
+  });
+// }
