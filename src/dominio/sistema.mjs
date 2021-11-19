@@ -12,24 +12,30 @@ export default class Sistema {
    * Constructor de la clase Sistema.
    */
   constructor() {
-    this.usuarios = []; // Lista de usuario registrados.
-    this.gastos = []; // Lista de gastos
+    this.usuarios = []; // Lista de usuarios registrados.
     this.gastosParaRepetir = []; // Lista de gastos que se repiten en una determinada fecha.
-    this.usuarioLogueado; // Id del usuario que está utilizando la aplicación. Si es 0, no hay usuario logueado.
+    this.usuarioLogueado; // usuario logeado
   }
   /**
-   * Registro de usuario.
-   * Recibe un usuario y contraseña e intenta crear un usuario.
-   * @param {string} email Identificador único (email) de usuario ingresado.
-   * @param {string} password Contraseña ingresada.
-   * @return {boolean} Retorna true si se pudo registrar, y false si no.
-   */
-  registroUsuario(email, password) {
-    const mensaje = Usuario.validarDatosUsuario(email, password);
-    if (mensaje === 'Datos válidos') {
-      const usuario = new Usuario(usuario, password);
-      this.agregarUsuario(usuario);
-      mensaje = 'Usuario creado.';
+  * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
+  * @param {string} email Email del usuario.
+  * @param {string} password Contraseña del usuario.
+  * @param {string} nombre Nombre del usuario.
+  * @param {string}apellido Apellido del usuario.
+  * @return {string} Mensaje con resultado del registro. Devuelve el error específico si no se pudo registrar.
+  */
+  registrarUsuario(email, password, nombre, apellido) {
+    let mensaje = '¡El usuario fue creado correctamente!';
+    const validacionDatos = Usuario.validarDatosUsuario(email, password);
+    if (validacionDatos === 'Datos válidos') {
+      if (this.existeUsuario(email)) {
+        mensaje = 'El email ya se encuentra registrado';
+      } else {
+        const usuario = new Usuario(email, password, nombre, apellido);
+        this.agregarUsuario(usuario);
+      }
+    } else {
+      mensaje = validacionDatos;
     }
     return mensaje;
   }
@@ -41,16 +47,59 @@ export default class Sistema {
     this.usuarios.push(usuario);
   }
   /**
-   * Login de usuario
-   * Recibe el nombre de usuario y contraseña y valida si son correctos.
-   * Si son correctos redirige al home del sitio, sino muestra mensaje de error.
-   * @param {string} usuario Nombre de usuario ingresado.
-   * @param {string} password Contraseña ingresada.
-   * @return {boolean} True si datos son correctos, false si son incorrectos.
+   * Verifica si existe en la listaUsuarios un usuario con el email recibido.
+   * @param {string} email Email del usuario a verificar.
+   * @return {boolean} Retorna si encontró o no un usuario con ese email.
    */
-  iniciarSesion(usuario, password) {
-    this.usuarioLogueado = this.obtenerIdUsuario(usuario);
-    return true;
+  existeUsuario(email) {
+    let existe = false;
+    for (let i = 0; i < this.usuarios.length && !existe; i++) {
+      if (this.usuarios[i].email === email) {
+        existe = true;
+      }
+    }
+    return existe;
+  }
+  /**
+   * Valida los datos ingresados por un usuario para loguearse a la aplicación.
+   * @param {string} email Email ingresado por usuario.
+   * @param {string} password Contraseña ingresada por usuario.
+   * @return {string} Retorna mensaje de bienvenida si datos son válidos,
+   * sino un mensaje con el error.
+   */
+  loginUsuario(email, password) {
+    let mensaje = 'Usuario o contraseña incorrectos';
+    const indiceUsuario = this.indiceUsuario(email);
+    if (email != '' && password != '' && indiceUsuario != -1) {
+      if (this.verificarPassword(indiceUsuario, password)) {
+        mensaje = '¡Bienvenido!';
+        this.usuarioLogueado = indiceUsuario;
+      }
+    }
+    return mensaje;
+  }
+  /**
+   * Devuelve el indice del usuario.
+   * @param {string} email email del usuario a verificar.
+   * @return {integer} Retorna el indice del usuario, si no existe retorna -1.
+   */
+  indiceUsuario(email) {
+    let existe = -1;
+    for (let i = 0; i < this.usuarios.length && existe === -1; i++) {
+      if (this.usuarios[i].email === email) {
+        existe = i;
+      }
+    }
+    return existe;
+  }
+  /**
+   * Verifica la contraseña del usuario.
+   * @param {integer} i recibe el indice para verificar si la contraseña coinicide.
+   * @param {string} password recibe la contraseña para verificar si la contraseña coinicide.
+   * @return {boolean} Retorna si la contraseña coincide o no.
+   */
+  verificarPassword(i, password) {
+    return this.usuarios[i].password === password;
   }
   /**
    * Registro de Gastos/Ingresos
@@ -128,20 +177,6 @@ export default class Sistema {
     let existe = false;
     for (let i = 0; i < this.gastosParaRepetir.length; i++) {
       if (this.gastosParaRepetir[i].idGasto === idGasto) {
-        existe = true;
-      }
-    }
-    return existe;
-  }
-  /**
-   * Verifica si existe en la listaUsuarios un usuario con el id recibido.
-   * @param {Number} idUsuario Id del usuario a verificar.
-   * @return {boolean} Retorna si encontró o no un usuario con ese id.
-   */
-  existeUsuario(idUsuario) {
-    let existe = false;
-    for (let i = 0; i < this.usuarios.length && !existe; i++) {
-      if (this.usuarios[i].id === idUsuario) {
         existe = true;
       }
     }
