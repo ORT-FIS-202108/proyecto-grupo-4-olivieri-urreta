@@ -48,6 +48,7 @@ const nombresMes = [
  * Muestra/oculta secciones y maneja eventos click de los botones.
  */
 function inicio() {
+  mostrarInterfazLogin();
   document.getElementById('lbutton').addEventListener('click', login);
   // document.getElementById('lbutton').addEventListener('click', login);
   document.getElementById('cbutton').addEventListener('click', crearUsuario);
@@ -55,6 +56,16 @@ function inicio() {
   document.getElementById('btn-logout').addEventListener('click', logout);
   document.getElementById('mes-anterior').addEventListener('click', cargarMesAnterior);
   document.getElementById('mes-siguiente').addEventListener('click', cargarMesSiguiente);
+}
+/**
+ * Muestra las secciones para iniciar sesión y registrar usuario.
+ */
+function mostrarInterfazLogin() {
+  document.getElementById('tab-lista-gastos').style.display = 'none';
+  document.getElementById('selector-mes').style.display = 'none';
+  document.getElementById('btn-logout').style.display = 'none';
+  document.getElementById('btn-add-gasto').style.display = 'none';
+  document.getElementById('content-home').style.display = 'none';
 }
 /**
  * Inicio de sesión.
@@ -141,16 +152,16 @@ function cargarMesSiguiente() {
 // document.getElementById("tabs-login").style.display = "none";
 document.getElementById('suma-total-mes').innerText = '1.234';
 
-// const topAppBarElement = document.querySelector('.mdc-top-app-bar');
-// const topAppBar = new MDCTopAppBar(topAppBarElement);
+const topAppBarElement = document.querySelector('.mdc-top-app-bar');
+const topAppBar = new MDCTopAppBar(topAppBarElement);
 
-// const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
-// tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
-//   document.querySelectorAll('.content').forEach((element, index) => {
-//     if (index === activatedEvent.detail.index) {
-//       element.classList.remove('sample-content--hidden');
-//     } else {
-//       element.classList.add('sample-content--hidden');
-//     }
-//   });
-// });
+const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
+tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
+  document.querySelectorAll('.content').forEach((element, index) => {
+    if (index === activatedEvent.detail.index) {
+      element.classList.remove('sample-content--hidden');
+    } else {
+      element.classList.add('sample-content--hidden');
+    }
+  });
+});
