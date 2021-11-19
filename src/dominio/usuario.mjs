@@ -10,7 +10,7 @@ export default class Usuario {
    * @param {string} apellido Apellido del usuario.
    * @return {Usuario} Retorna el usuario creado.
    */
-   constructor(email, password, nombre, apellido) {
+  constructor(email, password, nombre, apellido) {
     this.email = email;
     this.password = password;
     this.nombre = nombre;

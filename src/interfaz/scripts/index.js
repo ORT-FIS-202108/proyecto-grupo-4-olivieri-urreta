@@ -9,7 +9,8 @@ import Sistema from '../../dominio/sistema.mjs';
 
 window.addEventListener('load', inicio);
 const sistema = new Sistema();
-/* Usuarios hardcodeados */
+const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
+// Usuarios hardcodeados
 const usuario1 = sistema.registrarUsuario(
     'test@test.com',
     '1234',
@@ -60,6 +61,8 @@ function inicio() {
  * Muestra las secciones para iniciar sesión y registrar usuario.
  */
 function mostrarInterfazLogin() {
+  tabBar.activateTab(0);
+  // cargarGastosMes();
   document.getElementById('tab-lista-gastos').classList.add('sample-content--hidden');
   document.getElementById('selector-mes').style.display = 'none';
   document.getElementById('logout-sitio').style.display = 'none';
@@ -72,6 +75,7 @@ function mostrarInterfazLogin() {
  */
 function mostrarInterfazHome() {
   cargarMesActual();
+  tabBar.activateTab(2);
   document.getElementById('tab-iniciar-sesion').classList.add('sample-content--hidden');
   document.getElementById('tab-crear-usuario').classList.add('sample-content--hidden');
   document.getElementById('tab-lista-gastos').classList.remove('sample-content--hidden');
@@ -81,6 +85,9 @@ function mostrarInterfazHome() {
   document.getElementById('btn-add-gasto').style.display = 'inline';
   document.getElementById('content-home').style.display = 'inline';
 }
+// function cargarGastosMes() {
+//   const listaGastosDelMes = sistema.obtenerGastosDeUsuario();
+// }
 /**
  * Inicio de sesión.
  * Si los datos son válidos el usario ingresa a la aplicación,
@@ -103,6 +110,7 @@ function login() {
 /**
  * Funcion para tomar datos del form de registro y pasrlos
  * a la función registrar usuario de Sistema.
+ * Muestra un mensaje si se registró (o no) con éxito.
  */
 function crearUsuario() {
   if (fcreateuser.reportValidity()) {
@@ -118,6 +126,10 @@ function crearUsuario() {
       mensaje = sistema.registrarUsuario(email, password, nombre, apellido);
     }
     alert(mensaje);
+    if (mensaje === '¡El usuario fue creado correctamente!') {
+      tabBar.activateTab(0);
+      document.getElementById('fcreateuser').reset();
+    }
   }
 }
 /**
@@ -134,6 +146,7 @@ function logout() {
   document.getElementById('btn-add-gasto').style.display = 'none';
   document.getElementById('content-home').style.display = 'none';
   // Mostrar contenido del login
+  tabBar.activateTab(0);
   document.getElementById('tab-iniciar-sesion').classList.remove('sample-content--hidden');
   document.getElementById('tab-crear-usuario').classList.remove('sample-content--hidden');
 }
@@ -184,7 +197,6 @@ document.getElementById('suma-total-mes').innerText = '1.234';
 // function mostrarContentTabActiva() {
   // const topAppBarElement = document.querySelector('.mdc-top-app-bar');
   // const topAppBar = new MDCTopAppBar(topAppBarElement);
-  const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
   tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
     document.querySelectorAll('.content').forEach((element, index) => {
       if (index === activatedEvent.detail.index) {
