@@ -11,20 +11,19 @@ export default class Sistema {
   /**
    * Constructor de la clase Sistema.
    */
-  constructor() {
+   constructor() {
     this.usuarios = []; // Lista de usuarios registrados.
-    this.gastos = []; // Lista de gastos.
     this.gastosParaRepetir = []; // Lista de gastos que se repiten en una determinada fecha.
-    this.usuarioLogueado; // Indíce del usuario que está utilizando la aplicación. Si es -1, no hay usuario logueado.
-  }
-  /**
-   * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
-   * @param {string} email Email del usuario.
-   * @param {string} password Contraseña del usuario.
-   * @param {string} nombre Nombre del usuario.
-   * @param {string}apellido Apellido del usuario.
-   * @return {string} Mensaje con resultado del registro. Devuelve el error específico si no se pudo registrar.
-   */
+    this.usuarioLogueado; // usuario logeado
+ }
+ /**
+  * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
+  * @param {string} email Email del usuario.
+  * @param {string} password Contraseña del usuario.
+  * @param {string} nombre Nombre del usuario.
+  * @param {string}apellido Apellido del usuario.
+  * @return {string} Mensaje con resultado del registro. Devuelve el error específico si no se pudo registrar.
+  */
   registrarUsuario(email, password, nombre, apellido) {
     let mensaje = '¡El usuario fue creado correctamente!';
     const validacionDatos = Usuario.validarDatosUsuario(email, password);
