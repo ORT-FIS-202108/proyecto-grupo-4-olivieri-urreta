@@ -1,3 +1,4 @@
+let idGasto = 1;
 /**
  * Clase que maneja las funciones de usuarios.
  */
@@ -11,11 +12,13 @@ export default class Usuario {
    * @return {Usuario} Retorna el usuario creado.
    */
   constructor(email, password, nombre, apellido) {
+    this.idGasto = idGasto;
     this.email = email;
     this.password = password;
     this.nombre = nombre;
     this.apellido = apellido;
-    this.gastos = [];
+    this.gastos = []; 
+    this.gastosParaRepetir = []; // Lista de gastos recurrentes.
     return this;
   }
   /**
@@ -35,4 +38,12 @@ export default class Usuario {
     }
     return mensaje;
   }
+
+   /**
+   * Aumentar el idGasto.
+   */
+     aumentarIdGasto() {
+      this.idGasto = idGasto + 1;
+    }
+
 }

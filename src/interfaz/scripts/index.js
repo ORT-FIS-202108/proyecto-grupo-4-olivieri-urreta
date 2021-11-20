@@ -167,8 +167,9 @@ document.getElementById('suma-total-mes').innerText = '1.234';
     const monto = document.getElementById('gmonto').value;
     const fecha = document.getElementById('gfecha').value;
     const categoria = document.getElementById('categoria').value;   
-    if(moment(document.getElementById('gfecha').value, 'YYYY-MM-DD', true).isValid()){
-      alert('La fecha esta correcta');
+    if(moment(document.getElementById('gfecha').value, 'YYYY-MM-DD', true).isValid() && sistema.validarDatos(nombre,monto)){
+      sistema.registrarGasto(nombre,monto,fecha,categoria);
+      alert('Se registro el gasto');
     }
 
     
