@@ -1,26 +1,28 @@
 /* eslint-disable max-len */
-let proxId = 1; // Contador para el próximo Id.
+import moment from 'moment';
 /**
  * Clase que maneja las funciones de los gastos.
  */
 export default class Gasto {
   /**
      * Constructor de la clase Gasto.
-     * @param {string} nombre Nombre que describe el gasto.
+     * @param {Intger} idGasto id unico del gasto
+     * @param {String} nombre Nombre que describe el gasto.
      * @param {Number} monto Importe del gasto.
      * @param {Date} fecha Fecha que se realizó el gasto.
-     * @param {Number} categoria Una de las categorías del listado de categorías de Sistema.
-     * @param {Number} idUsuario Id del usuario que registró el gasto.
-     * @property {Number} id Id único del gasto (auotgenerado).
+     * @param {Number} categoria Indice de las categoría en el listado de categorías de Sistema.
      * @return {Gasto} Retorna el gasto creado.
      */
-  constructor(nombre, monto, fecha, categoria, idUsuario) {
+  constructor(idGasto, nombre, monto, fecha, categoria) {
+    this.id = idGasto;
     this.nombre = nombre;
     this.monto = monto;
-    this.fecha = fecha;
+    if (moment(fecha, 'YYYY-MM-DD', true).isValid()) {
+      this.fecha = fecha;
+    } else {
+      this.fecha = new Date();
+    }
     this.categoria = categoria;
-    this.idUsuario = idUsuario;
-    this.id = proxId++;
     return this;
   }
   /**
@@ -30,14 +32,13 @@ export default class Gasto {
    * @return {string} Retorna el mensaje 'Datos válidos' si el monto y el nombre son válidos,
    * y sino retorna un mensaje con error.
    */
-  static validarDatos(nombre, monto) {
-    let mensaje = 'Datos válidos';
+  static validarDatosGasto(nombre, monto) {
     if (isNaN(monto) || monto <= 0) {
-      mensaje = 'El monto ingresado no es válido. Ingrese un número mayor que 0.';
+      return 'El monto ingresado no es válido';
+    } else if (nombre.length < 1) {
+      return 'El nombre ingresado no es válido';
+    } else {
+      return 'Datos válidos';
     }
-    if (nombre.length < 2) {
-      mensaje = 'El nombre ingresado no es válido. Ingrese un nombre de al menos 2 letras.';
-    }
-    return mensaje;
   }
 }

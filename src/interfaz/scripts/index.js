@@ -11,20 +11,18 @@ window.addEventListener('load', inicio);
 const sistema = new Sistema();
 const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
 // Usuarios hardcodeados
-const usuario1 = sistema.registrarUsuario(
+sistema.registrarUsuario(
     'test@test.com',
     '1234',
     'pepe',
     'grillo',
 );
-sistema.agregarUsuario(usuario1);
-const usuario2 = sistema.registrarUsuario(
+sistema.registrarUsuario(
     'test2@test.com',
     '1234',
     'mickey',
     'mouse',
 );
-sistema.agregarUsuario(usuario2);
 
 // Mes y año actual
 let mesSeleccionado = (new Date()).getMonth();
@@ -57,17 +55,20 @@ function inicio() {
   document.getElementById('btn-logout').addEventListener('click', logout);
   document.getElementById('mes-anterior').addEventListener('click', cargarMesAnterior);
   document.getElementById('mes-siguiente').addEventListener('click', cargarMesSiguiente);
+  document.getElementById('btnAgregarGasto').addEventListener('click', agregarGasto);
 }
 /**
  * Muestra las secciones para iniciar sesión y registrar usuario.
  */
 function mostrarInterfazLogin() {
   tabBar.activateTab(0);
-  // cargarGastosMes();
+  // cargarGastosMes(mesSeleccionado, añoSeleccionado);
+  document.getElementById('tab-iniciar-sesion').classList.remove('sample-content--hidden');
+  document.getElementById('tab-crear-usuario').classList.remove('sample-content--hidden');
   document.getElementById('tab-lista-gastos').classList.add('sample-content--hidden');
+  document.getElementById('tab-agregar-gasto').classList.add('sample-content--hidden');
   document.getElementById('selector-mes').style.display = 'none';
   document.getElementById('logout-sitio').style.display = 'none';
-  document.getElementById('btn-add-gasto').style.display = 'none';
   document.getElementById('content-home').style.display = 'none';
 }
 /**
@@ -80,15 +81,11 @@ function mostrarInterfazHome() {
   document.getElementById('tab-iniciar-sesion').classList.add('sample-content--hidden');
   document.getElementById('tab-crear-usuario').classList.add('sample-content--hidden');
   document.getElementById('tab-lista-gastos').classList.remove('sample-content--hidden');
-  document.getElementById('tab-lista-gastos').classList.remove('sample-content--hidden');
+  document.getElementById('tab-agregar-gasto').classList.remove('sample-content--hidden');
   document.getElementById('selector-mes').style.display = 'flex';
   document.getElementById('logout-sitio').style.display = 'inline';
-  document.getElementById('btn-add-gasto').style.display = 'inline';
   document.getElementById('content-home').style.display = 'inline';
 }
-// function cargarGastosMes() {
-//   const listaGastosDelMes = sistema.obtenerGastosDeUsuario();
-// }
 /**
  * Inicio de sesión.
  * Si los datos son válidos el usario ingresa a la aplicación,
@@ -106,7 +103,7 @@ function login() {
   } else {
     mensaje = 'Por favor complete todos los campos';
   }
-  alert(mensaje);
+  // alert(mensaje);
   if (mensaje === '¡Bienvenido!') {
     mostrarInterfazHome();
   }
@@ -142,17 +139,12 @@ function crearUsuario() {
  */
 function logout() {
   // Actualiza el id del usuario logueado
-  sistema.usuarioLogueado = 0;
-  // Oculta contenido del home.
-  document.getElementById('tab-lista-gastos').classList.add('sample-content--hidden');
-  document.getElementById('selector-mes').style.display = 'none';
-  document.getElementById('logout-sitio').style.display = 'none';
-  document.getElementById('btn-add-gasto').style.display = 'none';
-  document.getElementById('content-home').style.display = 'none';
+  sistema.logout();
+  // Limpia el form de registro gasto si habían datos.
+  document.getElementById('fcreategasto').reset();
   // Mostrar contenido del login
   tabBar.activateTab(0);
-  document.getElementById('tab-iniciar-sesion').classList.remove('sample-content--hidden');
-  document.getElementById('tab-crear-usuario').classList.remove('sample-content--hidden');
+  mostrarInterfazLogin();
 }
 
 /**
@@ -162,7 +154,7 @@ function cargarMesActual() {
   mesSeleccionado = (new Date()).getMonth();
   añoSeleccionado = (new Date()).getFullYear();
   document.getElementById('mes-seleccionado').innerText = nombresMes[mesSeleccionado] + ' ' + añoSeleccionado;
-  cargarGastosMes();
+  cargarGastosMes(mesSeleccionado, añoSeleccionado);
 }
 /**
  * Carga la información para el mes anterior al actualmente seleccionado.
@@ -175,7 +167,7 @@ function cargarMesAnterior() {
     mesSeleccionado--;
   }
   document.getElementById('mes-seleccionado').innerText = nombresMes[mesSeleccionado] + ' ' + añoSeleccionado;
-  cargarGastosMes();
+  cargarGastosMes(mesSeleccionado, añoSeleccionado);
 }
 /**
  * Carga la información para el mes siguiente al actualmente seleccionado.
@@ -188,12 +180,14 @@ function cargarMesSiguiente() {
     mesSeleccionado++;
   }
   document.getElementById('mes-seleccionado').innerText = nombresMes[mesSeleccionado] + ' ' + añoSeleccionado;
-  cargarGastosMes();
+  cargarGastosMes(mesSeleccionado, añoSeleccionado);
 }
 /**
  * Carga la lista de gastos para el mes seleccionado y año seleccionados.
+ * @param {Number} mesSeleccionado Número del mes seleccionado por el usuario (van de 0 a 11).
+ * @param {Number} añoSeleccionado Año seleccionado por el usuario.
  */
-function cargarGastosMes() {
+function cargarGastosMes(mesSeleccionado, añoSeleccionado) {
   const listaGastosDelMes = sistema.obtenerGastosDelMes(mesSeleccionado, añoSeleccionado);
   if (listaGastosDelMes.length != 0) {
     cargarListadoGastosMes(listaGastosDelMes);
@@ -201,7 +195,7 @@ function cargarGastosMes() {
     document.getElementById('listadoGastosMes').style.display = 'inline';
   } else {
     document.getElementById('listadoGastosVacio').style.display = 'inline';
-    // document.getElementById('listadoGastosMes').style.display = 'none';
+    document.getElementById('listadoGastosMes').style.display = 'none';
   }
 }
 /**
@@ -321,3 +315,24 @@ tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
   });
 });
 // }
+
+/**
+  * Agrega gasto
+  */
+function agregarGasto() {
+  if (fcreategasto.reportValidity()) {
+    // let mensaje;
+    const nombre = document.getElementById('gnombre').value;
+    const monto = document.getElementById('gmonto').value;
+    const fecha = document.getElementById('gfecha').value;
+    const categoria = document.getElementById('cbxCategoria').value;
+    const repetir = document.getElementById('cbxRecurrenciaGasto').value;
+    if (moment(document.getElementById('gfecha').value, 'YYYY-MM-DD', true).isValid()) {
+      // if (sistema.validarDatosGasto(nombre, monto)) {
+      const msj = sistema.registrarGasto(nombre, monto, fecha, categoria, repetir);
+      alert(msj);
+    } else {
+      alert('no se registro');
+    }
+  }
+}
