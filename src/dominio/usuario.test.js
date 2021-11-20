@@ -95,7 +95,7 @@ describe('Pruebas agregar gastos para repetir', () => {
     const fecha = new Date('2021-7-23');
     sistema.registrarGasto('gasto prueba', 200, fecha, 0, '');
     const idGasto = (usuario.gastos[usuario.gastos.length - 1]).id;
-    usuario.agregarGastoParaRepetir(idGasto, 'anual');
+    usuario.agregarGastoParaRepetir(idGasto, 4);
     expect(usuario.existeGastoParaRepetir(idGasto)).toBe(true);
     const fechaEnListaRepetir = usuario.gastosParaRepetir[usuario.gastosParaRepetir.length - 1].fecha;
     fecha.setFullYear(fecha.getFullYear() + 1);
