@@ -146,7 +146,7 @@ function logout() {
   // Oculta contenido del home.
   document.getElementById('tab-lista-gastos').classList.add('sample-content--hidden');
   document.getElementById('selector-mes').style.display = 'none';
-  document.getElementById('btn-logout').style.display = 'none';
+  document.getElementById('logout-sitio').style.display = 'none';
   document.getElementById('btn-add-gasto').style.display = 'none';
   document.getElementById('content-home').style.display = 'none';
   // Mostrar contenido del login

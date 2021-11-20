@@ -134,6 +134,12 @@ section {
   padding-bottom: 0;
 }
 
+.mdc-list-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
 // 6/11/2021 Sign in 
 a {
   color: #007769;
