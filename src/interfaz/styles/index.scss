@@ -260,9 +260,10 @@ input[type=text] {
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
 }
-.gdescripcion{
+#gdescripcion{
   padding: 45px 32px;
 }
+
 
 input[type=number] {
   background-color: #f6f6f6;
@@ -283,6 +284,10 @@ input[type=number] {
   transition: all 0.5s ease-in-out;
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
+}
+#gmonto{
+  padding: 15px 22px;
+  width: 45%;
 }
 input[type=label] {
   background-color: #f6f6f6;
@@ -351,6 +356,10 @@ input[type=text]:focus {
 
 input[type=text]:placeholder {
   color: #cccccc;
+}
+
+#gmoneda{
+  width: 35%;
 }
 
 
@@ -478,4 +487,11 @@ input[type=text]:placeholder {
 
 * {
   box-sizing: border-box;
+}
+
+.btn-add-gasto{
+  position: absolute!important;
+  right: 0!important;
+  bottom: 0!important;
+  
 }
