@@ -6,7 +6,6 @@ import {MDCTextField} from '@material/textfield';
 import {MDCSelect} from '@material/select';
 import {MDCSnackbar} from '@material/snackbar';
 import Sistema from '../../dominio/sistema.mjs';
-import * as moment from 'moment';
 
 window.addEventListener('load', inicio);
 const sistema = new Sistema();

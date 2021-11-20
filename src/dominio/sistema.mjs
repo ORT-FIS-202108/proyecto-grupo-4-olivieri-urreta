@@ -13,7 +13,8 @@ export default class Sistema {
    */
   constructor() {
     this.usuarios = []; // Lista de usuarios registrados.
-    this.usuarioLogueado; // Posición del usuario logeado en la lista usuarios
+    this.usuarioLogueado = -1; // Posición del usuario logeado en la lista usuarios
+    this.listaCategoriasGasto = ['paid', 'theater_comedy', 'restaurant', 'medical_services', 'handyman', 'local_grocery_store', 'commute'];
   }
   /**
   * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
@@ -101,15 +102,6 @@ export default class Sistema {
     return this.usuarios[i].password === password;
   }
   /**
-   * Recibe datos de un gasto, e invoca el método de la clase gasto para validarlos.
-   * @param {string} nombre Nombre del gasto.
-   * @param {string} monto Monto del gasto.
-   * @return {string} Retorna mensaje informando si los datos son válidos o no.
-   */
-  validarDatosGasto(nombre, monto) {
-    return Gasto.validarDatosGasto(nombre, monto);
-  }
-  /**
    * Remueve el índice del usuario logueado.
    */
   logout() {
@@ -129,9 +121,13 @@ export default class Sistema {
    */
   registrarGasto(nombre, monto, fecha, categoria, repetir) {
     let mensaje = 'No fue posible registrar el gasto';
-    if (this.usuarioLogueado != -1) {
-      mensaje = Gasto.validarDatosGasto(nombre, monto);
+    if (this.usuarioLogueado != (-1)) {
+      mensaje = Gasto.validarDatosGasto(nombre, monto, fecha);
       if (mensaje === 'Datos válidos') {
+        const cantCategorias = this.listaCategoriasGasto.length - 1;
+        if (categoria < 0 || categoria > cantCategorias) {
+          categoria = 0;
+        }
         const usuario = this.usuarios[this.usuarioLogueado];
         const idGasto = usuario.proxIdGasto;
         const gasto = new Gasto(idGasto, nombre, monto, fecha, categoria);

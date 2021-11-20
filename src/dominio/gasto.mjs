@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+import moment from 'moment';
 /**
  * Clase que maneja las funciones de los gastos.
  */
@@ -9,14 +10,18 @@ export default class Gasto {
      * @param {String} nombre Nombre que describe el gasto.
      * @param {Number} monto Importe del gasto.
      * @param {Date} fecha Fecha que se realizó el gasto.
-     * @param {Number} categoria Una de las categorías del listado de categorías de Sistema.
+     * @param {Number} categoria Indice de las categoría en el listado de categorías de Sistema.
      * @return {Gasto} Retorna el gasto creado.
      */
   constructor(idGasto, nombre, monto, fecha, categoria) {
     this.id = idGasto;
     this.nombre = nombre;
     this.monto = monto;
-    this.fecha = fecha;
+    if (moment(fecha, 'YYYY-MM-DD', true).isValid()) {
+      this.fecha = fecha;
+    } else {
+      this.fecha = new Date();
+    }
     this.categoria = categoria;
     return this;
   }
