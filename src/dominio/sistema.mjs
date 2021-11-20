@@ -13,7 +13,7 @@ export default class Sistema {
    */
   constructor() {
     this.usuarios = []; // Lista de usuarios registrados.
-    this.usuarioLogueado; // usuario logeado
+    this.usuarioLogueado; // Posición del usuario logeado en la lista usuarios
   }
   /**
   * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
@@ -101,7 +101,22 @@ export default class Sistema {
     return this.usuarios[i].password === password;
   }
   /**
-   * Registro de Gastos/Ingresos
+   * Recibe datos de un gasto, e invoca el método de la clase gasto para validarlos.
+   * @param {string} nombre Nombre del gasto.
+   * @param {string} monto Monto del gasto.
+   * @return {string} Retorna mensaje informando si los datos son válidos o no.
+   */
+  validarDatosGasto(nombre, monto) {
+    return Gasto.validarDatosGasto(nombre, monto);
+  }
+  /**
+   * Remueve el índice del usuario logueado.
+   */
+  logout() {
+    this.usuarioLogueado = -1;
+  }
+  /**
+   * Registro de Gastos
    * Recibe un importe, tipo, la fecha, categoria,
    * y si es recurrente o no. Retorna si se pudo guardar o no el registro.
    * @param {string} nombre Nombre del gasto.
@@ -109,97 +124,26 @@ export default class Sistema {
    * @param {date} fecha Fecha del registro.
    * @param {Number} categoria Enumerado con la categoría del registro.
    * @param {string} repetir Determina si el gasto es recurrente
+   * @return {string} Retorna un mensaje que informa si se registró el gasto o no.
    * y cada cuanto tiempo se repite {unico, semanal, quincenal, mensual, anual}.
    */
-  registrarGasto(nombre, moneda, monto, fecha, categoria, repetir, descripcion) {
-    // idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion
-    const idGasto = sistema.Usuario.idGasto;
-    const gasto = new Gasto(idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion);
-    this.usuarioLogueado.gastos.push(gasto);
-    if (repetir > 0) {
-      const gastoRecurrente = new Gasto(idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion);
-      this.usuarioLogueado.gastosParaRepetir.push(gastoRecurrente);
-    }
-    this.usuario.aumentarIdGasto();
-  }
-  /**
-   * Valida los datos ingresados para un gasto.
-   * @param {string} nombre Recibe el nombre.
-   * @param {Numbre} monto Recibe el monto del gasto.
-   * @return {string} Retorna el mensaje 'Datos válidos' si el monto y el nombre son válidos,
-   * y sino retorna un mensaje con error.
-   */
-  validarDatosGasto(nombre, monto) {
-    if (isNaN(monto) || monto <= 0 || nombre.length < 1) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-
-  /**
-   * Agrega a la lista de gastos a repetir un gasto, que llegada la fecha se agrega.
-   * @param {Number} idGasto Id del gasto a repetir.
-   * @param {string} repetir Frecuencia con la que se repite el gasto.
-   */
-  agregarGastoParaRepetir(idGasto, repetir) {
-    if (!this.existeGastoParaRepetir(idGasto)) {
-      const fecha = this.obtenerGastoPorId(idGasto).fecha;
-      switch (repetir) {
-        case 'semanal':
-          fecha.setDate(fecha.getDate() + 7);
-          break;
-        case 'quincenal':
-          fecha.setDate(fecha.getDate() + 15);
-          break;
-        case 'mensual':
-          if (fecha.getDate() === 31) {
-            fecha.setMonth(fecha.getMonth() + 2);
-            fecha.setDate(0);
-          } else {
-            fecha.setMonth(fecha.getMonth() + 1);
-          }
-          break;
-        case 'anual':
-          fecha.setFullYear(fecha.getFullYear() + 1);
-          break;
-      }
-      this.gastosParaRepetir.push({
-        idGasto: idGasto,
-        fecha: fecha,
-      });
-    }
-  }
-  /**
-   * Verifica si ya existe en la lista de gastos para repetir, un gasto con el mismo id.
-   * @param {Number} idGasto Id del gasto a buscar.
-   * @return {boolean} Retorna true si existe, o false si no existe el gasto en la lista gastosParaRepetir
-   */
-  existeGastoParaRepetir(idGasto) {
-    let existe = false;
-    for (let i = 0; i < this.gastosParaRepetir.length; i++) {
-      if (this.gastosParaRepetir[i].idGasto === idGasto) {
-        existe = true;
+  registrarGasto(nombre, monto, fecha, categoria, repetir) {
+    let mensaje = 'No fue posible registrar el gasto';
+    if (this.usuarioLogueado != -1) {
+      mensaje = Gasto.validarDatosGasto(nombre, monto);
+      if (mensaje === 'Datos válidos') {
+        const usuario = this.usuarios[this.usuarioLogueado];
+        const idGasto = usuario.proxIdGasto;
+        const gasto = new Gasto(idGasto, nombre, monto, fecha, categoria);
+        usuario.gastos.push(gasto);
+        mensaje = 'Gasto creado con éxito';
+        if (repetir > 0) {
+          usuario.agregarGastoParaRepetir(gasto.id, repetir);
+        }
+        usuario.aumentarProxIdGasto();
       }
     }
-    return existe;
-  }
-  /**
-   * Recibe un id de usuario y si existe ese usuario en la lista de usuario lo retorna.
-   * @param {Number} idGasto Id del usuario a buscar.
-   * @return {Usuario} Null si no se encontró el usuario o el usuario si lo encuentra.
-   */
-  obtenerGastoPorId(idGasto) {
-    let gasto = null;
-    let existe = false;
-    for (let i = 0; i < this.gastos.length && !existe; i++) {
-      if (this.gastos[i].id === idGasto) {
-        gasto = this.gastos[i];
-        existe = true;
-      }
-    }
-    return gasto;
+    return mensaje;
   }
   /**
    * Retorna una lista con los gastos registrados del usuario logueado,
@@ -209,7 +153,7 @@ export default class Sistema {
    * @return {Gasto[]} Lista de gastos para el mes indicado.
    */
   obtenerGastosDelMes(mes, año) {
-    const gastosDelUsuario = this.usuarios[this.usuarioLogueado];
+    const gastosDelUsuario = this.usuarios[this.usuarioLogueado].gastos;
     const listaGastosDelMes = [];
     for (let i = 0; i < gastosDelUsuario.length; i++) {
       const fechaUnGasto = gastosDelUsuario[i].fecha;
@@ -217,9 +161,9 @@ export default class Sistema {
         listaGastosDelMes.push(gastosDelUsuario[i]);
       }
     }
-    listaGastosDelMes.sort((a, b) => {
-      return b.fecha - a.fecha;
-    });
+    // listaGastosDelMes.sort((a, b) => {
+    //   return b.fecha - a.fecha;
+    // });
     return listaGastosDelMes;
   }
 }
