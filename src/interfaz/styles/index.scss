@@ -61,9 +61,9 @@ body {
   background-color: #00796b;
 }
 
-// .mdc-tab :hover{
-//   background-color: #004c40;
-// }
+.mdc-tab :hover{
+  background-color: #004c40;
+}
 
 section {
   text-align: center;
@@ -116,8 +116,9 @@ section {
 }
 
 .mdc-list-group {
-  width: 600px;
-  margin: auto;
+  margin: 5rem auto;
+  padding-bottom: 20rem;
+  text-align: center;
 }
 
 .mdc-list-group__subheader {
@@ -134,11 +135,11 @@ section {
   padding-bottom: 0;
 }
 
-.mdc-list-item {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-}
+// .mdc-list-item {
+//   display: flex;
+//   align-items: baseline;
+//   // justify-content: space-between;
+// }
 
 // 6/11/2021 Sign in 
 a {
@@ -511,11 +512,4 @@ input[type=text]:placeholder {
 
 * {
   box-sizing: border-box;
-}
-
-.btn-add-gasto{
-  position: absolute!important;
-  right: 0!important;
-  bottom: 0!important;
-  
 }

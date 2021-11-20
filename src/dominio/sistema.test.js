@@ -132,7 +132,7 @@ describe('Indice Usuario', () => {
 
 describe('Verificar Contraseña', () => {
   const sistema = new Sistema();
-  const usuario1 = new Usuario('test@test.com', '1234', 'pepe', 'grillo');
+  const usuario1 = sistema.registrarUsuario('test@test.com', '1234', 'pepe', 'grillo');
   sistema.agregarUsuario(usuario1);
   const usuario2 = new Usuario('test2@test.com', '12345', 'mickey', 'mouse');
   sistema.agregarUsuario(usuario2);
@@ -143,5 +143,38 @@ describe('Verificar Contraseña', () => {
   });
   test('indice y contraseña correctos', () => {
     expect(sistema.verificarPassword(0, '1234')).toBe(true);
+  });
+
+  describe('Obtener gastos para un mes elegido', () => {
+    const sistema = new Sistema();
+    sistema.registrarUsuario('minnie@moues.com', 'abcd', 'Minnie', 'Mouse');
+    sistema.loginUsuario('minnie@moues.com', 'abcd');
+    test('obtener listado para un mes sin gastos', () => {
+      sistema.registrarGasto('Prueba gasto listado 1', 1500, new Date(2021, 9, 30), 0, 0);
+      sistema.registrarGasto('Prueba gasto listado 1', 1500, new Date(2021, 11, 1), 0, 0);
+      const resultado = sistema.obtenerGastosDelMes(10, 2021);
+      expect(resultado.length).toBeLessThan(1);
+    });
+    test('obtener listado para un mes con gastos', () => {
+      sistema.registrarGasto('Prueba gasto listado 2', 2000, new Date(2021, 9, 1), 0, 0);
+      const resultado = sistema.obtenerGastosDelMes(9, 2021);
+      expect(resultado.length).toBe(2);
+    });
+  });
+
+  describe('Obtener nombre ícono', () => {
+    const sistema = new Sistema();
+    test('Posición fuera de la lista (mayor)', () => {
+      expect(sistema.obtenerNombreIcono(999)).toBe('info');
+    } );
+    test('Posición fuera de la lista (menor)', () => {
+      expect(sistema.obtenerNombreIcono(-1)).toBe('info');
+    } );
+    test('Posición válida de la lista (límite inferior)', () => {
+      expect(sistema.obtenerNombreIcono(0)).toBe('paid');
+    } );
+    test('Posición válida de la lista (límite superior)', () => {
+      expect(sistema.obtenerNombreIcono(6)).toBe('commute');
+    } );
   });
 });
