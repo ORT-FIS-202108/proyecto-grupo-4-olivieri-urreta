@@ -77,6 +77,17 @@
               </span>
               <span class="mdc-tab__ripple"></span>
             </button>
+            <button class="mdc-tab sample-content-tab" role="tab" aria-selected="false" tabindex="3"
+            id="tab-agregar-gasto">
+            <span class="mdc-tab__content">
+              <span class="mdc-tab__text-label">Agregar Gasto</span>
+            </span>
+            <span class="mdc-tab-indicator">
+              <span
+                class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+            </span>
+            <span class="mdc-tab__ripple"></span>
+          </button>
           </div>
         </div>
       </div>
@@ -84,10 +95,27 @@
   </header>
 
   <main class="mdc-top-app-bar--fixed-adjust">
-    <button class="mdc-fab md-fab-bottom-right" aria-label="add" id='btn-add-gasto'>
+    <div>
+      <button class="mdc-fab md-fab-bottom-right " role="tab" aria-selected="false" tabindex="3" aria-label="add" id='btn-add-gasto'>
       <div class="mdc-fab__ripple"></div>
       <span class="mdc-fab__icon material-icons">add</span>
+      
+      <span class="mdc-tab__content">
+        
+      </span>
+      <span class="mdc-tab-indicator">
+        <span
+          class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+      </span>
+      <span class="mdc-tab__ripple"></span>   
+
+
+
+
     </button>
+
+    </div>
+    
 
     <div id="content-login">
       <section class="content">
@@ -143,6 +171,7 @@
       </section>
     </div>
     <div id="content-home">
+      <!--Gastos del mes-->
       <section class="content sample-content--hidden">
 
         <h3><span>Total del mes: $</span><span id="suma-total-mes"></span></h3>
@@ -178,7 +207,45 @@
             </li>
           </ul>
         </div>
+      </section>
+      <!--Agregar Gasto-->
+      <section class="content sample-content--hidden">
+        <div class="wrapper fadeInDown">
+          <div id="formContent">
 
+            <!-- Login Form -->
+            <form action="#" method="get" id="fcreategasto">
+              <p>Ingrese el gasto</p>
+              <input type="text" id="gnombre" class="fadeIn second" name="new-gasto" placeholder="Nombre" required>
+              <select id="gmoneda" class="fadeIn third" name="new-gasto" required>
+                <option value="UYU">UYU</option>
+                <option value="USD">USD</option> 
+              </select>
+              <input type="number" id="gmonto" class="fadeIn third" name="new-gasto" placeholder="Gasto" min="1" required>              
+              <input type="date" id="gfecha" class="fadeIn fourth" name="new-gasto"  required>
+              <select id="categoria" class="fadeIn fourth" name="new-gasto" required>
+                <option value="Servicios">Servicios</option>
+                <option value="Salud">Salud</option>
+                <option value="Supermercados">Supermercados</option>
+                <option value="Gastronomia">Gastronomia</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Entretenimiento">Entretenimiento</option>
+                <option value="Otros">Otros</option>
+              </select>
+              <select id="recurrencia" class="fadeIn fourth" name="new-gasto" required>
+                <option value="0">No recurrente</option>
+                <option value="1">Semanal</option>
+                <option value="2">Quincenal</option>
+                <option value="3">Mensual</option>
+                <option value="4">Anual</option>  
+              </select>
+              <input type="text" id="gdescripcion" class="fadeIn fourth" name="new-gasto" placeholder="Descripción">
+
+              <input type="button" class="fadeIn five" id="gbutton" value="Confirmar">
+            </form>           
+
+
+          </div>
       </section>
     </div>
   </main>

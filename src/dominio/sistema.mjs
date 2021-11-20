@@ -13,7 +13,6 @@ export default class Sistema {
    */
   constructor() {
     this.usuarios = []; // Lista de usuarios registrados.
-    this.gastosParaRepetir = []; // Lista de gastos que se repiten en una determinada fecha.
     this.usuarioLogueado; // usuario logeado
   }
   /**
@@ -111,30 +110,34 @@ export default class Sistema {
    * @param {Number} categoria Enumerado con la categoría del registro.
    * @param {string} repetir Determina si el gasto es recurrente
    * y cada cuanto tiempo se repite {unico, semanal, quincenal, mensual, anual}.
-   * @return {string} Retorna 'Gasto guardado' si se pudo guardar,
-   * sino retorna el error evitó que se guardara el gasto.
    */
-  registrarGasto(nombre, monto, fecha, categoria, repetir) {
-    const validacionDatos = Gasto.validarDatos(nombre, monto);
-    let mensaje = 'Gasto guardado';
-    if (validacionDatos === 'Datos válidos') {
-      if (typeof fecha.getMonth != 'function') {
-        fecha = new Date();
-      }
-      if (categoria < 0 || categoria > 6) {
-        categoria = 0;
-      }
-      const gasto = new Gasto(nombre, monto, fecha, categoria, this.usuarioLogueado);
-      this.gastos.push(gasto);
-      const pattern = /^(semanal|quincenal|mensual|anual)$/;
-      if (pattern.test(repetir)) {
-        this.agregarGastoParaRepetir(gasto.id, repetir);
-      }
-    } else {
-      mensaje = validacionDatos;
+  registrarGasto(nombre, moneda, monto, fecha, categoria, repetir, descripcion) {
+    // idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion
+    const idGasto = sistema.Usuario.idGasto;
+    const gasto = new Gasto(idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion);
+    this.usuarioLogueado.gastos.push(gasto);
+    if (repetir > 0) {
+      const gastoRecurrente = new Gasto(idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion);
+      this.usuarioLogueado.gastosParaRepetir.push(gastoRecurrente);
     }
-    return mensaje;
+    this.usuario.aumentarIdGasto();
   }
+  /**
+   * Valida los datos ingresados para un gasto.
+   * @param {string} nombre Recibe el nombre.
+   * @param {Numbre} monto Recibe el monto del gasto.
+   * @return {string} Retorna el mensaje 'Datos válidos' si el monto y el nombre son válidos,
+   * y sino retorna un mensaje con error.
+   */
+  validarDatosGasto(nombre, monto) {
+    if (isNaN(monto) || monto <= 0 || nombre.length < 1) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+
   /**
    * Agrega a la lista de gastos a repetir un gasto, que llegada la fecha se agrega.
    * @param {Number} idGasto Id del gasto a repetir.

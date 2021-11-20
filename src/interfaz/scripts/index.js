@@ -1,28 +1,29 @@
 /* eslint-disable max-len */
-import {MDCRipple} from '@material/ripple';
-import {MDCTopAppBar} from '@material/top-app-bar';
-import {MDCTabBar} from '@material/tab-bar';
-import {MDCTextField} from '@material/textfield';
-import {MDCSelect} from '@material/select';
-import {MDCSnackbar} from '@material/snackbar';
+import { MDCRipple } from '@material/ripple';
+import { MDCTopAppBar } from '@material/top-app-bar';
+import { MDCTabBar } from '@material/tab-bar';
+import { MDCTextField } from '@material/textfield';
+import { MDCSelect } from '@material/select';
+import { MDCSnackbar } from '@material/snackbar';
 import Sistema from '../../dominio/sistema.mjs';
+import * as moment from 'moment';
 
 window.addEventListener('load', inicio);
 const sistema = new Sistema();
 const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
 // Usuarios hardcodeados
 const usuario1 = sistema.registrarUsuario(
-    'test@test.com',
-    '1234',
-    'pepe',
-    'grillo',
+  'test@test.com',
+  '1234',
+  'pepe',
+  'grillo',
 );
 sistema.agregarUsuario(usuario1);
 const usuario2 = sistema.registrarUsuario(
-    'test2@test.com',
-    '1234',
-    'mickey',
-    'mouse',
+  'test2@test.com',
+  '1234',
+  'mickey',
+  'mouse',
 );
 sistema.agregarUsuario(usuario2);
 // Mes y año actual
@@ -56,6 +57,7 @@ function inicio() {
   document.getElementById('btn-logout').addEventListener('click', logout);
   document.getElementById('mes-anterior').addEventListener('click', cargarMesAnterior);
   document.getElementById('mes-siguiente').addEventListener('click', cargarMesSiguiente);
+  document.getElementById('gbutton').addEventListener('click', agregarGasto);
 }
 /**
  * Muestra las secciones para iniciar sesión y registrar usuario.
@@ -195,15 +197,33 @@ document.getElementById('suma-total-mes').innerText = '1.234';
  * y oculta el contenido del resto de las tabs.
  */
 // function mostrarContentTabActiva() {
-  // const topAppBarElement = document.querySelector('.mdc-top-app-bar');
-  // const topAppBar = new MDCTopAppBar(topAppBarElement);
-  tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
-    document.querySelectorAll('.content').forEach((element, index) => {
-      if (index === activatedEvent.detail.index) {
-        element.classList.remove('sample-content--hidden');
-      } else {
-        element.classList.add('sample-content--hidden');
-      }
-    });
+// const topAppBarElement = document.querySelector('.mdc-top-app-bar');
+// const topAppBar = new MDCTopAppBar(topAppBarElement);
+tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
+  document.querySelectorAll('.content').forEach((element, index) => {
+    if (index === activatedEvent.detail.index) {
+      element.classList.remove('sample-content--hidden');
+    } else {
+      element.classList.add('sample-content--hidden');
+    }
   });
+});
 // }
+
+/**
+ * Agrega gasto
+ */
+function agregarGasto() {
+  if (fcreategasto.reportValidity()) {
+    let mensaje;
+    const nombre = document.getElementById('gnombre').value;
+    const monto = document.getElementById('gmonto').value;
+    const fecha = document.getElementById('gfecha').value;
+    const categoria = document.getElementById('categoria').value;
+    if (moment(document.getElementById('gfecha').value, 'YYYY-MM-DD', true).isValid() && sistema.validarDatosGasto(nombre, monto)) {
+      sistema.registrarGasto(nombre, monto, fecha, categoria);
+      alert('Se registro el gasto');
+    }
+  }
+}
+

@@ -11,11 +11,13 @@ export default class Usuario {
    * @return {Usuario} Retorna el usuario creado.
    */
   constructor(email, password, nombre, apellido) {
+    this.idGasto = 1;
     this.email = email;
     this.password = password;
     this.nombre = nombre;
     this.apellido = apellido;
     this.gastos = [];
+    this.gastosParaRepetir = []; // Lista de gastos recurrentes.
     return this;
   }
   /**
@@ -34,5 +36,12 @@ export default class Usuario {
       mensaje = 'El formato del password ingresado no es válido.';
     }
     return mensaje;
+  }
+
+  /**
+  * Aumentar el idGasto.
+  */
+  aumentarIdGasto() {
+    this.idGasto = idGasto++;
   }
 }
