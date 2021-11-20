@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
-import { MDCRipple } from '@material/ripple';
-import { MDCTopAppBar } from '@material/top-app-bar';
-import { MDCTabBar } from '@material/tab-bar';
-import { MDCTextField } from '@material/textfield';
-import { MDCSelect } from '@material/select';
-import { MDCSnackbar } from '@material/snackbar';
+import {MDCRipple} from '@material/ripple';
+import {MDCTopAppBar} from '@material/top-app-bar';
+import {MDCTabBar} from '@material/tab-bar';
+import {MDCTextField} from '@material/textfield';
+import {MDCSelect} from '@material/select';
+import {MDCSnackbar} from '@material/snackbar';
 import Sistema from '../../dominio/sistema.mjs';
 import * as moment from 'moment';
 
@@ -13,17 +13,17 @@ const sistema = new Sistema();
 const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
 // Usuarios hardcodeados
 const usuario1 = sistema.registrarUsuario(
-  'test@test.com',
-  '1234',
-  'pepe',
-  'grillo',
+    'test@test.com',
+    '1234',
+    'pepe',
+    'grillo',
 );
 sistema.agregarUsuario(usuario1);
 const usuario2 = sistema.registrarUsuario(
-  'test2@test.com',
-  '1234',
-  'mickey',
-  'mouse',
+    'test2@test.com',
+    '1234',
+    'mickey',
+    'mouse',
 );
 sistema.agregarUsuario(usuario2);
 

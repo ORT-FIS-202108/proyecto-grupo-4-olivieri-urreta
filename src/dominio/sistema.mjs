@@ -123,4 +123,7 @@ export default class Sistema {
     }
     this.usuario.aumentarIdGasto();
   }
+  // obtenerGastosDelMes(mesSeleccionado, añoSeleccionado){
+
+  // }
 }
