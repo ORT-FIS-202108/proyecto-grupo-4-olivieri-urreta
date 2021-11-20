@@ -15,6 +15,7 @@ export default class Sistema {
     this.usuarios = []; // Lista de usuarios registrados.
     this.gastosParaRepetir = []; // Lista de gastos que se repiten en una determinada fecha.
     this.usuarioLogueado; // Posición del usuario logeado en la lista de usuarios.
+    this.categoriasGasto = []; // Listado de categorías de gastos con el nombre del ícono.
   }
   /**
   * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
