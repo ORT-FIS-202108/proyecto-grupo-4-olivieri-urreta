@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+import moment from 'moment';
 /**
  * Clase que maneja las funciones de los gastos.
  */
@@ -16,7 +17,11 @@ export default class Gasto {
     this.id = idGasto;
     this.nombre = nombre;
     this.monto = monto;
-    this.fecha = fecha;
+    if (moment(fecha, 'YYYY-MM-DD', true).isValid()) {
+      this.fecha = fecha;
+    } else {
+      this.fecha = new Date();
+    }
     this.categoria = categoria;
     return this;
   }

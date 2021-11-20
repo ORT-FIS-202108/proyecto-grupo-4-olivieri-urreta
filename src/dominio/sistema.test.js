@@ -27,46 +27,45 @@ describe('Pruebas registro de usuario', () => {
 describe('Pruebas registrar gasto', () => {
   const sistema = new Sistema();
   sistema.registrarUsuario('minnie@moues.com', 'abcd', 'Minnie', 'Mouse');
+  const usuario = sistema.usuarios[sistema.usuarios.length - 1];
+  sistema.usuarioLogueado = -1;
   test('registro sin usuario logueado', () => {
-    const resRegistro = sistema.registrarGasto('gasto prueba', 200, new Date(), 0, 'unico');
-    expect(resRegistro).toBe('No fue posible registrar el gasto');
+    const resultadoRegistro = sistema.registrarGasto('Prueba Reg. 1', 200, new Date(), 0, 0);
+    expect(resultadoRegistro).toBe('No fue posible registrar el gasto');
   });
   sistema.loginUsuario('minnie@moues.com', 'abcd');
   test('registro sin nombre', () => {
-    const res = sistema.registrarGasto('', 150, '20/06/2021', 0, 1, 'unico');
-    expect(res).not.toBe('Gasto guardado');
+    const resultadoRegistro = sistema.registrarGasto('', 150, new Date(), 1, 0);
+    expect(resultadoRegistro).toBe('El nombre ingresado no es válido');
   });
   test('registro con monto NaN', () => {
-    const res = sistema.registrarGasto('gasto prueba', 'x', '20/06/2021', 0, 1, 'unico');
-    expect(res).toBe('El monto ingresado no es válido. Ingrese un número mayor que 0.');
+    const resultadoRegistro = sistema.registrarGasto('Prueba Reg. 3', 'abc', new Date(), 2, 0);
+    expect(resultadoRegistro).toBe('El monto ingresado no es válido');
   });
   test('registro sin fecha', () => {
-    const res = sistema.registrarGasto('gasto prueba', 200, '', 0, 1, 'unico');
-    const gasto = sistema.gastos[sistema.gastos.length - 1];
+    const resultadoRegistro = sistema.registrarGasto('Prueba Reg. 4', 250, '', 4, 0);
+    const gasto = usuario.gastos[usuario.gastos.length - 1];
     const today = (new Date()).setHours(0, 0, 0, 0);
-    expect(res).toBe('Gasto guardado');
+    expect(resultadoRegistro).toBe('Gasto creado con éxito');
     expect(gasto.fecha.setHours(0, 0, 0, 0)).toBe(today);
   });
-  test('registro con categoría inválida', () => {
-    const res = sistema.registrarGasto('gasto prueba', 200, '20/06/2021', 999, 1, 'unico');
-    expect(res).toBe('Gasto guardado');
+  test('registro con categoría inválida (mayor)', () => {
+    const resultadoRegistro = sistema.registrarGasto('Prueba Reg. 5', 'abc', '', 999, 0);
+    expect(resultadoRegistro).toBe('No fue posible registrar el gasto');
+  });
+  test('registro con categoría inválida (menor)', () => {
+    const resultadoRegistro = sistema.registrarGasto('Prueba Reg. 6', 'abc', '', -111, 0);
+    expect(resultadoRegistro).toBe('No fue posible registrar el gasto');
   });
   test('registro con repetir válido', () => {
-    const res = sistema.registrarGasto('gasto prueba', 200, '20/06/2021', 0, 'mensual');
-    const gastoParaRepetir = sistema.gastosParaRepetir[sistema.gastosParaRepetir.length - 1];
-    const gasto = sistema.gastos[sistema.gastos.length - 1];
-    expect(res).toBe('Gasto guardado');
+    sistema.registrarGasto('Prueba Reg. 7', 200, new Date(), 0, 1);
+    const gastoParaRepetir = usuario.[usuario.gastosParaRepetir.length - 1];
+    const gasto = usuario.gastos[usuario.gastos.length - 1];
     expect(gastoParaRepetir.idGasto).toBe(gasto.id);
   });
-  test('registro con reperir inválido', () => {
-    const res = sistema.registrarGasto('gasto prueba', 200, '20/06/2021', 0, 1, 'abc');
-    const gasto = sistema.gastos[sistema.gastos.length - 1];
-    expect(res).toBe('Gasto guardado');
-    expect(sistema.existeGastoParaRepetir(gasto.id)).toBe(false);
-  });
   test('registro válido', () => {
-    const res = sistema.registrarGasto('gasto prueba', 200, '20/06/2021', 0, 1, 'unico');
-    expect(res).toBe('Gasto guardado');
+    const resultadoRegistro = sistema.registrarGasto('Prueba Reg. 8', 200, new Date(), 0, 1);
+    expect(resultadoRegistro).toBe('Gasto creado con éxito');
   });
 });
 

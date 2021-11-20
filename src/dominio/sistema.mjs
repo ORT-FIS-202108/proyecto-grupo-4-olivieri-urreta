@@ -121,8 +121,9 @@ export default class Sistema {
    */
   registrarGasto(nombre, monto, fecha, categoria, repetir) {
     let mensaje = 'No fue posible registrar el gasto';
-    if (this.usuarioLogueado != -1) {
-      mensaje = Gasto.validarDatosGasto(nombre, monto);
+    const cantCategorias = this.listaCategoriasGasto.length - 1;
+    if (this.usuarioLogueado != -1 && categoria > 0 && categoria < cantCategorias) {
+      mensaje = Gasto.validarDatosGasto(nombre, monto, fecha);
       if (mensaje === 'Datos válidos') {
         const usuario = this.usuarios[this.usuarioLogueado];
         const idGasto = usuario.proxIdGasto;
