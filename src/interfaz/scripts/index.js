@@ -156,23 +156,20 @@ document.getElementById('suma-total-mes').innerText = '1.234';
    });
  });
 
- /*
- Agrega gasto
- */
-
- function agregarGasto(){
+/**
+  * Agrega gasto
+  */
+function agregarGasto() {
   if (fcreategasto.reportValidity()) {
     let mensaje;
     const nombre = document.getElementById('gnombre').value;
     const monto = document.getElementById('gmonto').value;
     const fecha = document.getElementById('gfecha').value;
-    const categoria = document.getElementById('categoria').value;   
-    if(moment(document.getElementById('gfecha').value, 'YYYY-MM-DD', true).isValid() && sistema.validarDatos(nombre,monto)){
-      sistema.registrarGasto(nombre,monto,fecha,categoria);
+    const categoria = document.getElementById('categoria').value;
+    const repetir = document.getElementById('recurrenciaGasto').value;
+    if (moment(document.getElementById('gfecha').value, 'YYYY-MM-DD', true).isValid() && sistema.validarDatos(nombre, monto)) {
+      sistema.registrarGasto(nombre, monto, fecha, categoria, repetir);
       alert('Se registro el gasto');
     }
-
-    
   }
 }
- 

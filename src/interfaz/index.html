@@ -215,30 +215,30 @@
             <form action="#" method="get" id="fcreategasto">
               <p>Ingrese el gasto</p>
               <input type="text" id="gnombre" class="fadeIn second" name="new-gasto" placeholder="Nombre" required>
-              <select id="gmoneda" class="fadeIn third" name="new-gasto" required>
-                <option value="UYU">UYU</option>
-                <option value="USD">USD</option> 
-              </select>
-              <input type="number" id="gmonto" class="fadeIn third" name="new-gasto" placeholder="Gasto" min="1" required>              
-              <input type="date" id="gfecha" class="fadeIn fourth" name="new-gasto"  required>
-              <select id="categoria" class="fadeIn fourth" name="new-gasto" required>
-                <option value="Servicios">Servicios</option>
-                <option value="Salud">Salud</option>
-                <option value="Supermercados">Supermercados</option>
-                <option value="Gastronomia">Gastronomia</option>
-                <option value="Transporte">Transporte</option>
-                <option value="Entretenimiento">Entretenimiento</option>
-                <option value="Otros">Otros</option>
-              </select>
-              <select id="recurrencia" class="fadeIn fourth" name="new-gasto" required>
-                <option value="0">No recurrente</option>
-                <option value="1">Semanal</option>
-                <option value="2">Quincenal</option>
-                <option value="3">Mensual</option>
-                <option value="4">Anual</option>  
-              </select>
-              <input type="text" id="gdescripcion" class="fadeIn fourth" name="new-gasto" placeholder="Descripción">
-
+              <input type="number" id="gmonto" class="fadeIn third" name="new-gasto" placeholder="Monto" min="1" required>              
+              <input type="date" id="gfecha" class="fadeIn fourth" name="new-gasto"  placeholder="Fecha" required>
+              <div class="select-con-label">
+                <span id="lblCategoria">Categoría:</span>
+                <select id="cbxCategoria" class="fadeIn fourth" name="new-gasto" required>
+                  <option value="Otros">Otros</option>
+                  <option value="Entretenimiento">Entretenimiento</option>
+                  <option value="Gastronomia">Gastronomia</option>
+                  <option value="Salud">Salud</option>
+                  <option value="Servicios">Servicios</option>
+                  <option value="Supermercados">Supermercados</option>
+                  <option value="Transporte">Transporte</option>
+                </select>
+              </div>
+              <div class="select-con-label">
+                <span id="lblRecurrenciaGasto">Repetir:</span>
+                <select id="cbxRecurrenciaGasto" class="fadeIn fourth" name="new-gasto" required>
+                  <option value="0">Nunca</option>
+                  <option value="1">Semanal</option>
+                  <option value="2">Quincenal</option>
+                  <option value="3">Mensual</option>
+                  <option value="4">Anual</option>  
+                </select>
+              </div>
               <input type="button" class="fadeIn five" id="gbutton" value="Confirmar">
             </form>           
 

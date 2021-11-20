@@ -12,10 +12,8 @@ export default class Sistema {
    * Constructor de la clase Sistema.
    */
   constructor() {
-    this.usuarios = []; // Lista de usuarios registrados.    
+    this.usuarios = []; // Lista de usuarios registrados.
     this.usuarioLogueado; // usuario logeado
-
-
   }
   /**
    * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
@@ -113,83 +111,16 @@ export default class Sistema {
    * @param {string} repetir Determina si el gasto es recurrente
    * y cada cuanto tiempo se repite {unico, semanal, quincenal, mensual, anual}..
    */
-  registrarGasto(nombre, moneda, monto, fecha, categoria, repetir, descripcion) {
-    //idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion
-    let idGasto = sistema.Usuario.idGasto;
-    const gasto = new Gasto(idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion);
-    this.usuarioLogueado.gastos.push(gasto);
+  registrarGasto(nombre, monto, fecha, categoria, repetir) {
+    const usuario = this.usuarios[this.usuarioLogueado];
+    const idGasto = usuario.proxIdGasto;
+    const gasto = new Gasto(idGasto, nombre, monto, fecha, categoria);
+    usuario.gastos.push(gasto);
     if (repetir > 0) {
       // const gastoRecurrente = new Gasto(idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion);
+      usuario.agregarGastoParaRepetir(gasto);
       this.usuarioLogueado.gastosParaRepetir.push(gastoRecurrente);
     }
     this.usuario.aumentarIdGasto();
-    
   }
-
-  /**
-   * Agrega a la lista de gastos a repetir un gasto, que llegada la fecha se agrega.
-   * @param {Number} idGasto Id del gasto a repetir.
-   * @param {string} repetir Frecuencia con la que se repite el gasto.
-   */
-  agregarGastoParaRepetir(idGasto, repetir) {
-    if (!this.existeGastoParaRepetir(idGasto)) {
-      const fecha = this.obtenerGastoPorId(idGasto).fecha;
-      switch (repetir) {
-        case 'semanal':
-          fecha.setDate(fecha.getDate() + 7);
-          break;
-        case 'quincenal':
-          fecha.setDate(fecha.getDate() + 15);
-          break;
-        case 'mensual':
-          if (fecha.getDate() === 31) {
-            fecha.setMonth(fecha.getMonth() + 2);
-            fecha.setDate(0);
-          } else {
-            fecha.setMonth(fecha.getMonth() + 1);
-          }
-          break;
-        case 'anual':
-          fecha.setFullYear(fecha.getFullYear() + 1);
-          break;
-      }
-      this.gastosParaRepetir.push({
-        idGasto: idGasto,
-        fecha: fecha,
-      });
-    }
-  }
-  /**
-   * Verifica si ya existe en la lista de gastos para repetir, un gasto con el mismo id.
-   * @param {Number} idGasto Id del gasto a buscar.
-   * @return {boolean} Retorna true si existe, o false si no existe el gasto en la lista gastosParaRepetir
-   */
-  existeGastoParaRepetir(idGasto) {
-    let existe = false;
-    for (let i = 0; i < this.gastosParaRepetir.length; i++) {
-      if (this.gastosParaRepetir[i].idGasto === idGasto) {
-        existe = true;
-      }
-    }
-    return existe;
-  }
-  /**
-   * Recibe un id de usuario y si existe ese usuario en la lista de usuario lo retorna.
-   * @param {Number} idGasto Id del usuario a buscar.
-   * @return {Usuario} Null si no se encontró el usuario o el usuario si lo encuentra.
-   */
-  obtenerGastoPorId(idGasto) {
-    let gasto = null;
-    let existe = false;
-    for (let i = 0; i < this.gastos.length && !existe; i++) {
-      if (this.gastos[i].id === idGasto) {
-        gasto = this.gastos[i];
-        existe = true;
-      }
-    }
-    return gasto;
-  }
-
-
-
 }
