@@ -118,28 +118,13 @@ export default class Sistema {
     let idGasto = sistema.Usuario.idGasto;
     const gasto = new Gasto(idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion);
     this.usuarioLogueado.gastos.push(gasto);
-    if(repetir>0){
-      const gastoRecurrente = new Gasto(idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion);
+    if (repetir > 0) {
+      // const gastoRecurrente = new Gasto(idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion);
       this.usuarioLogueado.gastosParaRepetir.push(gastoRecurrente);
     }
     this.usuario.aumentarIdGasto();
     
   }
-  /**
-   * Valida los datos ingresados para un gasto.
-   * @param {string} nombre Recibe el nombre.
-   * @param {Numbre} monto Recibe el monto del gasto.
-   * @return {string} Retorna el mensaje 'Datos válidos' si el monto y el nombre son válidos,
-   * y sino retorna un mensaje con error.
-   */
-  validarDatos(nombre, monto) {
-    if (isNaN(monto) || monto <= 0 || nombre.length < 1) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
 
   /**
    * Agrega a la lista de gastos a repetir un gasto, que llegada la fecha se agrega.
