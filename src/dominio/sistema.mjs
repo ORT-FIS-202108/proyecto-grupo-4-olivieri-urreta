@@ -157,9 +157,17 @@ export default class Sistema {
         listaGastosDelMes.push(gastosDelUsuario[i]);
       }
     }
-    // listaGastosDelMes.sort((a, b) => {
-    //   return b.fecha - a.fecha;
-    // });
+    listaGastosDelMes.sort((a, b) => {
+      return b.fecha - a.fecha;
+    });
     return listaGastosDelMes;
+  }
+  /**
+   * Recibe un número de categoría y devuelve el nombre del ícono para esa categoría.
+   * @param {Number} posCategoria Posición de la categoría a obtener
+   * @return {string} Nombre del ícono de material.
+   */
+  obtenerNombreIcono(posCategoria) {
+    return this.listaCategoriasGasto[posCategoria];
   }
 }

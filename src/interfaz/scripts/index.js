@@ -62,7 +62,6 @@ function inicio() {
  */
 function mostrarInterfazLogin() {
   tabBar.activateTab(0);
-  // cargarGastosMes(mesSeleccionado, añoSeleccionado);
   document.getElementById('tab-iniciar-sesion').classList.remove('sample-content--hidden');
   document.getElementById('tab-crear-usuario').classList.remove('sample-content--hidden');
   document.getElementById('tab-lista-gastos').classList.add('sample-content--hidden');
@@ -77,6 +76,8 @@ function mostrarInterfazLogin() {
  */
 function mostrarInterfazHome() {
   cargarMesActual();
+  // cargarGastosMes(mesSeleccionado, añoSeleccionado);
+  // alert('se tranco');
   tabBar.activateTab(2);
   document.getElementById('tab-iniciar-sesion').classList.add('sample-content--hidden');
   document.getElementById('tab-crear-usuario').classList.add('sample-content--hidden');
@@ -92,9 +93,7 @@ function mostrarInterfazHome() {
  * sino recibe un error.
  */
 function login() {
-  // sistema.registrarGasto('gasto prueba 1', 333, new Date(), 0, '');
-  // sistema.registrarGasto('gasto prueba 2', 1999, new Date(), 0, '');
-  // sistema.registrarGasto('gasto prueba 5', 38400, new Date(), 0, '');
+  // funciones de login
   const usuario = document.getElementById('luser').value;
   const password = document.getElementById('lpassword').value;
   let mensaje;
@@ -105,6 +104,14 @@ function login() {
   }
   // alert(mensaje);
   if (mensaje === '¡Bienvenido!') {
+    // Gastos hardocdeados
+    sistema.registrarGasto('Prueba Reg. 8', 200, new Date(), 0, 0);
+    sistema.registrarGasto('Prueba Reg. 8', 200, new Date(2021, 10, 11), 0, 0);
+    sistema.registrarGasto('Prueba Reg. 8', 200, new Date(2021, 10, 1), 1, 0);
+    sistema.registrarGasto('Prueba Reg. 8', 1100, new Date(2021, 10, 4), 2, 0);
+    sistema.registrarGasto('Prueba Reg. 8', 200, new Date(2021, 10, 30), 3, 0);
+    sistema.registrarGasto('Prueba Reg. 8', 300, new Date(2021, 10, 30), 4, 0);
+    sistema.registrarGasto('Prueba Reg. 8', 200, new Date(2021, 10, 30), 0, 0);
     mostrarInterfazHome();
   }
 }
@@ -189,7 +196,7 @@ function cargarMesSiguiente() {
  */
 function cargarGastosMes(mesSeleccionado, añoSeleccionado) {
   const listaGastosDelMes = sistema.obtenerGastosDelMes(mesSeleccionado, añoSeleccionado);
-  if (listaGastosDelMes.length != 0) {
+  if (listaGastosDelMes.length > 0) {
     cargarListadoGastosMes(listaGastosDelMes);
     document.getElementById('listadoGastosVacio').style.display = 'none';
     document.getElementById('listadoGastosMes').style.display = 'inline';
@@ -233,7 +240,7 @@ function cargarListadoGastosMes(listado) {
         nodoPadreListItems = agregarSubheaderListaGastos(nodoListado, elementoSubheader, texto);
       }
       // Crea un list item y lo agrega al nodo padre de la lista (ul).
-      crearListItem(nodoPadreListItems, icono, nombreGasto, montoGasto);
+      crearListItem(nodoPadreListItems, gasto.categoria, gasto.nombre, gasto.monto);
       // Suma al monto total del mes el monto del gasto que agregó.
       totalMes = totalMes + gasto.monto;
     });
@@ -265,19 +272,19 @@ function agregarSubheaderListaGastos(nodoListado, elementoSubheader, texto) {
 /**
  * Crea un li con los datos de un gasto y lo agrega a la lista.
  * @param {HTMLElement} nodoPadre Nodo al que se agrega el li como hijo.
- * @param {string} icono Nombre del ícono de material design.
- * @param {string} nombreGasto Nombre del gasto.
- * @param {Number} montoGasto Monto del gasto.
+ * @param {string} categoria Nombre del ícono de material design.
+ * @param {string} nombre Nombre del gasto.
+ * @param {Number} monto Monto del gasto.
  */
-function crearListItem(nodoPadre, icono, nombreGasto, montoGasto) {
+function crearListItem(nodoPadre, categoria, nombre, monto) {
   // Crea los li para cada día, con sus detalles (nombre, monto, ícono).
   const lineaDelDia = document.createElement('li');
   lineaDelDia.classList.add('mdc-list-item');
   // Crea span para el ícono y lo agrega al padre.
   const spanIcono = document.createElement('span');
-  spanIcono.classList.add('material-icons mdc-list--icon-list');
+  spanIcono.classList.add('material-icons', 'mdc-list--icon-list');
   // spanIcono.innerText = sistema.obtenerIconoCategoria(gasto.categoria);
-  spanIcono.innerText = icono;
+  spanIcono.innerText = sistema.obtenerNombreIcono(categoria);
   lineaDelDia.appendChild(spanIcono);
   // Crea span para el efecto ripple y lo agrega al padre.
   const spanRipple = document.createElement('span');
@@ -286,18 +293,15 @@ function crearListItem(nodoPadre, icono, nombreGasto, montoGasto) {
   // Crea span para el nombre del gasto y lo agrega al padre.
   const spanNombreGasto = document.createElement('span');
   spanNombreGasto.classList.add('mdc-list-item__text');
-  spanNombreGasto.innerText = nombreGasto;
+  spanNombreGasto.innerText = nombre;
   lineaDelDia.appendChild(spanNombreGasto);
   // Crea span para el monto del gasto y lo agrega al padre.
   const spanMonto = document.createElement('span');
   spanMonto.classList.add('mdc-list-item__meta');
-  spanMonto.innerText = montoGasto;
+  spanMonto.innerText = monto;
   lineaDelDia.appendChild(spanMonto);
   nodoPadre.appendChild(lineaDelDia);
 }
-
-document.getElementById('suma-total-mes').innerText = '1.234';
-
 /**
  * Muestra el contenido de la tab activa
  * y oculta el contenido del resto de las tabs.
@@ -314,25 +318,17 @@ tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
     }
   });
 });
-// }
-
 /**
   * Agrega gasto
   */
 function agregarGasto() {
   if (fcreategasto.reportValidity()) {
-    // let mensaje;
     const nombre = document.getElementById('gnombre').value;
     const monto = document.getElementById('gmonto').value;
     const fecha = document.getElementById('gfecha').value;
     const categoria = document.getElementById('cbxCategoria').value;
     const repetir = document.getElementById('cbxRecurrenciaGasto').value;
-    if (moment(document.getElementById('gfecha').value, 'YYYY-MM-DD', true).isValid()) {
-      // if (sistema.validarDatosGasto(nombre, monto)) {
-      const msj = sistema.registrarGasto(nombre, monto, fecha, categoria, repetir);
-      alert(msj);
-    } else {
-      alert('no se registro');
-    }
+    const respuesta = sistema.registrarGasto(nombre, monto, fecha, categoria, repetir);
+    alert(respuesta);
   }
 }
