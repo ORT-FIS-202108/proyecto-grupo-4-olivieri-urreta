@@ -13,7 +13,8 @@ export default class Sistema {
    */
   constructor() {
     this.usuarios = []; // Lista de usuarios registrados.
-    this.usuarioLogueado; // Posición del usuario logeado en la lista usuarios
+    this.usuarioLogueado = -1; // Posición del usuario logeado en la lista usuarios
+    this.listaCategoriasGasto = ['paid', 'theater_comedy', 'restaurant', 'medical_services', 'handyman', 'local_grocery_store', 'commute'];
   }
   /**
   * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
@@ -99,15 +100,6 @@ export default class Sistema {
    */
   verificarPassword(i, password) {
     return this.usuarios[i].password === password;
-  }
-  /**
-   * Recibe datos de un gasto, e invoca el método de la clase gasto para validarlos.
-   * @param {string} nombre Nombre del gasto.
-   * @param {string} monto Monto del gasto.
-   * @return {string} Retorna mensaje informando si los datos son válidos o no.
-   */
-  validarDatosGasto(nombre, monto) {
-    return Gasto.validarDatosGasto(nombre, monto);
   }
   /**
    * Remueve el índice del usuario logueado.

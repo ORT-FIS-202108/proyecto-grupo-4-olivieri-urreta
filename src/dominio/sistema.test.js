@@ -26,11 +26,12 @@ describe('Pruebas registro de usuario', () => {
 
 describe('Pruebas registrar gasto', () => {
   const sistema = new Sistema();
-  sistema.usuarios.push(new Usuario('usr@test.com', 'pswd'));
-  test('registro sin datos', () => {
-    const res = sistema.registrarGasto('', '', '', '', '', '');
-    expect(res).not.toBe('Gasto guardado');
+  sistema.registrarUsuario('minnie@moues.com', 'abcd', 'Minnie', 'Mouse');
+  test('registro sin usuario logueado', () => {
+    const resRegistro = sistema.registrarGasto('gasto prueba', 200, new Date(), 0, 'unico');
+    expect(resRegistro).toBe('No fue posible registrar el gasto');
   });
+  sistema.loginUsuario('minnie@moues.com', 'abcd');
   test('registro sin nombre', () => {
     const res = sistema.registrarGasto('', 150, '20/06/2021', 0, 1, 'unico');
     expect(res).not.toBe('Gasto guardado');
