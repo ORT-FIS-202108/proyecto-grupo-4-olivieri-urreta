@@ -26,9 +26,10 @@ const usuario2 = sistema.registrarUsuario(
   'mouse',
 );
 sistema.agregarUsuario(usuario2);
+
 // Mes y año actual
-let mmSeleccionado = (new Date()).getMonth();
-let yySeleccionado = (new Date()).getFullYear();
+let mesSeleccionado = (new Date()).getMonth();
+let añoSeleccionado = (new Date()).getFullYear();
 // Listado de meses para mostrar por UI.
 const nombresMes = [
   'Enero',
@@ -53,7 +54,7 @@ function inicio() {
   mostrarInterfazLogin();
   document.getElementById('lbutton').addEventListener('click', login);
   document.getElementById('cbutton').addEventListener('click', crearUsuario);
-  document.getElementById('mes-seleccionado').innerText = nombresMes[mmSeleccionado] + ' ' + yySeleccionado;
+  document.getElementById('mes-seleccionado').innerText = nombresMes[mesSeleccionado] + ' ' + añoSeleccionado;
   document.getElementById('btn-logout').addEventListener('click', logout);
   document.getElementById('mes-anterior').addEventListener('click', cargarMesAnterior);
   document.getElementById('mes-siguiente').addEventListener('click', cargarMesSiguiente);
@@ -96,6 +97,9 @@ function mostrarInterfazHome() {
  * sino recibe un error.
  */
 function login() {
+  // sistema.registrarGasto('gasto prueba 1', 333, new Date(), 0, '');
+  // sistema.registrarGasto('gasto prueba 2', 1999, new Date(), 0, '');
+  // sistema.registrarGasto('gasto prueba 5', 38400, new Date(), 0, '');
   const usuario = document.getElementById('luser').value;
   const password = document.getElementById('lpassword').value;
   let mensaje;
@@ -142,9 +146,9 @@ function logout() {
   // Actualiza el id del usuario logueado
   sistema.usuarioLogueado = 0;
   // Oculta contenido del home.
-  document.getElementById('tab-lista-gastos').style.display = 'none';
+  document.getElementById('tab-lista-gastos').classList.add('sample-content--hidden');
   document.getElementById('selector-mes').style.display = 'none';
-  document.getElementById('btn-logout').style.display = 'none';
+  document.getElementById('logout-sitio').style.display = 'none';
   document.getElementById('btn-add-gasto').style.display = 'none';
   document.getElementById('content-home').style.display = 'none';
   // Mostrar contenido del login
@@ -157,39 +161,149 @@ function logout() {
  * Carga la información para el mes anterior al actualmente seleccionado.
  */
 function cargarMesActual() {
-  mmSeleccionado = (new Date()).getMonth();
-  yySeleccionado = (new Date()).getFullYear();
-  document.getElementById('mes-seleccionado').innerText = nombresMes[mmSeleccionado] + ' ' + yySeleccionado;
+  mesSeleccionado = (new Date()).getMonth();
+  añoSeleccionado = (new Date()).getFullYear();
+  document.getElementById('mes-seleccionado').innerText = nombresMes[mesSeleccionado] + ' ' + añoSeleccionado;
+  cargarGastosMes();
 }
 /**
  * Carga la información para el mes anterior al actualmente seleccionado.
  */
 function cargarMesAnterior() {
-  if (mmSeleccionado === 0) {
-    mmSeleccionado = 11;
-    yySeleccionado--;
+  if (mesSeleccionado === 0) {
+    mesSeleccionado = 11;
+    añoSeleccionado--;
   } else {
-    mmSeleccionado--;
+    mesSeleccionado--;
   }
-  document.getElementById('mes-seleccionado').innerText = nombresMes[mmSeleccionado] + ' ' + yySeleccionado;
+  document.getElementById('mes-seleccionado').innerText = nombresMes[mesSeleccionado] + ' ' + añoSeleccionado;
+  cargarGastosMes();
 }
 /**
  * Carga la información para el mes siguiente al actualmente seleccionado.
  */
 function cargarMesSiguiente() {
-  if (mmSeleccionado === 11) {
-    mmSeleccionado = 0;
-    yySeleccionado++;
+  if (mesSeleccionado === 11) {
+    mesSeleccionado = 0;
+    añoSeleccionado++;
   } else {
-    mmSeleccionado++;
+    mesSeleccionado++;
   }
-  document.getElementById('mes-seleccionado').innerText = nombresMes[mmSeleccionado] + ' ' + yySeleccionado;
+  document.getElementById('mes-seleccionado').innerText = nombresMes[mesSeleccionado] + ' ' + añoSeleccionado;
+  cargarGastosMes();
+}
+/**
+ * Carga la lista de gastos para el mes seleccionado y año seleccionados.
+ */
+function cargarGastosMes() {
+  const listaGastosDelMes = sistema.obtenerGastosDelMes(mesSeleccionado, añoSeleccionado);
+  if (listaGastosDelMes.length != 0) {
+    cargarListadoGastosMes(listaGastosDelMes);
+    document.getElementById('listadoGastosVacio').style.display = 'none';
+    document.getElementById('listadoGastosMes').style.display = 'inline';
+  } else {
+    document.getElementById('listadoGastosVacio').style.display = 'inline';
+    // document.getElementById('listadoGastosMes').style.display = 'none';
+  }
+}
+/**
+ * Recibe una lista de gastos para mostara en la UI.
+ * Carga cada gasto en una línea del listado.
+ * @param {Gasto[]} listado Lista de gastos a cargar.
+ */
+function cargarListadoGastosMes(listado) {
+  // Si el listado no es vacío, lo recorre y agrega cada uno de los gastos a la lista.
+  if (listado.length != 0) {
+    let totalMes = 0;
+    // Obtiene mes y día.
+    let dia = listado[0].fecha.getDate();
+    const mes = nombresMes[listado[0].fecha.getMonth()];
+    // Obtiene el nodo padre de la lista.
+    const nodoListado = document.getElementById('listadoGastosMes');
+    // Carga el subheader h3 y la ul a la que se le agregan li como hijos.
+    let elementoSubheader = 'h3';
+    let texto = mes + ' ' + dia;
+    agregarSubheaderListaGastos(nodoListado, elementoSubheader, texto);
+    elementoSubheader = 'ul';
+    let nodoPadreListItems = agregarSubheaderListaGastos(nodoListado, elementoSubheader, texto);
+    // Se recorre la lista de gastos.
+    listado.forEach((gasto) => {
+      if (gasto.fecha.getDate() != dia) {
+        // Si es un día nuevo, crea nuevo sub-header para el día
+        // y lo agrega como hijo a la lista principal.
+        dia = gasto.fecha.getDate();
+        elementoSubheader = 'h3';
+        texto = mes + ' ' + dia;
+        agregarSubheaderListaGastos(nodoListado, elementoSubheader, texto);
+        // Luego crea una nueva ul para el día y lo agrega como hijo al sub-header del día.
+        // Todos los gastos de un mismo día se cargan en esta ul.
+        elementoSubheader = 'ul';
+        nodoPadreListItems = agregarSubheaderListaGastos(nodoListado, elementoSubheader, texto);
+      }
+      // Crea un list item y lo agrega al nodo padre de la lista (ul).
+      crearListItem(nodoPadreListItems, icono, nombreGasto, montoGasto);
+      // Suma al monto total del mes el monto del gasto que agregó.
+      totalMes = totalMes + gasto.monto;
+    });
+  }
+}
+/**
+ * Agrega un elemento subheader como hijo a un nodo lista y lo retorna.
+ * @param {HTMLElement} nodoListado Nodo padre de la lista.
+ * @param {string} elementoSubheader Tipo de elemento a agregar como hijo de la lista
+ * @param {string} texto Texto a mostrar al usuario.
+ * @return {HTMLElement} Retorna el nodo creado.
+ */
+function agregarSubheaderListaGastos(nodoListado, elementoSubheader, texto) {
+  // Crea el nuevo elemento subheader.
+  const nuevoSubheader = document.createElement(elementoSubheader);
+  // Si es el nombre del subheader, le agrega el texto recibido.
+  // Sino, no le agrega texto ya que es un ul.
+  // Se agregan clases a la class list del nodo.
+  if (elementoSubheader === 'h3') {
+    nuevoSubheader.innerText = texto;
+    nuevoSubheader.classList.add('mdc-list-group__subheader');
+  } else {
+    nuevoSubheader.classList.add('mdc-list');
+  }
+  // Agrega el nuevo nodo subheader a la lista padre.
+  nodoListado.appendChild(nuevoSubheader);
+  return nuevoSubheader;
+}
+/**
+ * Crea un li con los datos de un gasto y lo agrega a la lista.
+ * @param {HTMLElement} nodoPadre Nodo al que se agrega el li como hijo.
+ * @param {string} icono Nombre del ícono de material design.
+ * @param {string} nombreGasto Nombre del gasto.
+ * @param {Number} montoGasto Monto del gasto.
+ */
+function crearListItem(nodoPadre, icono, nombreGasto, montoGasto) {
+  // Crea los li para cada día, con sus detalles (nombre, monto, ícono).
+  const lineaDelDia = document.createElement('li');
+  lineaDelDia.classList.add('mdc-list-item');
+  // Crea span para el ícono y lo agrega al padre.
+  const spanIcono = document.createElement('span');
+  spanIcono.classList.add('material-icons mdc-list--icon-list');
+  // spanIcono.innerText = sistema.obtenerIconoCategoria(gasto.categoria);
+  spanIcono.innerText = icono;
+  lineaDelDia.appendChild(spanIcono);
+  // Crea span para el efecto ripple y lo agrega al padre.
+  const spanRipple = document.createElement('span');
+  spanRipple.classList.add('mdc-list-item__ripple');
+  lineaDelDia.appendChild(spanRipple);
+  // Crea span para el nombre del gasto y lo agrega al padre.
+  const spanNombreGasto = document.createElement('span');
+  spanNombreGasto.classList.add('mdc-list-item__text');
+  spanNombreGasto.innerText = nombreGasto;
+  lineaDelDia.appendChild(spanNombreGasto);
+  // Crea span para el monto del gasto y lo agrega al padre.
+  const spanMonto = document.createElement('span');
+  spanMonto.classList.add('mdc-list-item__meta');
+  spanMonto.innerText = montoGasto;
+  lineaDelDia.appendChild(spanMonto);
+  nodoPadre.appendChild(lineaDelDia);
 }
 
-// document.getElementById("tab-iniciar-sesion").style.display = "none";
-// document.getElementById("tab-crear-usuario").style.display = "none";
-// document.getElementById("tab-lista-gastos").style.display = "none";
-// document.getElementById("tabs-login").style.display = "none";
 document.getElementById('suma-total-mes').innerText = '1.234';
 
 /**

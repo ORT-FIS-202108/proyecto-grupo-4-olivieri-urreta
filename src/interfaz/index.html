@@ -148,7 +148,6 @@
         <div class="wrapper fadeInDown">
           <div id="formContent">
 
-
             <!-- Icon -->
             <div class="fadeIn first">
               <img src="img/new-user.svg" id="icon" alt="User Icon" />
@@ -160,12 +159,12 @@
               <input type="text" id="cnombre" class="fadeIn second" name="new-user" placeholder="Nombre" required>
               <input type="text" id="capellido" class="fadeIn third" name="new-user" placeholder="Apellido" required>
               <input type="text" id="cemail" class="fadeIn fourth" name="new-user" placeholder="Email" required>
-              <input type="password" id="cpassword" class="fadeIn fourth" name="new-user" placeholder="Contraseña" required>
-              <input type="password" id="rcpassword" class="fadeIn fourth" name="new-user" placeholder="Repetir Contraseña"
+              <input type="password" id="cpassword" class="fadeIn fourth" name="new-user" placeholder="Contraseña"
                 required>
+              <input type="password" id="rcpassword" class="fadeIn fourth" name="new-user"
+                placeholder="Repetir Contraseña" required>
               <input type="button" class="fadeIn five" id="cbutton" value="Crear Usuario">
             </form>
-
 
           </div>
       </section>
@@ -173,18 +172,20 @@
     <div id="content-home">
       <!--Gastos del mes-->
       <section class="content sample-content--hidden">
-
-        <h3><span>Total del mes: $</span><span id="suma-total-mes"></span></h3>
-        <div class="mdc-list-group">
+        <div id="listadoGastosVacio">No hay gastos registrados para el mes seleccionado.</div>
+        <div id="listadoGastosMes" class="mdc-list-group">
+          <h3><span>Total del mes: $</span><span id="suma-total-mes"></span></h3>
           <h3 class="mdc-list-group__subheader">Octubre 15</h3>
-          <ul class="mdc-list">
-            <li class="mdc-list-item" tabindex="0">
-              <span class="mdc-list-item__ripple"></span>
-              <span class="mdc-list-item__text">line item</span>
-            </li>
-            <li class="mdc-list-item">
-              <span class="mdc-list-item__ripple"></span>
-              <span class="mdc-list-item__text">line item</span>
+          <ul class="mdc-list" > 
+            <li class="mdc-list-item" >
+              <div>
+                <span class="material-icons mdc-list--icon-list">local_grocery_store</span>
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">Groceries</span>
+              </div>
+              <div>
+                <span class="mdc-list-item__meta" style="align-content: center;">$1.234</span>
+              </div>
             </li>
             <li class="mdc-list-item">
               <span class="mdc-list-item__ripple"></span>
