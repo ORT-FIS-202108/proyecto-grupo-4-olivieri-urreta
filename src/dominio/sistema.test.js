@@ -28,12 +28,14 @@ describe('Pruebas registrar gasto', () => {
   const sistema = new Sistema();
   sistema.registrarUsuario('minnie@moues.com', 'abcd', 'Minnie', 'Mouse');
   const usuario = sistema.usuarios[sistema.usuarios.length - 1];
-  sistema.usuarioLogueado = -1;
+  beforeEach(() => {
+    sistema.loginUsuario('minnie@moues.com', 'abcd');
+  });
   test('registro sin usuario logueado', () => {
+    sistema.logout();
     const resultadoRegistro = sistema.registrarGasto('Prueba Reg. 1', 200, new Date(), 0, 0);
     expect(resultadoRegistro).toBe('No fue posible registrar el gasto');
   });
-  sistema.loginUsuario('minnie@moues.com', 'abcd');
   test('registro sin nombre', () => {
     const resultadoRegistro = sistema.registrarGasto('', 150, new Date(), 1, 0);
     expect(resultadoRegistro).toBe('El nombre ingresado no es válido');
@@ -50,97 +52,24 @@ describe('Pruebas registrar gasto', () => {
     expect(gasto.fecha.setHours(0, 0, 0, 0)).toBe(today);
   });
   test('registro con categoría inválida (mayor)', () => {
-    const resultadoRegistro = sistema.registrarGasto('Prueba Reg. 5', 'abc', '', 999, 0);
-    expect(resultadoRegistro).toBe('No fue posible registrar el gasto');
+    sistema.registrarGasto('Prueba Reg. 5', 500, new Date(), 999, 0);
+    const gasto = usuario.gastos[usuario.gastos.length - 1];
+    expect(gasto.categoria).toBe(0);
   });
   test('registro con categoría inválida (menor)', () => {
-    const resultadoRegistro = sistema.registrarGasto('Prueba Reg. 6', 'abc', '', -111, 0);
-    expect(resultadoRegistro).toBe('No fue posible registrar el gasto');
+    sistema.registrarGasto('Prueba Reg. 6', 600, new Date(), -111, 0);
+    const gasto = usuario.gastos[usuario.gastos.length - 1];
+    expect(gasto.categoria).toBe(0);
   });
   test('registro con repetir válido', () => {
     sistema.registrarGasto('Prueba Reg. 7', 200, new Date(), 0, 1);
-    const gastoParaRepetir = usuario.[usuario.gastosParaRepetir.length - 1];
+    const gastoParaRepetir = usuario.gastosParaRepetir[usuario.gastosParaRepetir.length - 1];
     const gasto = usuario.gastos[usuario.gastos.length - 1];
     expect(gastoParaRepetir.idGasto).toBe(gasto.id);
   });
   test('registro válido', () => {
-    const resultadoRegistro = sistema.registrarGasto('Prueba Reg. 8', 200, new Date(), 0, 1);
+    const resultadoRegistro = sistema.registrarGasto('Prueba Reg. 8', 200, new Date(), 0, 0);
     expect(resultadoRegistro).toBe('Gasto creado con éxito');
-  });
-});
-
-describe('Pruebas agregar gastos para repetir', () => {
-  const sistema = new Sistema();
-  sistema.usuarioLogueado = 1;
-  test('Repetir semanal', () => {
-    const fecha = new Date('2021-7-23');
-    sistema.registrarGasto('gasto prueba', 200, fecha, 0, '');
-    const idGasto = (sistema.gastos[sistema.gastos.length - 1]).id;
-    sistema.agregarGastoParaRepetir(idGasto, 'semanal');
-    expect(sistema.existeGastoParaRepetir(idGasto)).toBe(true);
-    const fechaEnListaRepetir = sistema.gastosParaRepetir[sistema.gastosParaRepetir.length - 1].fecha;
-    fecha.setDate(fecha.getDate() + 7);
-    expect(fechaEnListaRepetir).toBe(fecha);
-  });
-  test('Agregar gasto a repetir con id existente', () => {
-    const idExistente = sistema.gastosParaRepetir[0].idGasto;
-    const fechaAntes = sistema.gastosParaRepetir[0].fecha;
-    const largoListaAntes = sistema.gastosParaRepetir.length;
-    const largoListaDespues = sistema.gastosParaRepetir.length;
-    sistema.agregarGastoParaRepetir(idExistente, 'quincenal');
-    const fechaDespues = sistema.gastosParaRepetir[0].fecha;
-    expect(largoListaAntes === largoListaDespues).toBe(true);
-    expect(fechaDespues).toBe(fechaAntes);
-  });
-  test('Repetir quincenal', () => {
-    const fecha = new Date('2022-2-20');
-    sistema.registrarGasto('gasto prueba', 200, fecha, 0, '');
-    const idGasto = (sistema.gastos[sistema.gastos.length - 1]).id;
-    sistema.agregarGastoParaRepetir(idGasto, 'quincenal');
-    expect(sistema.existeGastoParaRepetir(idGasto)).toBe(true);
-    const fechaEnListaRepetir = sistema.gastosParaRepetir[sistema.gastosParaRepetir.length - 1].fecha;
-    fecha.setDate(fecha.getDate() + 15);
-    expect(fechaEnListaRepetir).toBe(fecha);
-  });
-  test('Repetir mensual hasta el 30', () => {
-    const fecha = new Date('2022-2-29');
-    sistema.registrarGasto('gasto prueba', 200, fecha, 0, '');
-    const idGasto = (sistema.gastos[sistema.gastos.length - 1]).id;
-    sistema.agregarGastoParaRepetir(idGasto, 'mensual');
-    expect(sistema.existeGastoParaRepetir(idGasto)).toBe(true);
-    const fechaEnListaRepetir = sistema.gastosParaRepetir[sistema.gastosParaRepetir.length - 1].fecha;
-    if (fecha.getDate() === 31) {
-      fecha.setMonth(fecha.getMonth() + 2);
-      fecha.setDate(0);
-    } else {
-      fecha.setMonth(fecha.getMonth() + 1);
-    }
-    expect(fechaEnListaRepetir).toBe(fecha);
-  });
-  test('Repetir mensual despues del 30', () => {
-    const fecha = new Date('2022-1-31');
-    sistema.registrarGasto('gasto prueba', 200, fecha, 0, '');
-    const idGasto = (sistema.gastos[sistema.gastos.length - 1]).id;
-    sistema.agregarGastoParaRepetir(idGasto, 'mensual');
-    expect(sistema.existeGastoParaRepetir(idGasto)).toBe(true);
-    const fechaEnListaRepetir = sistema.gastosParaRepetir[sistema.gastosParaRepetir.length - 1].fecha;
-    if (fecha.getDate() === 31) {
-      fecha.setMonth(fecha.getMonth() + 2);
-      fecha.setDate(0);
-    } else {
-      fecha.setMonth(fecha.getMonth() + 1);
-    }
-    expect(fechaEnListaRepetir).toBe(fecha);
-  });
-  test('Repetir anual', () => {
-    const fecha = new Date('2021-7-23');
-    sistema.registrarGasto('gasto prueba', 200, fecha, 0, '');
-    const idGasto = (sistema.gastos[sistema.gastos.length - 1]).id;
-    sistema.agregarGastoParaRepetir(idGasto, 'anual');
-    expect(sistema.existeGastoParaRepetir(idGasto)).toBe(true);
-    const fechaEnListaRepetir = sistema.gastosParaRepetir[sistema.gastosParaRepetir.length - 1].fecha;
-    fecha.setFullYear(fecha.getFullYear() + 1);
-    expect(fechaEnListaRepetir).toBe(fecha);
   });
 });
 
