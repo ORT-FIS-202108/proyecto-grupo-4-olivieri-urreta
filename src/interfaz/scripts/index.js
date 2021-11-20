@@ -65,11 +65,13 @@ function inicio() {
  */
 function mostrarInterfazLogin() {
   tabBar.activateTab(0);
-  // cargarGastosMes();
+  cargarGastosMes(mesSeleccionado, añoSeleccionado);
+  document.getElementById('tab-iniciar-sesion').classList.remove('sample-content--hidden');
+  document.getElementById('tab-crear-usuario').classList.remove('sample-content--hidden');
   document.getElementById('tab-lista-gastos').classList.add('sample-content--hidden');
+  document.getElementById('tab-agregar-gasto').classList.add('sample-content--hidden');
   document.getElementById('selector-mes').style.display = 'none';
   document.getElementById('logout-sitio').style.display = 'none';
-  document.getElementById('btn-add-gasto').style.display = 'none';
   document.getElementById('content-home').style.display = 'none';
 }
 /**
@@ -82,15 +84,11 @@ function mostrarInterfazHome() {
   document.getElementById('tab-iniciar-sesion').classList.add('sample-content--hidden');
   document.getElementById('tab-crear-usuario').classList.add('sample-content--hidden');
   document.getElementById('tab-lista-gastos').classList.remove('sample-content--hidden');
-  document.getElementById('tab-lista-gastos').classList.remove('sample-content--hidden');
+  document.getElementById('tab-agregar-gasto').classList.remove('sample-content--hidden');
   document.getElementById('selector-mes').style.display = 'flex';
   document.getElementById('logout-sitio').style.display = 'inline';
-  document.getElementById('btn-add-gasto').style.display = 'inline';
   document.getElementById('content-home').style.display = 'inline';
 }
-// function cargarGastosMes() {
-//   const listaGastosDelMes = sistema.obtenerGastosDeUsuario();
-// }
 /**
  * Inicio de sesión.
  * Si los datos son válidos el usario ingresa a la aplicación,
@@ -145,16 +143,9 @@ function crearUsuario() {
 function logout() {
   // Actualiza el id del usuario logueado
   sistema.usuarioLogueado = 0;
-  // Oculta contenido del home.
-  document.getElementById('tab-lista-gastos').classList.add('sample-content--hidden');
-  document.getElementById('selector-mes').style.display = 'none';
-  document.getElementById('logout-sitio').style.display = 'none';
-  document.getElementById('btn-add-gasto').style.display = 'none';
-  document.getElementById('content-home').style.display = 'none';
   // Mostrar contenido del login
   tabBar.activateTab(0);
-  document.getElementById('tab-iniciar-sesion').classList.remove('sample-content--hidden');
-  document.getElementById('tab-crear-usuario').classList.remove('sample-content--hidden');
+  mostrarInterfazLogin();
 }
 
 /**
@@ -164,7 +155,7 @@ function cargarMesActual() {
   mesSeleccionado = (new Date()).getMonth();
   añoSeleccionado = (new Date()).getFullYear();
   document.getElementById('mes-seleccionado').innerText = nombresMes[mesSeleccionado] + ' ' + añoSeleccionado;
-  cargarGastosMes();
+  cargarGastosMes(mesSeleccionado, añoSeleccionado);
 }
 /**
  * Carga la información para el mes anterior al actualmente seleccionado.
@@ -177,7 +168,7 @@ function cargarMesAnterior() {
     mesSeleccionado--;
   }
   document.getElementById('mes-seleccionado').innerText = nombresMes[mesSeleccionado] + ' ' + añoSeleccionado;
-  cargarGastosMes();
+  cargarGastosMes(mesSeleccionado, añoSeleccionado);
 }
 /**
  * Carga la información para el mes siguiente al actualmente seleccionado.
@@ -190,20 +181,20 @@ function cargarMesSiguiente() {
     mesSeleccionado++;
   }
   document.getElementById('mes-seleccionado').innerText = nombresMes[mesSeleccionado] + ' ' + añoSeleccionado;
-  cargarGastosMes();
+  cargarGastosMes(mesSeleccionado, añoSeleccionado);
 }
 /**
  * Carga la lista de gastos para el mes seleccionado y año seleccionados.
  */
-function cargarGastosMes() {
+function cargarGastosMes(mesSeleccionado, añoSeleccionado) {
   const listaGastosDelMes = sistema.obtenerGastosDelMes(mesSeleccionado, añoSeleccionado);
+  alert(listaGastosDelMes);
   if (listaGastosDelMes.length != 0) {
     cargarListadoGastosMes(listaGastosDelMes);
     document.getElementById('listadoGastosVacio').style.display = 'none';
     document.getElementById('listadoGastosMes').style.display = 'inline';
   } else {
     document.getElementById('listadoGastosVacio').style.display = 'inline';
-    // document.getElementById('listadoGastosMes').style.display = 'none';
   }
 }
 /**
