@@ -168,6 +168,10 @@ export default class Sistema {
    * @return {string} Nombre del ícono de material.
    */
   obtenerNombreIcono(posCategoria) {
-    return this.listaCategoriasGasto[posCategoria];
+    if (posCategoria < this.listaCategoriasGasto.length && posCategoria >= 0) {
+      return this.listaCategoriasGasto[posCategoria];
+    } else {
+      return 'info';
+    }
   }
 }
