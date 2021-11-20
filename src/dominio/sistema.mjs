@@ -13,7 +13,7 @@ export default class Sistema {
    */
   constructor() {
     this.usuarios = []; // Lista de usuarios registrados.
-    this.usuarioLogueado; // usuario logeado
+    this.usuarioLogueado; // Posición del usuario logeado en la lista usuarios
   }
   /**
   * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
@@ -101,7 +101,22 @@ export default class Sistema {
     return this.usuarios[i].password === password;
   }
   /**
-   * Registro de Gastos/Ingresos
+   * Recibe datos de un gasto, e invoca el método de la clase gasto para validarlos.
+   * @param {string} nombre Nombre del gasto.
+   * @param {string} monto Monto del gasto.
+   * @return {boolean} Retorna si los datos son válidos.
+   */
+  validarDatosGasto(nombre, monto) {
+    return Gasto.validarDatosGasto(nombre, monto);
+  }
+  /**
+   * Remueve el índice del usuario logueado.
+   */
+  logout() {
+    this.usuarioLogueado = -1;
+  }
+  /**
+   * Registro de Gastos
    * Recibe un importe, tipo, la fecha, categoria,
    * y si es recurrente o no. Retorna si se pudo guardar o no el registro.
    * @param {string} nombre Nombre del gasto.
@@ -113,15 +128,17 @@ export default class Sistema {
    */
   registrarGasto(nombre, monto, fecha, categoria, repetir) {
     const usuario = this.usuarios[this.usuarioLogueado];
-    const idGasto = usuario.proxIdGasto;
-    const gasto = new Gasto(idGasto, nombre, monto, fecha, categoria);
-    usuario.gastos.push(gasto);
-    if (repetir > 0) {
-      // const gastoRecurrente = new Gasto(idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion);
-      usuario.agregarGastoParaRepetir(gasto);
-      this.usuarioLogueado.gastosParaRepetir.push(gastoRecurrente);
+    if (usuario != -1) {
+      const idGasto = usuario.proxIdGasto;
+      const gasto = new Gasto(idGasto, nombre, monto, fecha, categoria);
+      usuario.gastos.push(gasto);
+      if (repetir > 0) {
+        // const gastoRecurrente = new Gasto(idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion);
+        usuario.agregarGastoParaRepetir(gasto);
+        this.usuarioLogueado.gastosParaRepetir.push(gastoRecurrente);
+      }
+      this.usuario.aumentarIdGasto();
     }
-    this.usuario.aumentarIdGasto();
   }
   /**
    * Retorna una lista con los gastos registrados del usuario logueado,

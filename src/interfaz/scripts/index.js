@@ -58,14 +58,14 @@ function inicio() {
   document.getElementById('btn-logout').addEventListener('click', logout);
   document.getElementById('mes-anterior').addEventListener('click', cargarMesAnterior);
   document.getElementById('mes-siguiente').addEventListener('click', cargarMesSiguiente);
-  document.getElementById('gbutton').addEventListener('click', agregarGasto);
+  document.getElementById('btnAgregarGasto').addEventListener('click', agregarGasto);
 }
 /**
  * Muestra las secciones para iniciar sesión y registrar usuario.
  */
 function mostrarInterfazLogin() {
   tabBar.activateTab(0);
-  cargarGastosMes(mesSeleccionado, añoSeleccionado);
+  // cargarGastosMes(mesSeleccionado, añoSeleccionado);
   document.getElementById('tab-iniciar-sesion').classList.remove('sample-content--hidden');
   document.getElementById('tab-crear-usuario').classList.remove('sample-content--hidden');
   document.getElementById('tab-lista-gastos').classList.add('sample-content--hidden');
@@ -142,7 +142,9 @@ function crearUsuario() {
  */
 function logout() {
   // Actualiza el id del usuario logueado
-  sistema.usuarioLogueado = 0;
+  sistema.logout();
+  // Limpia el form de registro gasto si habían datos.
+  document.getElementById('fcreategasto').reset();
   // Mostrar contenido del login
   tabBar.activateTab(0);
   mostrarInterfazLogin();
@@ -185,16 +187,18 @@ function cargarMesSiguiente() {
 }
 /**
  * Carga la lista de gastos para el mes seleccionado y año seleccionados.
+ * @param {Number} mesSeleccionado Número del mes seleccionado por el usuario (van de 0 a 11).
+ * @param {Number} añoSeleccionado Año seleccionado por el usuario.
  */
 function cargarGastosMes(mesSeleccionado, añoSeleccionado) {
   const listaGastosDelMes = sistema.obtenerGastosDelMes(mesSeleccionado, añoSeleccionado);
-  alert(listaGastosDelMes);
   if (listaGastosDelMes.length != 0) {
     cargarListadoGastosMes(listaGastosDelMes);
     document.getElementById('listadoGastosVacio').style.display = 'none';
     document.getElementById('listadoGastosMes').style.display = 'inline';
   } else {
     document.getElementById('listadoGastosVacio').style.display = 'inline';
+    document.getElementById('listadoGastosMes').style.display = 'none';
   }
 }
 /**
@@ -319,16 +323,28 @@ tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
   * Agrega gasto
   */
 function agregarGasto() {
+  alert('entra a agregar');
   if (fcreategasto.reportValidity()) {
-    let mensaje;
+    // let mensaje;
     const nombre = document.getElementById('gnombre').value;
+    alert(nombre);
     const monto = document.getElementById('gmonto').value;
+    alert(monto);
     const fecha = document.getElementById('gfecha').value;
-    const categoria = document.getElementById('categoria').value;
-    const repetir = document.getElementById('recurrenciaGasto').value;
-    if (moment(document.getElementById('gfecha').value, 'YYYY-MM-DD', true).isValid() && sistema.validarDatos(nombre, monto)) {
+    alert(fecha);
+    const categoria = document.getElementById('cbxCategoria').value;
+    alert(categoria);
+    const repetir = document.getElementById('cbxRecurrenciaGasto').value;
+    alert(repetir);
+    alert(sistema.usuarioLogueado);
+    if (moment(document.getElementById('gfecha').value, 'YYYY-MM-DD', true).isValid() && sistema.validarDatosGasto(nombre, monto)) {
+    // if (sistema.validarDatosGasto(nombre, monto)) {
+      alert('paso 2do if');
       sistema.registrarGasto(nombre, monto, fecha, categoria, repetir);
       alert('Se registro el gasto');
+    } else {
+      alert('no se registro');
     }
   }
+  alert('siguio de largo');
 }
