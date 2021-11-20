@@ -104,7 +104,7 @@ export default class Sistema {
    * Recibe datos de un gasto, e invoca el método de la clase gasto para validarlos.
    * @param {string} nombre Nombre del gasto.
    * @param {string} monto Monto del gasto.
-   * @return {boolean} Retorna si los datos son válidos.
+   * @return {string} Retorna mensaje informando si los datos son válidos o no.
    */
   validarDatosGasto(nombre, monto) {
     return Gasto.validarDatosGasto(nombre, monto);
@@ -124,21 +124,26 @@ export default class Sistema {
    * @param {date} fecha Fecha del registro.
    * @param {Number} categoria Enumerado con la categoría del registro.
    * @param {string} repetir Determina si el gasto es recurrente
+   * @return {string} Retorna un mensaje que informa si se registró el gasto o no.
    * y cada cuanto tiempo se repite {unico, semanal, quincenal, mensual, anual}.
    */
   registrarGasto(nombre, monto, fecha, categoria, repetir) {
-    const usuario = this.usuarios[this.usuarioLogueado];
-    if (usuario != -1) {
-      const idGasto = usuario.proxIdGasto;
-      const gasto = new Gasto(idGasto, nombre, monto, fecha, categoria);
-      usuario.gastos.push(gasto);
-      if (repetir > 0) {
-        // const gastoRecurrente = new Gasto(idGasto, nombre, moneda, monto, fecha, categoria, repetir, descripcion);
-        usuario.agregarGastoParaRepetir(gasto);
-        this.usuarioLogueado.gastosParaRepetir.push(gastoRecurrente);
+    let mensaje = 'No fue posible registrar el gasto';
+    if (this.usuarioLogueado != -1) {
+      mensaje = Gasto.validarDatosGasto(nombre, monto);
+      if (mensaje === 'Datos válidos') {
+        const usuario = this.usuarios[this.usuarioLogueado];
+        const idGasto = usuario.proxIdGasto;
+        const gasto = new Gasto(idGasto, nombre, monto, fecha, categoria);
+        usuario.gastos.push(gasto);
+        mensaje = 'Gasto creado con éxito';
+        if (repetir > 0) {
+          usuario.agregarGastoParaRepetir(gasto.id, repetir);
+        }
+        usuario.aumentarProxIdGasto();
       }
-      this.usuario.aumentarIdGasto();
     }
+    return mensaje;
   }
   /**
    * Retorna una lista con los gastos registrados del usuario logueado,
@@ -149,7 +154,6 @@ export default class Sistema {
    */
   obtenerGastosDelMes(mes, año) {
     const gastosDelUsuario = this.usuarios[this.usuarioLogueado].gastos;
-    return gastosDelUsuario;
     const listaGastosDelMes = [];
     for (let i = 0; i < gastosDelUsuario.length; i++) {
       const fechaUnGasto = gastosDelUsuario[i].fecha;

@@ -13,9 +13,8 @@ export default class Gasto {
      * @return {Gasto} Retorna el gasto creado.
      */
   constructor(idGasto, nombre, monto, fecha, categoria) {
-    this.idGasto = idGasto;
+    this.id = idGasto;
     this.nombre = nombre;
-    this.moneda = moneda;
     this.monto = monto;
     this.fecha = fecha;
     this.categoria = categoria;
@@ -29,10 +28,12 @@ export default class Gasto {
    * y sino retorna un mensaje con error.
    */
   static validarDatosGasto(nombre, monto) {
-    if (isNaN(monto) || monto <= 0 || nombre.length < 1) {
-      return false;
+    if (isNaN(monto) || monto <= 0) {
+      return 'El monto ingresado no es válido';
+    } else if (nombre.length < 1) {
+      return 'El nombre ingresado no es válido';
     } else {
-      return true;
+      return 'Datos válidos';
     }
   }
 }

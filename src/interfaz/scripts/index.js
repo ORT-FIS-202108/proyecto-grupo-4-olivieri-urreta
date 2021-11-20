@@ -12,20 +12,18 @@ window.addEventListener('load', inicio);
 const sistema = new Sistema();
 const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
 // Usuarios hardcodeados
-const usuario1 = sistema.registrarUsuario(
+sistema.registrarUsuario(
     'test@test.com',
     '1234',
     'pepe',
     'grillo',
 );
-sistema.agregarUsuario(usuario1);
-const usuario2 = sistema.registrarUsuario(
+sistema.registrarUsuario(
     'test2@test.com',
     '1234',
     'mickey',
     'mouse',
 );
-sistema.agregarUsuario(usuario2);
 
 // Mes y año actual
 let mesSeleccionado = (new Date()).getMonth();
@@ -106,7 +104,7 @@ function login() {
   } else {
     mensaje = 'Por favor complete todos los campos';
   }
-  alert(mensaje);
+  // alert(mensaje);
   if (mensaje === '¡Bienvenido!') {
     mostrarInterfazHome();
   }
@@ -323,28 +321,19 @@ tabBar.listen('MDCTabBar:activated', (activatedEvent) => {
   * Agrega gasto
   */
 function agregarGasto() {
-  alert('entra a agregar');
   if (fcreategasto.reportValidity()) {
     // let mensaje;
     const nombre = document.getElementById('gnombre').value;
-    alert(nombre);
     const monto = document.getElementById('gmonto').value;
-    alert(monto);
     const fecha = document.getElementById('gfecha').value;
-    alert(fecha);
     const categoria = document.getElementById('cbxCategoria').value;
-    alert(categoria);
     const repetir = document.getElementById('cbxRecurrenciaGasto').value;
-    alert(repetir);
-    alert(sistema.usuarioLogueado);
-    if (moment(document.getElementById('gfecha').value, 'YYYY-MM-DD', true).isValid() && sistema.validarDatosGasto(nombre, monto)) {
-    // if (sistema.validarDatosGasto(nombre, monto)) {
-      alert('paso 2do if');
-      sistema.registrarGasto(nombre, monto, fecha, categoria, repetir);
-      alert('Se registro el gasto');
+    if (moment(document.getElementById('gfecha').value, 'YYYY-MM-DD', true).isValid()) {
+      // if (sistema.validarDatosGasto(nombre, monto)) {
+      const msj = sistema.registrarGasto(nombre, monto, fecha, categoria, repetir);
+      alert(msj);
     } else {
       alert('no se registro');
     }
   }
-  alert('siguio de largo');
 }
