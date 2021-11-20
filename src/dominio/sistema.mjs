@@ -16,13 +16,13 @@ export default class Sistema {
     this.usuarioLogueado; // usuario logeado
   }
   /**
-   * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
-   * @param {string} email Email del usuario.
-   * @param {string} password Contraseña del usuario.
-   * @param {string} nombre Nombre del usuario.
-   * @param {string}apellido Apellido del usuario.
-   * @return {string} Mensaje con resultado del registro. Devuelve el error específico si no se pudo registrar.
-   */
+  * Recibe los datos de usuario nuevo, los valida y si son correctos crear el nuevo usuario.
+  * @param {string} email Email del usuario.
+  * @param {string} password Contraseña del usuario.
+  * @param {string} nombre Nombre del usuario.
+  * @param {string}apellido Apellido del usuario.
+  * @return {string} Mensaje con resultado del registro. Devuelve el error específico si no se pudo registrar.
+  */
   registrarUsuario(email, password, nombre, apellido) {
     let mensaje = '¡El usuario fue creado correctamente!';
     const validacionDatos = Usuario.validarDatosUsuario(email, password);
@@ -109,7 +109,7 @@ export default class Sistema {
    * @param {date} fecha Fecha del registro.
    * @param {Number} categoria Enumerado con la categoría del registro.
    * @param {string} repetir Determina si el gasto es recurrente
-   * y cada cuanto tiempo se repite {unico, semanal, quincenal, mensual, anual}..
+   * y cada cuanto tiempo se repite {unico, semanal, quincenal, mensual, anual}.
    */
   registrarGasto(nombre, monto, fecha, categoria, repetir) {
     const usuario = this.usuarios[this.usuarioLogueado];

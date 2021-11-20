@@ -13,7 +13,6 @@
 
 <body>
 
-
   <header class="mdc-top-app-bar">
     <div class="mdc-top-app-bar__row">
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
@@ -26,14 +25,16 @@
           <button id="mes-siguiente" class="mdc-icon-button material-icons">
             chevron_right
           </button>
-          <span id=""></span>
           <span id="mes-seleccionado"></span>
         </div>
       </section>
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-        <button id="btn-logout" class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">
-          logout
-        </button>
+        <div id="logout-sitio">
+          <button id="btn-logout" class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+            aria-label="Favorite">
+            logout
+          </button>
+        </div>
       </section>
       </section>
     </div>
@@ -72,8 +73,7 @@
                 <span class="mdc-tab__text-label">Gastos del Mes</span>
               </span>
               <span class="mdc-tab-indicator">
-                <span
-                  class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
               </span>
               <span class="mdc-tab__ripple"></span>
             </button>
@@ -130,8 +130,10 @@
 
             <!-- Login Form -->
             <form action="#" method="get" id="loginform">
-              <input type="text" id="luser" class="fadeIn second" name="login" placeholder="Usuario" required>
-              <input type="text" id="lpassword" class="fadeIn third" name="login" placeholder="Contraseña" required>
+              <input value="test@test.com" type="text" id="luser" class="fadeIn second" name="login"
+                placeholder="Usuario" required>
+              <input value="1234" type="password" id="lpassword" class="fadeIn third" name="login"
+                placeholder="Contraseña" required>
               <input type="button" class="fadeIn fourth" id="lbutton" value="INICIAR SESION">
             </form>
 
@@ -146,7 +148,6 @@
         <div class="wrapper fadeInDown">
           <div id="formContent">
 
-
             <!-- Icon -->
             <div class="fadeIn first">
               <img src="img/new-user.svg" id="icon" alt="User Icon" />
@@ -158,12 +159,12 @@
               <input type="text" id="cnombre" class="fadeIn second" name="new-user" placeholder="Nombre" required>
               <input type="text" id="capellido" class="fadeIn third" name="new-user" placeholder="Apellido" required>
               <input type="text" id="cemail" class="fadeIn fourth" name="new-user" placeholder="Email" required>
-              <input type="text" id="cpassword" class="fadeIn fourth" name="new-user" placeholder="Contraseña" required>
-              <input type="text" id="rcpassword" class="fadeIn fourth" name="new-user" placeholder="Repetir Contraseña"
+              <input type="password" id="cpassword" class="fadeIn fourth" name="new-user" placeholder="Contraseña"
                 required>
+              <input type="password" id="rcpassword" class="fadeIn fourth" name="new-user"
+                placeholder="Repetir Contraseña" required>
               <input type="button" class="fadeIn five" id="cbutton" value="Crear Usuario">
             </form>
-
 
           </div>
       </section>
@@ -171,18 +172,20 @@
     <div id="content-home">
       <!--Gastos del mes-->
       <section class="content sample-content--hidden">
-
-        <h3><span>Total del mes: $</span><span id="suma-total-mes"></span></h3>
-        <div class="mdc-list-group">
+        <div id="listadoGastosVacio">No hay gastos registrados para el mes seleccionado.</div>
+        <div id="listadoGastosMes" class="mdc-list-group">
+          <h3><span>Total del mes: $</span><span id="suma-total-mes"></span></h3>
           <h3 class="mdc-list-group__subheader">Octubre 15</h3>
-          <ul class="mdc-list">
-            <li class="mdc-list-item" tabindex="0">
-              <span class="mdc-list-item__ripple"></span>
-              <span class="mdc-list-item__text">line item</span>
-            </li>
-            <li class="mdc-list-item">
-              <span class="mdc-list-item__ripple"></span>
-              <span class="mdc-list-item__text">line item</span>
+          <ul class="mdc-list" > 
+            <li class="mdc-list-item" >
+              <div>
+                <span class="material-icons mdc-list--icon-list">local_grocery_store</span>
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">Groceries</span>
+              </div>
+              <div>
+                <span class="mdc-list-item__meta" style="align-content: center;">$1.234</span>
+              </div>
             </li>
             <li class="mdc-list-item">
               <span class="mdc-list-item__ripple"></span>

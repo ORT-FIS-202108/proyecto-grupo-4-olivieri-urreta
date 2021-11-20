@@ -134,6 +134,12 @@ section {
   padding-bottom: 0;
 }
 
+.mdc-list-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
 // 6/11/2021 Sign in 
 a {
   color: #007769;
@@ -240,7 +246,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text] {
+input[type=text], input[type=password]{
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
