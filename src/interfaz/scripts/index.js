@@ -330,5 +330,13 @@ function agregarGasto() {
     const repetir = document.getElementById('cbxRecurrenciaGasto').value;
     const respuesta = sistema.registrarGasto(nombre, monto, fecha, categoria, repetir);
     alert(respuesta);
+    if (respuesta == 'Gasto creado con éxito') {
+      /* Limpia los campos una vez creado */
+      document.getElementById('gnombre').value = '';
+      document.getElementById('gmonto').value = '';
+      document.getElementById('gfecha').value = '';
+      document.getElementById('cbxCategoria').value = '';
+      document.getElementById('cbxRecurrenciaGasto').value = '';
+    }
   }
 }
