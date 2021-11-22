@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
   <title>MisGastos</title>
+  <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="img/MisGastos.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="bundle.css">
@@ -35,7 +36,6 @@
             logout
           </button>
         </div>
-      </section>
       </section>
     </div>
 
@@ -99,19 +99,19 @@
     <div id="content-login">
       <section class="content">
         <div class="wrapper fadeInDown">
-          <div id="formContent">
+          <div class="formContent">
 
 
             <!-- Icon -->
             <div class="fadeIn first">
-              <img src="img/user-icon.svg" id="icon" alt="User Icon" />
+              <img src="img/user-icon.svg" class="icon" alt="User Icon" />
             </div>
 
             <!-- Login Form -->
             <form action="#" method="get" id="loginform">
-              <input value="test@test.com" type="text" id="luser" class="fadeIn second" name="login"
+              <input value="" type="text" id="luser" class="fadeIn second" name="login"
                 placeholder="Usuario" required>
-              <input value="1234" type="password" id="lpassword" class="fadeIn third" name="login"
+              <input value="" type="password" id="lpassword" class="fadeIn third" name="login"
                 placeholder="Contraseña" required>
               <input type="button" class="fadeIn fourth" id="lbutton" value="INICIAR SESION">
             </form>
@@ -122,14 +122,15 @@
             </div>
 
           </div>
+        </div>
       </section>
       <section class="content sample-content--hidden">
         <div class="wrapper fadeInDown">
-          <div id="formContent">
+          <div class="formContent">
 
             <!-- Icon -->
             <div class="fadeIn first">
-              <img src="img/new-user.svg" id="icon" alt="User Icon" />
+              <img src="img/new-user.svg" class="icon" alt="User Icon" />
             </div>
 
             <!-- Login Form -->
@@ -146,6 +147,7 @@
             </form>
 
           </div>
+        </div>
       </section>
     </div>
 
@@ -159,7 +161,7 @@
       <!--Agregar Gasto-->
       <section class="content sample-content--hidden">
         <div class="wrapper fadeInDown">
-          <div id="formContent">
+          <div class="formContent">
 
             <!-- Login Form -->
             <form action="#" method="get" id="fcreategasto">
@@ -192,8 +194,8 @@
               <input type="button" class="fadeIn five" id="btnAgregarGasto" value="Confirmar">
             </form>           
 
-
           </div>
+        </div>
       </section>
     </div>
 

@@ -24,7 +24,6 @@
 @use "@material/select/styles";
 @use "@material/snackbar/mdc-snackbar";
 @use "@material/fab";
-// @use "@material/tooltip";
 
 @include fab.core-styles;
 @include card.core-styles;
@@ -135,13 +134,6 @@ section {
   padding-bottom: 0;
 }
 
-// .mdc-list-item {
-//   display: flex;
-//   align-items: baseline;
-//   // justify-content: space-between;
-// }
-
-// 6/11/2021 Sign in 
 a {
   color: #007769;
   display:inline-block;
@@ -159,8 +151,6 @@ h2 {
   color: #cccccc;
 }
 
-
-
 /* STRUCTURE */
 
 .wrapper {
@@ -173,7 +163,7 @@ h2 {
   padding: 20px;
 }
 
-#formContent {
+.formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   background: #fff;
@@ -196,8 +186,6 @@ h2 {
   border-radius: 0 0 10px 10px;
 }
 
-
-
 /* TABS */
 
 h2.inactive {
@@ -208,8 +196,6 @@ h2.active {
   color: #0d0d0d;
   border-bottom: 2px solid #5fbae9;
 }
-
-
 
 /* FORM TYPOGRAPHY*/
 
@@ -388,7 +374,6 @@ input[type=text]:placeholder {
   width: 60%;
 }
 
-
 /* ANIMATIONS */
 
 /* Simple CSS3 Fade-in-down Animation */
@@ -505,7 +490,7 @@ input[type=text]:placeholder {
     outline: none;
 } 
 
-#icon {
+.icon {
   width:30%;
   filter: invert(15%) sepia(91%) saturate(3809%) hue-rotate(167deg) brightness(100%) contrast(101%);
 }

@@ -1,10 +1,5 @@
 /* eslint-disable max-len */
-import {MDCRipple} from '@material/ripple';
-import {MDCTopAppBar} from '@material/top-app-bar';
 import {MDCTabBar} from '@material/tab-bar';
-import {MDCTextField} from '@material/textfield';
-import {MDCSelect} from '@material/select';
-import {MDCSnackbar} from '@material/snackbar';
 import Sistema from '../../dominio/sistema.mjs';
 
 window.addEventListener('load', inicio);
@@ -102,16 +97,8 @@ function login() {
   } else {
     mensaje = 'Por favor complete todos los campos';
   }
-  // alert(mensaje);
+  alert(mensaje);
   if (mensaje === '¡Bienvenido!') {
-    // Gastos hardocdeados
-    sistema.registrarGasto('Prueba Reg. 1 ', 200, new Date(), 0, 0);
-    sistema.registrarGasto('Prueba Reg. 2 ', 200, new Date(2021, 10, 11), 0, 0);
-    sistema.registrarGasto('Prueba Reg. 3 ', 200, new Date(2021, 10, 1), 1, 0);
-    sistema.registrarGasto('Prueba Reg. 4 ', 1100, new Date(2021, 10, 4), 2, 0);
-    sistema.registrarGasto('Prueba Reg. 5 ', 200, new Date(2021, 10, 30), 3, 0);
-    sistema.registrarGasto('Prueba Reg. 6 ', 300, new Date(2021, 10, 30), 4, 0);
-    sistema.registrarGasto('Prueba Reg. 7 ', 200, new Date(2021, 10, 30), 0, 0);
     mostrarInterfazHome();
   }
 }
@@ -209,8 +196,8 @@ function cargarGastosMes(mesSeleccionado, añoSeleccionado) {
 /**
  * Limpiar listado mes.
  */
-function limpiarGastosMes(){
-  var div = document.getElementById('listadoGastosMes');
+function limpiarGastosMes() {
+  const div = document.getElementById('listadoGastosMes');
   while (div.firstChild) {
     div.removeChild(div.firstChild);
   }
@@ -286,28 +273,28 @@ function agregarSubheaderListaGastos(nodoListado, elementoSubheader, texto) {
  * @param {HTMLElement} nodoPadre Nodo al que se agrega el li como hijo.
  * @param {string} categoria Nombre del ícono de material design.
  * @param {string} nombre Nombre del gasto.
+ * @param {string} moneda Mondea del gasto
  * @param {Number} monto Monto del gasto.
  */
-function crearListItem(nodoPadre, categoria, nombre, moneda ,monto) {
-  // Crea los li para cada día, con sus detalles (nombre, monto, ícono).  
+function crearListItem(nodoPadre, categoria, nombre, moneda, monto) {
+  // Crea los li para cada día, con sus detalles (nombre, monto, ícono).
   const lineaDelDia = document.createElement('li');
   lineaDelDia.classList.add('mdc-list-item');
-  
   // Crea span para el ícono y lo agrega al padre.
   const spanIcono = document.createElement('span');
   spanIcono.classList.add('material-icons', 'mdc-list--icon-list');
   // spanIcono.innerText = sistema.obtenerIconoCategoria(gasto.categoria);
   spanIcono.innerText = sistema.obtenerNombreIcono(categoria);
-  lineaDelDia.appendChild(spanIcono);  
+  lineaDelDia.appendChild(spanIcono);
   // Crea span para el efecto ripple y lo agrega al padre.
   const spanRipple = document.createElement('span');
   spanRipple.classList.add('mdc-list-item__ripple');
-  lineaDelDia.appendChild(spanRipple);  
+  lineaDelDia.appendChild(spanRipple);
   // Crea span para el nombre del gasto moneda y monto, y lo agrega al padre.
   const spanNombreGasto = document.createElement('span');
   spanNombreGasto.classList.add('mdc-list-item__text');
   spanNombreGasto.innerText = nombre + ' ' + moneda + monto;
-  lineaDelDia.appendChild(spanNombreGasto);  
+  lineaDelDia.appendChild(spanNombreGasto);
   nodoPadre.appendChild(lineaDelDia);
 }
 /**
