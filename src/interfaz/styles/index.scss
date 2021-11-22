@@ -163,7 +163,7 @@ h2 {
   padding: 20px;
 }
 
-#formContent {
+.formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   background: #fff;
@@ -490,7 +490,7 @@ input[type=text]:placeholder {
     outline: none;
 } 
 
-#icon {
+.icon {
   width:30%;
   filter: invert(15%) sepia(91%) saturate(3809%) hue-rotate(167deg) brightness(100%) contrast(101%);
 }
