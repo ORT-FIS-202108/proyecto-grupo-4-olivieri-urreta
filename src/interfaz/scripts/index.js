@@ -105,13 +105,13 @@ function login() {
   // alert(mensaje);
   if (mensaje === '¡Bienvenido!') {
     // Gastos hardocdeados
-    sistema.registrarGasto('Prueba Reg. 8 ', 200, new Date(), 0, 0);
-    sistema.registrarGasto('Prueba Reg. 8 ', 200, new Date(2021, 10, 11), 0, 0);
-    sistema.registrarGasto('Prueba Reg. 8 ', 200, new Date(2021, 10, 1), 1, 0);
-    sistema.registrarGasto('Prueba Reg. 8 ', 1100, new Date(2021, 10, 4), 2, 0);
-    sistema.registrarGasto('Prueba Reg. 8 ', 200, new Date(2021, 10, 30), 3, 0);
-    sistema.registrarGasto('Prueba Reg. 8 ', 300, new Date(2021, 10, 30), 4, 0);
-    sistema.registrarGasto('Prueba Reg. 8 ', 200, new Date(2021, 10, 30), 0, 0);
+    sistema.registrarGasto('Prueba Reg. 1 ', 200, new Date(), 0, 0);
+    sistema.registrarGasto('Prueba Reg. 2 ', 200, new Date(2021, 10, 11), 0, 0);
+    sistema.registrarGasto('Prueba Reg. 3 ', 200, new Date(2021, 10, 1), 1, 0);
+    sistema.registrarGasto('Prueba Reg. 4 ', 1100, new Date(2021, 10, 4), 2, 0);
+    sistema.registrarGasto('Prueba Reg. 5 ', 200, new Date(2021, 10, 30), 3, 0);
+    sistema.registrarGasto('Prueba Reg. 6 ', 300, new Date(2021, 10, 30), 4, 0);
+    sistema.registrarGasto('Prueba Reg. 7 ', 200, new Date(2021, 10, 30), 0, 0);
     mostrarInterfazHome();
   }
 }
@@ -213,7 +213,7 @@ function limpiarGastosMes(){
   var div = document.getElementById('listadoGastosMes');
   while (div.firstChild) {
     div.removeChild(div.firstChild);
-}
+  }
 }
 
 /**
@@ -333,18 +333,17 @@ function agregarGasto() {
   if (fcreategasto.reportValidity()) {
     const nombre = document.getElementById('gnombre').value;
     const monto = document.getElementById('gmonto').value;
-    const fecha = document.getElementById('gfecha').value;
+    const fecha = document.getElementById('gfecha').value.split('-');
+    const fechaIngresar = new Date(fecha[0], fecha[1] - 1, fecha[2]);
     const categoria = document.getElementById('cbxCategoria').value;
     const repetir = document.getElementById('cbxRecurrenciaGasto').value;
-    const respuesta = sistema.registrarGasto(nombre, monto, fecha, categoria, repetir);
+    const respuesta = sistema.registrarGasto(nombre, monto, fechaIngresar, categoria, repetir);
     alert(respuesta);
     if (respuesta == 'Gasto creado con éxito') {
       /* Limpia los campos una vez creado */
       document.getElementById('gnombre').value = '';
       document.getElementById('gmonto').value = '';
       document.getElementById('gfecha').value = '';
-      document.getElementById('cbxCategoria').value = '';
-      document.getElementById('cbxRecurrenciaGasto').value = '';
     }
   }
 }
