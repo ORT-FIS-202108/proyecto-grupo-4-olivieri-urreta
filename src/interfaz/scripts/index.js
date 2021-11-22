@@ -1,10 +1,5 @@
 /* eslint-disable max-len */
-import {MDCRipple} from '@material/ripple';
-import {MDCTopAppBar} from '@material/top-app-bar';
 import {MDCTabBar} from '@material/tab-bar';
-import {MDCTextField} from '@material/textfield';
-import {MDCSelect} from '@material/select';
-import {MDCSnackbar} from '@material/snackbar';
 import Sistema from '../../dominio/sistema.mjs';
 
 window.addEventListener('load', inicio);
@@ -209,8 +204,8 @@ function cargarGastosMes(mesSeleccionado, añoSeleccionado) {
 /**
  * Limpiar listado mes.
  */
-function limpiarGastosMes(){
-  var div = document.getElementById('listadoGastosMes');
+function limpiarGastosMes() {
+  const div = document.getElementById('listadoGastosMes');
   while (div.firstChild) {
     div.removeChild(div.firstChild);
   }
