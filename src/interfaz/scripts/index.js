@@ -105,13 +105,13 @@ function login() {
   // alert(mensaje);
   if (mensaje === '¡Bienvenido!') {
     // Gastos hardocdeados
-    sistema.registrarGasto('Prueba Reg. 8', 200, new Date(), 0, 0);
-    sistema.registrarGasto('Prueba Reg. 8', 200, new Date(2021, 10, 11), 0, 0);
-    sistema.registrarGasto('Prueba Reg. 8', 200, new Date(2021, 10, 1), 1, 0);
-    sistema.registrarGasto('Prueba Reg. 8', 1100, new Date(2021, 10, 4), 2, 0);
-    sistema.registrarGasto('Prueba Reg. 8', 200, new Date(2021, 10, 30), 3, 0);
-    sistema.registrarGasto('Prueba Reg. 8', 300, new Date(2021, 10, 30), 4, 0);
-    sistema.registrarGasto('Prueba Reg. 8', 200, new Date(2021, 10, 30), 0, 0);
+    sistema.registrarGasto('Prueba Reg. 8 ', 200, new Date(), 0, 0);
+    sistema.registrarGasto('Prueba Reg. 8 ', 200, new Date(2021, 10, 11), 0, 0);
+    sistema.registrarGasto('Prueba Reg. 8 ', 200, new Date(2021, 10, 1), 1, 0);
+    sistema.registrarGasto('Prueba Reg. 8 ', 1100, new Date(2021, 10, 4), 2, 0);
+    sistema.registrarGasto('Prueba Reg. 8 ', 200, new Date(2021, 10, 30), 3, 0);
+    sistema.registrarGasto('Prueba Reg. 8 ', 300, new Date(2021, 10, 30), 4, 0);
+    sistema.registrarGasto('Prueba Reg. 8 ', 200, new Date(2021, 10, 30), 0, 0);
     mostrarInterfazHome();
   }
 }
@@ -197,6 +197,7 @@ function cargarMesSiguiente() {
 function cargarGastosMes(mesSeleccionado, añoSeleccionado) {
   const listaGastosDelMes = sistema.obtenerGastosDelMes(mesSeleccionado, añoSeleccionado);
   if (listaGastosDelMes.length > 0) {
+    limpiarGastosMes();
     cargarListadoGastosMes(listaGastosDelMes);
     document.getElementById('listadoGastosVacio').style.display = 'none';
     document.getElementById('listadoGastosMes').style.display = 'inline';
@@ -205,6 +206,16 @@ function cargarGastosMes(mesSeleccionado, añoSeleccionado) {
     document.getElementById('listadoGastosMes').style.display = 'none';
   }
 }
+/**
+ * Limpiar listado mes.
+ */
+function limpiarGastosMes(){
+  var div = document.getElementById('listadoGastosMes');
+  while (div.firstChild) {
+    div.removeChild(div.firstChild);
+}
+}
+
 /**
  * Recibe una lista de gastos para mostara en la UI.
  * Carga cada gasto en una línea del listado.
@@ -240,7 +251,8 @@ function cargarListadoGastosMes(listado) {
         nodoPadreListItems = agregarSubheaderListaGastos(nodoListado, elementoSubheader, texto);
       }
       // Crea un list item y lo agrega al nodo padre de la lista (ul).
-      crearListItem(nodoPadreListItems, gasto.categoria, gasto.nombre, gasto.monto);
+      const moneda = '$';
+      crearListItem(nodoPadreListItems, gasto.categoria, gasto.nombre, moneda, gasto.monto);
       // Suma al monto total del mes el monto del gasto que agregó.
       totalMes = totalMes + gasto.monto;
     });
@@ -276,30 +288,26 @@ function agregarSubheaderListaGastos(nodoListado, elementoSubheader, texto) {
  * @param {string} nombre Nombre del gasto.
  * @param {Number} monto Monto del gasto.
  */
-function crearListItem(nodoPadre, categoria, nombre, monto) {
-  // Crea los li para cada día, con sus detalles (nombre, monto, ícono).
+function crearListItem(nodoPadre, categoria, nombre, moneda ,monto) {
+  // Crea los li para cada día, con sus detalles (nombre, monto, ícono).  
   const lineaDelDia = document.createElement('li');
   lineaDelDia.classList.add('mdc-list-item');
+  
   // Crea span para el ícono y lo agrega al padre.
   const spanIcono = document.createElement('span');
   spanIcono.classList.add('material-icons', 'mdc-list--icon-list');
   // spanIcono.innerText = sistema.obtenerIconoCategoria(gasto.categoria);
   spanIcono.innerText = sistema.obtenerNombreIcono(categoria);
-  lineaDelDia.appendChild(spanIcono);
+  lineaDelDia.appendChild(spanIcono);  
   // Crea span para el efecto ripple y lo agrega al padre.
   const spanRipple = document.createElement('span');
   spanRipple.classList.add('mdc-list-item__ripple');
-  lineaDelDia.appendChild(spanRipple);
-  // Crea span para el nombre del gasto y lo agrega al padre.
+  lineaDelDia.appendChild(spanRipple);  
+  // Crea span para el nombre del gasto moneda y monto, y lo agrega al padre.
   const spanNombreGasto = document.createElement('span');
   spanNombreGasto.classList.add('mdc-list-item__text');
-  spanNombreGasto.innerText = nombre;
-  lineaDelDia.appendChild(spanNombreGasto);
-  // Crea span para el monto del gasto y lo agrega al padre.
-  const spanMonto = document.createElement('span');
-  spanMonto.classList.add('mdc-list-item__meta');
-  spanMonto.innerText = monto;
-  lineaDelDia.appendChild(spanMonto);
+  spanNombreGasto.innerText = nombre + ' ' + moneda + monto;
+  lineaDelDia.appendChild(spanNombreGasto);  
   nodoPadre.appendChild(lineaDelDia);
 }
 /**
