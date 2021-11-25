@@ -1,44 +1,148 @@
 # Informe académico entrega 2
+
+Proyecto: 202108 MisGastos  
+Autores: Giovanni Olivieri (205237), Diego Urreta (238422)  
+Grupo: N3A
+Docentes: Gabriela Sánchez, Miguel Sánchez  
+Repositorio Git: [Grupo 4 - Olivieri/Urreta](https://github.com/ORT-FIS-202108/proyecto-grupo-4-olivieri-urreta.git)  
+Fecha Code Freeze: 22-nov-2021
 Fecha de entrega: 29-nov-2021
 
 ## Construcción
 
-Implementación de funciones principales (sin la necesidad de persistencia de datos)
+**Implementación de funciones principales (sin la necesidad de persistencia de datos)**
 
-Configuración de plataforma tecnológica para desarrollo y producción
+- RF01 - El sistema debe permitir crear una cuenta.
+  - Pag login y crear cta
+  - Funcion crear cuenta
+- RF02 - El sistema debe requerir usuario y contraseña para mostrar e ingresar gastos.
+  - login (valido/invalido)
+- RF03 - Los usuarios pueden registrar un gasto con descripción, precio y fecha.
+  - Implementar Home con boton de agregar gasto que abre ventan agregar gasto
+  - Funcion/ventana agregar gastos
+- RF04 - El sistema debe implementar un calendario de pagos.
+  - Listado de gastos/ingresos en un mes seleccionado.
+  - Al cambiar el mes se carga el listado para ese mes
+- RF05 - Los usuarios deben recibir recordatorios de pagos (e-mail).
+  - Fuera de alcance ?
+- RF06 - Llevar un control de estado de cuenta bancario. 
+  - En listado gastos, agregar total (ingresos - gastos)
+- RF07 - Los usuarios pueden configurar un gasto como recurrente.
+  - En crear gasto, agregar boton/funcion para repetir gasto
+  - Proceso que al ingresar verifica fecha del sist, y crea un gasto identico.
+- RF08 - Los usuarios pueden seleccionar una categoría de gasto para cada gasto ingresado.
+  - Crear ventana de seleccion de cat gasto  (mestra iconos)
+  - En crear gasto, agregar boton para seleccionar cat
+  - En listado gastos, agregar iconos del tipo gasto que sean boton. Boton abre ventana seleccion cat gasto
+- RF09 - El sistema permite visualizar un resumen de gastos por mes (gráficas, o listados).
+  - Opcion de cambiar mes, trae gastos de dif meses
+- RF10 - Los usuarios pueden compartir gastos entre ellos (verificar si es posible o si nos complicaría mucho).
+  - Fuera de alcance ?
+- RF11 - Los usuarios pueden seleccionar una vista de listado o pie chart para los resúmenes de gastos.
+  - Cambiar vista (lista/grafico)
+- RF12 - El sistema muestra total en pesos y total en dólares si hay gastos ingresados en más de una moneda.
+  - Cambiar moneda en lista gastos
+  - Agregar moneda en creacion de gastos
 
-Documentación del uso de librerías externas (package.json)
+**Configuración de plataforma tecnológica para desarrollo y producción**
+
+Se crea la rama ```develop``` a partir de la rama ```main```, siendo la rama ```develop``` el punto de partida para todas las sub-ramas ```feature-*```.
+
+Todo el trabajo de desarrollo de las distintas funciones de la aplicación se lleva a cabo en las distintas ramas ```feature-nombre```, donde ```nombre``` es el nombre de la función a desarrollar. Una vez que se completa el desarrollo de una función, se hace un merge con la rama ```develop```. 
+
+Luego de finalizado el desarrollo de todas las funciones, se congela el código de las funciones y se hace un merge de la rama ```develop``` a la rama ```main```. A partir de este punto sólo se trabaja en el test de sistema, la documentación de issues y generación del informe académico. Para el trabajo en el test de sistema se crea la rama ```testing``` a partir de la rama ```main```; para el trabajo en la documentación de issues y generación del informe académico se crea la rama ```documentacion``` a partir de la rama ```main```.
+
+Finalizadas las actividades de test de sistema, reporte de issues y generación del informe académico, se integran las ramas ```testing``` y ```documentacion``` a la rama ```main```.
+
+*Agregar imagen de Git Graph con las ramas y commits*  
+
+**Documentación del uso de librerías externas (package.json)**
+
+- Dependencias jest y eslint (con estándar de estilo utilizado)
+"devDependencies": {
+    "eslint": "^8.1.0",
+    "eslint-config-google": "^0.14.0",
+    "jest": "^27.3.1"
+}
+
+- Detalles de scripts 
+"scripts": {
+    "test": "test",
+    "lint": "eslint"
+  },
+
+- Detalles del repositorio (tipo, ubicación, ubicación de bugs/issues) 
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ORT-FIS-202108/proyecto-grupo-4-olivieri-urreta.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ORT-FIS-202108/proyecto-grupo-4-olivieri-urreta/issues"
+  },
 
 ## Interfaz de usuario
 
-Interfaz de usuario web / mobile (responsive)
+Interfaz de usuario web / mobile (responsive). 
+
+ AGREGAR - Prt screen de pag, login, reg. usuario y home. En ambos tipos dispositivos
 
 Página única con navegación entre secciones
 
+    AGREGAR - Imagenes de tabs para navegacion. Hablar un poco de como implementamos el cod. (hide/show de sections/tabs)
+
 Implementación: Material Design Web Components
+
+    Detallar componentes que usamos. Tab Bar, Iconos material, Colores (primary/secondary), font... etc.
 
 Aplicar un sistema de diseño y principios de usabilidad
 
+    ANALISIS HEURISTICO
+    - https://docs.google.com/spreadsheets/d/1k1rVll3sRhTdeMmno9QNb27nRulzlmFe/edit#gid=331333407
+    - https://www.nngroup.com/articles/ten-usability-heuristics/
+
 Cumplimiento de estándar de accesibilidad WCAG
+  https://achecker.achecks.ca/checker/index.php
+  
 
 Seguir especificación de estilo
+
+    AGREGAR - Se usaron estilo de la letra
 
 ## Codificación
 
 IDE Visual Studio Code: configuración común del equipo
 
+- Extensiones
+  - Git Graph
+  - Git Lens
+  - ESLint
+
 Estándares de codificación Google (HTML, CSS, JavaScript)
+  - validadores online
+  - CSS - todo OK
+  - HTML - 19 errores y 10 warnings en un inicio, despues 8 errores 6 warnings
+  - utf encoding
+
+  - camel case en variables y funciones
 
 Buenas prácticas de OOP: separación de lógica e interfaz
 
+    AGREGAR - prt. screens de clases 
+        Funciones en sistema ( y clases) y no en index.js
+
 Análisis estático de código: mostrar reducción de problemas
+    AGREGAR QUE USAMOS eslint 
+    y agregar imagenes
 
 ## Test unitario
 
 Test unitarios en Jest
 
+    Describir un poco como implementamos los tests
+
 100% cobertura en clases de dominio
 
+    MOSTRAR evidencia
 
 | En la semana previa a la entrega se debe congelar el desarrollo (22-nov-2021).
 A partir de este punto solo se realizan actividades de test de sistema, reporte de issues y generación del informe académico.
@@ -47,26 +151,75 @@ A partir de este punto solo se realizan actividades de test de sistema, reporte 
 
 Realizar test de sistema en un entorno separado del desarrollo
 
+    TEST PLANIFICADO
+    TEST EXPLORATORIO
+    EVALUACIÓN DE CALIDAD
+
+
 Generar casos de prueba aplicando técnica partición equivalente
 
 Detallar sesiones de prueba exploratoria
+    - No hacer sesiones cortas de 30 min, pero detallar en el informe que se opto por definir sesiones más cortas
+    - Oportunidades vs Mision (cubrir al menos un % del tiempo en la misión)
+    - En el informe detallar como se dividio el tiempo (inv y reporte, diseño y ejecucion, config. pruebas)
+    - Usar template 'Sesion de Testing Exploratorio' del Drive
 
 ## Reporte de issues
 
 Reportar issues (bugs, improvements, missing features) en GitHub 
 
+    Cod issue y titulo.
+    Link a seccion issues
+
 Aplicar buenas prácticas de reporte de issues
 
+    AGREGAR - describir que agregamos a los issues y por que.
+  
 Definir labels para tipos de issue y niveles de severidad
+
+    labels - usamos las predeterminadas de github
+
+**Severidad**
+  - Alta - Problemas que impiden el funcionamiento de las funcionalidades base del sistema. (Agregar/Editar/Borrar Gasto, Iniciar Sesión, Registro de Usuario, Recuperar Contraseña).
+  - Media - Problemas en navegación de la interfaz, deficiencias de usabilidad, y requerimientos funcionales no implementados (Mostrar gráfico de torta para categorías de gastos, Mostrar total del mes).
+  - Baja - Problemas de diseño y defectos visuales que no afectan las funciones y/o usabilidad del sistema. Funcionalidades extras a implementar (Creación de gastos con multiples divisas, compartir gasto).
+
+  **Prioridad**
+  - Crítica - Se debe resolver lo más pronto posible. Se detiene el desarrollo en otras áreas para resolver este problema.
+  - Media -  Se debe resolver antes del próximo release.
+  - Baja - Se puede posponer para otro release. Se resulve si hay tiempo.
+
 
 Dejar issues abiertos para correcciones o mejoras futuras
 
+    DESCRIBIR QUE QUEDO PARA EL FUTURO
+
 Sumarizar número de issues reportados por tipo
 
+    GRAFICA/TABLA - Y breve analisis de issues y sus tipos
+
 Realizar una evaluación global de la calidad
+  - Clase nov 11 luego de la mitad
+  - Cobertura de test y resultado para las las funciones criticas
+  - Cant. de issues reportados y resueltos
+    - Si son issues criticos o no
+  - Funcionalidades criticas, cuantos issues tienen
+  - Mejoras que se pueden hacer a partir de issues
+  - De todos los casos de prueba diseñados, cuantos se pudieron ejecutra
+    - De los ejecutados cuantos pasaron/fallaron
+    - Tiempo utilizado en pruebas
+  - Analisis de estandares
+  - Analisis de usabilidad
+  - Categorias de los issues
+    - Cuantos de usabilidad/accessibilidad/typo
+  - Usar Visualizaciones / Graficas para mostrar los analisis anteriores.
+
+Conclusión - Prox. pasos a seguri (salir a prod. o no) Resolver x cosas antes... etc
 
 ## Reflexión
 
 Detalle del trabajo individual
 
+
 Técnicas aplicadas y aprendizajes
+
