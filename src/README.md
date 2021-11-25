@@ -17,41 +17,20 @@ Para la implementación de las funciones de la aplicación se tomaron como punto
 Se descartaron en esta etapa aquellos que implicaban una complejidad técnica elevada, gran cantidad de horas necesarias para implementar, o necesidad de aplicar herramientas no vistas en clase. Un ejemplo de esto, es la implementación de un servicio email en el servidor para enviar emails con recordatorios a los usuarios.
 
 **Requerimientos implementados**
+- RF01 - El sistema debe permitir crear una cuenta.
+- RF02 - El sistema debe requerir usuario y contraseña para mostrar e ingresar gastos.
+- RF03 - Los usuarios pueden registrar un gasto con descripción, precio y fecha.
+- RF04 - El sistema debe implementar un calendario de pagos.
+- RF07 - Los usuarios pueden configurar un gasto como recurrente.
+- RF08 - Los usuarios pueden seleccionar una categoría de gasto para cada gasto ingresado.
+- RF09 - El sistema permite visualizar un resumen de gastos por mes (gráficas, o listados).
 
 **Requerimientos no implementados**
-
-
-- RF01 - El sistema debe permitir crear una cuenta.
-  - Pag login y crear cta
-  - Funcion crear cuenta
-- RF02 - El sistema debe requerir usuario y contraseña para mostrar e ingresar gastos.
-  - login (valido/invalido)
-- RF03 - Los usuarios pueden registrar un gasto con descripción, precio y fecha.
-  - Implementar Home con boton de agregar gasto que abre ventan agregar gasto
-  - Funcion/ventana agregar gastos
-- RF04 - El sistema debe implementar un calendario de pagos.
-  - Listado de gastos/ingresos en un mes seleccionado.
-  - Al cambiar el mes se carga el listado para ese mes
 - RF05 - Los usuarios deben recibir recordatorios de pagos (e-mail).
-  - Fuera de alcance ?
-- RF06 - Llevar un control de estado de cuenta bancario. 
-  - En listado gastos, agregar total (ingresos - gastos)
-- RF07 - Los usuarios pueden configurar un gasto como recurrente.
-  - En crear gasto, agregar boton/funcion para repetir gasto
-  - Proceso que al ingresar verifica fecha del sist, y crea un gasto identico.
-- RF08 - Los usuarios pueden seleccionar una categoría de gasto para cada gasto ingresado.
-  - Crear ventana de seleccion de cat gasto  (mestra iconos)
-  - En crear gasto, agregar boton para seleccionar cat
-  - En listado gastos, agregar iconos del tipo gasto que sean boton. Boton abre ventana seleccion cat gasto
-- RF09 - El sistema permite visualizar un resumen de gastos por mes (gráficas, o listados).
-  - Opcion de cambiar mes, trae gastos de dif meses
+- RF06 - Llevar un control de estado de cuenta bancario.
 - RF10 - Los usuarios pueden compartir gastos entre ellos (verificar si es posible o si nos complicaría mucho).
-  - Fuera de alcance ?
 - RF11 - Los usuarios pueden seleccionar una vista de listado o pie chart para los resúmenes de gastos.
-  - Cambiar vista (lista/grafico)
 - RF12 - El sistema muestra total en pesos y total en dólares si hay gastos ingresados en más de una moneda.
-  - Cambiar moneda en lista gastos
-  - Agregar moneda en creacion de gastos
 
 ### Configuración de plataforma tecnológica para desarrollo y producción
 
@@ -67,27 +46,50 @@ Finalizadas las actividades de test de sistema, reporte de issues y generación 
 
 ### Documentación del uso de librerías externas (package.json)
 
-- Dependencias jest y eslint (con estándar de estilo utilizado)
+En el archivo _package.json_, bajo las secciones _devDependencies_ y _dependencies_, se pueden encontrar las siguientes dependencias que refieren a las librerías externas utilizadas durante el desarrollo del proyecto:
+
+```
 "devDependencies": {
-    "eslint": "^8.1.0",
+    "eslint": "^8.2.0",
     "eslint-config-google": "^0.14.0",
-    "jest": "^27.3.1"
+    "jest": "^26.6.3"
+  },
+"dependencies": {
+    "moment": "^2.29.1"
 }
+```
 
-- Detalles de scripts 
-"scripts": {
-    "test": "test",
-    "lint": "eslint"
-  },
+A continuación se describen brevementes las dependencias y para que se utilizó cada una de ellas.
 
-- Detalles del repositorio (tipo, ubicación, ubicación de bugs/issues) 
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ORT-FIS-202108/proyecto-grupo-4-olivieri-urreta.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ORT-FIS-202108/proyecto-grupo-4-olivieri-urreta/issues"
-  },
+**ESLint**
+
+```
+    "eslint": "^8.2.0",
+    "eslint-config-google": "^0.14.0"
+```
+
+Es un analizador estático de código que se utilizó en los archivos Javascript para identificar errores de calidad o sintaxis en el código, evitar posibles bugs, y para escribir código que sea más mantenible.
+
+Esta es fue una herramienta de gran importancia ya que ayudó a que el código sea más fácil de leer y entender por todos los integrantes del equipo facilitando la colaboración. 
+
+En cuanto a la calidad del código, durante la instalación y configuración se seleccionó el estándar de Google como el conjunto de reglas a validar. 
+
+En las sección _Codificación_ se brindan más detalles sobre el impacto de ESLint y el análisis estático del código.
+
+**Jest**
+
+```
+    "jest": "^26.6.3"
+```
+
+Jest es un
+
+**Moment**
+
+```
+    "moment": "^2.29.1"
+```
+
 
 ## Interfaz de usuario
 
