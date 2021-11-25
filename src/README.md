@@ -10,7 +10,16 @@ Fecha de entrega: 29-nov-2021
 
 ## Construcción
 
-**Implementación de funciones principales (sin la necesidad de persistencia de datos)**
+### Implementación de funciones principales (sin la necesidad de persistencia de datos)
+
+Para la implementación de las funciones de la aplicación se tomaron como punto de partida los requerimientos funcionales definidos en la primer entrega del obligatorio. De todos los requerimientos funcionales, sólo se trabajó en aquellos que era posible implementar con las herramientas y conocimientos actuales de ambos integrantes del equipo.
+
+Se descartaron en esta etapa aquellos que implicaban una complejidad técnica elevada, gran cantidad de horas necesarias para implementar, o necesidad de aplicar herramientas no vistas en clase. Un ejemplo de esto, es la implementación de un servicio email en el servidor para enviar emails con recordatorios a los usuarios.
+
+**Requerimientos implementados**
+
+**Requerimientos no implementados**
+
 
 - RF01 - El sistema debe permitir crear una cuenta.
   - Pag login y crear cta
@@ -44,7 +53,7 @@ Fecha de entrega: 29-nov-2021
   - Cambiar moneda en lista gastos
   - Agregar moneda en creacion de gastos
 
-**Configuración de plataforma tecnológica para desarrollo y producción**
+### Configuración de plataforma tecnológica para desarrollo y producción
 
 Se crea la rama ```develop``` a partir de la rama ```main```, siendo la rama ```develop``` el punto de partida para todas las sub-ramas ```feature-*```.
 
@@ -56,7 +65,7 @@ Finalizadas las actividades de test de sistema, reporte de issues y generación 
 
 *Agregar imagen de Git Graph con las ramas y commits*  
 
-**Documentación del uso de librerías externas (package.json)**
+### Documentación del uso de librerías externas (package.json)
 
 - Dependencias jest y eslint (con estándar de estilo utilizado)
 "devDependencies": {
@@ -82,42 +91,42 @@ Finalizadas las actividades de test de sistema, reporte de issues y generación 
 
 ## Interfaz de usuario
 
-Interfaz de usuario web / mobile (responsive). 
+### Interfaz de usuario web / mobile (responsive). 
 
  AGREGAR - Prt screen de pag, login, reg. usuario y home. En ambos tipos dispositivos
 
-Página única con navegación entre secciones
+### Página única con navegación entre secciones
 
     AGREGAR - Imagenes de tabs para navegacion. Hablar un poco de como implementamos el cod. (hide/show de sections/tabs)
 
-Implementación: Material Design Web Components
+### Implementación: Material Design Web Components
 
     Detallar componentes que usamos. Tab Bar, Iconos material, Colores (primary/secondary), font... etc.
 
-Aplicar un sistema de diseño y principios de usabilidad
+### Aplicar un sistema de diseño y principios de usabilidad
 
     ANALISIS HEURISTICO
     - https://docs.google.com/spreadsheets/d/1k1rVll3sRhTdeMmno9QNb27nRulzlmFe/edit#gid=331333407
     - https://www.nngroup.com/articles/ten-usability-heuristics/
 
-Cumplimiento de estándar de accesibilidad WCAG
+### Cumplimiento de estándar de accesibilidad WCAG
   https://achecker.achecks.ca/checker/index.php
   
 
-Seguir especificación de estilo
+### Seguir especificación de estilo
 
     AGREGAR - Se usaron estilo de la letra
 
 ## Codificación
 
-IDE Visual Studio Code: configuración común del equipo
+### IDE Visual Studio Code: configuración común del equipo
 
 - Extensiones
   - Git Graph
   - Git Lens
   - ESLint
 
-Estándares de codificación Google (HTML, CSS, JavaScript)
+### Estándares de codificación Google (HTML, CSS, JavaScript)
   - validadores online
   - CSS - todo OK
   - HTML - 19 errores y 10 warnings en un inicio, despues 8 errores 6 warnings
@@ -125,57 +134,55 @@ Estándares de codificación Google (HTML, CSS, JavaScript)
 
   - camel case en variables y funciones
 
-Buenas prácticas de OOP: separación de lógica e interfaz
+### Buenas prácticas de OOP: separación de lógica e interfaz
 
     AGREGAR - prt. screens de clases 
         Funciones en sistema ( y clases) y no en index.js
 
-Análisis estático de código: mostrar reducción de problemas
+### Análisis estático de código: mostrar reducción de problemas
     AGREGAR QUE USAMOS eslint 
     y agregar imagenes
 
 ## Test unitario
 
-Test unitarios en Jest
+### Test unitarios en Jest
 
     Describir un poco como implementamos los tests
 
-100% cobertura en clases de dominio
+### 100% cobertura en clases de dominio
 
     MOSTRAR evidencia
 
-| En la semana previa a la entrega se debe congelar el desarrollo (22-nov-2021).
-A partir de este punto solo se realizan actividades de test de sistema, reporte de issues y generación del informe académico.
-
 ## Test de sistema
 
-Realizar test de sistema en un entorno separado del desarrollo
-
+### Realizar test de sistema sobre la versión congelada
     TEST PLANIFICADO
     TEST EXPLORATORIO
     EVALUACIÓN DE CALIDAD
+### Ambiente de testing independiente del desarrollo
 
 
-Generar casos de prueba aplicando técnica partición equivalente
 
-Detallar sesiones de prueba exploratoria
-    - No hacer sesiones cortas de 30 min, pero detallar en el informe que se opto por definir sesiones más cortas
+### Generar casos de prueba aplicando técnica partición equivalente
+### Detallar sesiones de prueba exploratori
+- No hacer sesiones cortas de 30 min, pero detallar en el informe que se opto por definir sesiones más cortas
     - Oportunidades vs Mision (cubrir al menos un % del tiempo en la misión)
     - En el informe detallar como se dividio el tiempo (inv y reporte, diseño y ejecucion, config. pruebas)
     - Usar template 'Sesion de Testing Exploratorio' del Drive
 
+
 ## Reporte de issues
 
-Reportar issues (bugs, improvements, missing features) en GitHub 
+### Reportar issues (bugs, improvements, missing features) en GitHub 
 
     Cod issue y titulo.
     Link a seccion issues
 
-Aplicar buenas prácticas de reporte de issues
+### Aplicar buenas prácticas de reporte de issues
 
     AGREGAR - describir que agregamos a los issues y por que.
   
-Definir labels para tipos de issue y niveles de severidad
+### Definir labels para tipos de issue y niveles de severidad
 
     labels - usamos las predeterminadas de github
 
@@ -190,15 +197,15 @@ Definir labels para tipos de issue y niveles de severidad
   - Baja - Se puede posponer para otro release. Se resulve si hay tiempo.
 
 
-Dejar issues abiertos para correcciones o mejoras futuras
+### Dejar issues abiertos para correcciones o mejoras futuras
 
     DESCRIBIR QUE QUEDO PARA EL FUTURO
 
-Sumarizar número de issues reportados por tipo
+### Sumarizar número de issues reportados por tipo
 
     GRAFICA/TABLA - Y breve analisis de issues y sus tipos
 
-Realizar una evaluación global de la calidad
+### Realizar una evaluación global de la calidad
   - Clase nov 11 luego de la mitad
   - Cobertura de test y resultado para las las funciones criticas
   - Cant. de issues reportados y resueltos
@@ -218,8 +225,8 @@ Conclusión - Prox. pasos a seguri (salir a prod. o no) Resolver x cosas antes..
 
 ## Reflexión
 
-Detalle del trabajo individual
+### Detalle del trabajo individual
 
 
-Técnicas aplicadas y aprendizajes
+### Técnicas aplicadas y aprendizajes
 
