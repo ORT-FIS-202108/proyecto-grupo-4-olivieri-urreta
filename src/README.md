@@ -96,6 +96,28 @@ Moment es un framework para validar, formatear y mostrar fechas de una manera m�
 
 ### Interfaz de usuario web / mobile (responsive).
 
+La aplicación cuenta con una interfaz responsive que se ajusta al tamaño del dispositivo y/o browser, que ya estaba implementada en el framework base provisto.
+
+De nuestra parte, al momento de diseñar y agregar los componentes se tuvo en cuenta que estos se ajustaran de manera que no interfirieran entre ellos y mantuviesen el sistema de diseño.
+
+A continuación se muestran ejemplos de las diferentes secciones del sitio y su comportamiento responsive en diferentes dispositivos y tamaños.
+
+**Web**
+
+- 
+
+**Mobile**
+
+- Android
+
+    ![Responsive Mobile](../docs/interfaz-de-usuario/galaxy-s51.png =350x)
+
+- iOS
+
+    ![Responsive iOS](../docs/interfaz-de-usuario/iphone.png =350x)
+
+
+ 
  AGREGAR - Prt screen de pag, login, reg. usuario y home. En ambos tipos dispositivos
 
 ### Página única con navegación entre secciones
