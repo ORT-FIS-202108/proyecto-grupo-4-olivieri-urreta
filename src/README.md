@@ -235,20 +235,32 @@ La extension Git Graph permite ver de una manera fácil e intuitiva las diferent
 
 ### Estándares de codificación Google (HTML, CSS, JavaScript)
 
-Para cumplir con los estándares de codificación se utilizaron herramientas de análisis estático de código, validadores online.
+Para cumplir con los estándares de codificación se utilizaron herramientas de análisis estático de código, validadores online. A su vez, al momento de escribir el código se tuvieron en cuenta aspectos sobre nomenclatura de los elementos, indentado, utilización de mayúsculas y minúsculas, espaciado y agrupamiento de sentencias.
 
-Para validar los archivos HTML y CSS, se utilizó el validador online 
+Se utilizaron como referencia y material de consulta las style guides de Google para  [HTML y CSS](https://google.github.io/styleguide/htmlcssguide.html) y [JavaScript](https://google.github.io/styleguide/jsguide.html).
 
-En la sección 
+Adicionalmente, luego de escrito el código se validaron los archivos HTML y CSS mediante el validador online [W3C](https://validator.w3.org/#validate_by_upload+with_options).
 
+**HTML**
+Al validar el archivo HTML con la herramienta online, en una primera validación, se obtubieron 19 errores y 10 advertencias (warnings). Ya que esta validación inicial fue antes del code freeze, fue posible hacer correcciones en el archivo, y luego de estas se llevó a cabo una segunda validación en la cual se redujeron los errores a 8 y los warnings a 6. 
 
+Carga de archivo
 
-  - validadores online
-  - CSS - todo OK
-  - HTML - 19 errores y 10 warnings en un inicio, despues 8 errores 6 warnings
-  - utf encoding
+  ![Carga de archivo](../docs/codificacion/capturas-validadores/validaciones%20css%20y%20html/subir-validacion-html.png)
 
-  - camel case en variables y funciones
+Resultado segunda validación
+
+  ![Segunda validación](../docs/codificacion/capturas-validadores/validaciones%20css%20y%20html/../validaciones%20css%20y%20html/validacion%20html.png)
+
+**CSS**
+
+La validación del archivo CSS no detectó errores.
+
+![Validación CSS](../docs/codificacion/capturas-validadores/validaciones%20css%20y%20html/validacion-css.png)
+
+**JavaScript**
+
+En la sección sobre Análisis estático de código se aborda en detalle el estándar utilizado para los archivos JavaScript. 
 
 ### Buenas prácticas de OOP: separación de lógica e interfaz
 
