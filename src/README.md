@@ -287,8 +287,76 @@ Todas las funciones dentro de las clases Usuario o Gasto se encargan de procesar
 ![Clase Gasto](../docs/codificacion/clase-gasto.png =200x)
 
 ### Análisis estático de código: mostrar reducción de problemas
-    AGREGAR QUE USAMOS eslint 
-    y agregar imagenes
+
+Para el análisis estático de código se utilizó ESLint y su respectiva extensión para Visual Studio Code. Esta herramienta permitieron detectar en tiempo real potenciales errores de calidad o sintaxis en el código, o código que no se ajustaba a el estándar de codificación de Google para JavaScript. 
+
+ESLint nos ayudó a escribir un código fácilmente mantenible y de mejor calidad. Se detallan a continuación algunos ejemplos de cómo se pudo mejorar el código y se redujeron la cantidad de problemas.
+
+**JSDocs**
+
+ESLint nos ayudo a desde un comienzo del proyecto a codificar las funciones con su respectivo JSDoc para poder obtener detalles de ellas independientemente desde donde se invocara la función. Además, nos permitió identificar errores en las firmas de las funciones cuando los parámetros no eran correctos.
+
+_Función sin JSDoc_
+
+![JSDocs antes](../docs/codificacion/capturas-validadores/capturas%20eslint/../capturas%20eslint/missing-jsdoc-before.png)
+
+_Función con JSDoc - Sin parámetros_
+
+![JSDocs después](../docs/codificacion/capturas-validadores/capturas%20eslint/../capturas%20eslint/missing-jsdoc-after.png)
+
+_Función con JSDoc - Con parámetros_
+
+![JSDocs después](../docs/codificacion/capturas-validadores/capturas%20eslint/../capturas%20eslint/../capturas%20eslint/missing-jsdoc-after-2.png)
+
+_Función con JSDoc incorrecto - Antes_
+
+![JSDocs después](../docs/codificacion/capturas-validadores/capturas%20eslint/../capturas%20eslint/../capturas%20eslint/../capturas%20eslint/jsdoc-incorrecto-before.png)
+
+_Función con JSDoc incorrecto - Después_
+
+![JSDocs después](../docs/codificacion/capturas-validadores/capturas%20eslint/../capturas%20eslint/../capturas%20eslint/../capturas%20eslint/../capturas%20eslint/jsdoc-incorrecto-after.png)
+
+**Espaciado**
+
+ESLint nos permitió remover espacios que no se ajustaban a el estándar o que podrían dificultar la legibilidad del código.
+
+_Indentación incorrecta (mas de 2 espacios por tab)_
+
+![Indentación mayor a 2 espacios](../docs/codificacion/capturas-validadores/capturas%20eslint/indentacion-antes.png)
+
+Esto nos permitió identificar que la configuración del IDE para los espacios era incorrecta. Se procedió a cambiar la configuración del espaciado a 2 espacios por tab.
+
+_Espacios innecesarios al final de las líneas_
+
+![Trailing spaces](../docs/codificacion/capturas-validadores/capturas%20eslint/trailing-space.png)
+
+_Espacios entre llaves y texto - Antes_
+
+![Espacios llaves](../docs/codificacion/capturas-validadores/capturas%20eslint/espaciado-entre-llaves-antes.png)
+
+_Espacios entre llaves y texto - Después_
+
+![Espacios llaves](../docs/codificacion/capturas-validadores/capturas%20eslint/../capturas%20eslint/espaciado-entre-llaves-despues.png)
+
+**Variables e Imports**
+
+En este aspecto ESLint fue de utilidad para identificar problemas realcionados con la utilización de variables e imports. Por ejemplo, si una variable se creaba y nunca se utilizaba, o lo mismo para un import. Otro ejemplo es la utilización de const para las variables que se creaban y nunca cambiaba su valor.
+
+_Variable no reasignada_
+
+![Variable never reassigned](../docs/codificacion/capturas-validadores/capturas%20eslint/variable-never-reassigned-before.png)
+
+_Import no utilizado_
+
+![Imports no utilizados](../docs/codificacion/capturas-validadores/capturas%20eslint/imports-no-utilizados.png)
+
+**Comillas**
+
+En los archivos js se utilizaron exclusivamente commillas simples (single quotes) de acuerdo a lo establecido en la style guide de Google. Al comenzar a trabajar utilizamos comillas dobles, pero ESLint rápidamente nos ayudo a acostumbrarnos a usar single quotes.
+
+![Single quotes](../docs/codificacion/capturas-validadores/capturas%20eslint/single-quotes-before.png)
+
+![Single quotes](../docs/codificacion/capturas-validadores/capturas%20eslint/single-quotes-after.png)
 
 ## Test unitario
 
