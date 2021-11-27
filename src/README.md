@@ -104,35 +104,91 @@ A continuación se muestran ejemplos de las diferentes secciones del sitio y su 
 
 **Web**
 
-- 
+- Login page
+  - Ventana grande
+  
+    ![Responsive Mobile](../docs/interfaz-de-usuario/web-login-large.png "Login ventana grande")
+
+  - Ventana reducida
+    
+    ![Responsive Mobile](../docs/interfaz-de-usuario/web-login-small.png "Login ventana pequeña" =300x)
+
+- Creación de gasto
+  - Ventana grande
+
+    ![Responsive Mobile](../docs/interfaz-de-usuario/web-agregar-gasto-large.png "Creación gasto ventana grande")
+
+  - Ventana reducida
+
+    ![Responsive Mobile](../docs/interfaz-de-usuario/web-agregar-gasto-small.png "Creación gasto ventana pequeña" =300x)
 
 **Mobile**
 
 - Android
 
-    ![Responsive Mobile](../docs/interfaz-de-usuario/galaxy-s51.png =350x)
+    ![Responsive Mobile](../docs/interfaz-de-usuario/galaxy-s51.png "Android" =350x)
 
 - iOS
 
-    ![Responsive iOS](../docs/interfaz-de-usuario/iphone.png =350x)
-
-
- 
- AGREGAR - Prt screen de pag, login, reg. usuario y home. En ambos tipos dispositivos
+    ![Responsive iOS](../docs/interfaz-de-usuario/iphone.png "iOS" =350x)
 
 ### Página única con navegación entre secciones
 
-    AGREGAR - Imagenes de tabs para navegacion. Hablar un poco de como implementamos el cod. (hide/show de sections/tabs)
+La aplicación se desarrollo en una sóla página (único archivo HTML), con diferentes secciones que dependiendo del input del usuario muestra u oculta las secciones necesarias.
+
+El ejemplo más claro de esto es la sección de Login/Registro de Usario que se muestra al iniciar el sitio. Las secciones para mostrar e ingresar gastos, y otros componentes, no son visibles al iniciar el sitio. La única manera para que el usuario pueda visualizarlas es mediante el login correcto. De la misma manera, al ingresar con éxito al sitio la sección de Login/Registro de Usario queda oculta.
+
+Para implementar esto desde el punto de vista del desarrollo, se utilizó el componente _tab-bar_ de Material para navegar entre las secciones, y sólo se muestran las tabs (y los contenidos de cada una) de aquellas secciones que pueden y deben accederse en un determinado momento. Por ejemplo, en la sección Login/Registro de Usario sólo se muestran la tab _Iniciar Sesión_ y la tab _Crear Usuario_, estando ocultas las tabs para _Gastos del Mes_ y _Agregar Gasto_.
+
+La lógica para el comportamiendo de ocultar y mostrar secciones, al igual que la lógica para otros inputs del usuario, se codificaron en el archivo _index.js_ ya que es una responsabilidad de la interfaz.
 
 ### Implementación: Material Design Web Components
 
-    Detallar componentes que usamos. Tab Bar, Iconos material, Colores (primary/secondary), font... etc.
+A continuación se detallan los componentes de Material Design utilizados para construir el sitio.
+
+- material-theme con colores priario, secundario y de background.
+- mdc-icons - Íconos de material design que se muestran en diferentes secciones/componentes del sitio.
+- app-bar-top - Sección para ubicar nombre del sitio, botones para navegar entre meses y botón de logout.
+- tab-bar - Sección para tabs de navegación entre secciones del sitio.
+- tab-scroller - Hace posible hacer scroll en la tab bar, para mostrar tabs no visibles en caso de que el tamaño del browser/dispositivo no lo permita. 
+- tab-indicator - Indicador de tab seleccionada.
+- mdc-buttons - Botones para los form de login, registro de usuario, creación de usuario.
+- icon-buttons - Botones para seleccion de mes, logout.
+- mdc-list - Listado de gastos de un mes.
+- mdc-list-group - Agrupa por día gastos de un mes.
+- line-ripple - Efecto de click en lista gastos.
+- text-fields - Campos de los forms de login, reistro usuario, registro gasto.
+
+Si bien el objetivo era usar la mayor cantidad posible de componentes de Material Design, hubieron casos en que esto no fue posible debido a que no existe una implementación para web de determinados componentes. Por ejemplo, al momento no existe una implementación del Date Picker de Material para web, y por lo tanto se tuvo que utilizar un date picker de HTML básico.
 
 ### Aplicar un sistema de diseño y principios de usabilidad
 
-    ANALISIS HEURISTICO
-    - https://docs.google.com/spreadsheets/d/1k1rVll3sRhTdeMmno9QNb27nRulzlmFe/edit#gid=331333407
-    - https://www.nngroup.com/articles/ten-usability-heuristics/
+**Sistema de Diseño**
+
+Se utilizó el sistema de diseño [Material Design](https://material.io/) con sus respectivos componentes (botones, íconos, listas, etc.). Se siguieron los lineamientos y recomendaciones para la utilización de cada componente, que abarcan aspectos de diagramado, navegación, y usabilidad entre otros.
+
+Al momento de implementar un nuevo componente se tuvieron en cuenta aspectos como anatomía, jerarquía, ubicación, y comportamiento, información que se puede encontrar (para cada tipo de componente) en el siguiente [link](https://material.io/components). Fueron de gran utilidad las secciones de _Do & Don't_ que se pueden encontrar en la documentación.
+
+**Análisis Heursístico**
+
+Se llevó a cabo un Análisis Heursístico para identificar fallas de usabilidad en la interfaz del sistema, comparando la interfaz y su funcionamiento con las 10 heurísticas de usabilidad de Jakob Nielsen.
+
+Se evalúa el cumplimiento de cada una de las 10 heurísticas en todo el sitio, y en base al resultado del cumplimiento (total/parcial/no se cumple) se asigna un puntaje y se crean issues en caso de ser necesario.
+
+A continuación se detalla el nivel cumplimiento para cada heurística, y se puede acceder al análisis completo en el documento [Evaluación de Usabilidad](../docs/usabilidad/Evaluacion_De_Usabilidad.xlsx).
+
+1. Visibilidad del estado del sistema: Total
+2. Adecuación entre el sistema y el mundo real: Parcial
+3. Libertad y control por parte del usuario: No se cumple
+4. Consistencia y estándares: Parcial
+5. Prevención de errores: No se cumple
+6. Reconocimiento antes que recuerdo: Parcial
+7. Flexibilidad y eficiencia en el uso: Parcial
+8. Diseño estético y minimalista: Total
+9. Ayuda a los usuarios a reconocer, diagnosticar y recuperarse de los errores: Total
+10. Ayuda y documentación: No se cumple
+
+El resultado final de la evaluación da un total de 56 puntos y muestra que hay varias de las heurísticas que no se cumplen o se cumplen parcialmente. Por lo tanto se deberá trabajar en los issues generados durante esta evaluación y una ves cerrados se deberá volver a hacer la evaluación para validar de que se hayan resuelto las deficiencias de usabilidad.
 
 ### Cumplimiento de estándar de accesibilidad WCAG
   https://achecker.achecks.ca/checker/index.php
