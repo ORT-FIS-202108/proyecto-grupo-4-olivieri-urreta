@@ -210,10 +210,10 @@ Resumen del resultado:
 
 Para ver un listado detallando cada error, puede acceder al siguiente archivo: [Listado errores](../docs/accesibilidad/resultados-accesibilidad.txt)
 
-En base a los resultados obtenidos, se crearon los issues correspondientes en GitHub:
-- Elementos input de tipo password sin label o sin texto en el atributo label 
-- Elementos input de tipo text sin label o sin texto en el atributo label
-- Elementos input de tipo select sin label o sin texto en el atributo label
+En base a los resultados obtenidos, se crearon en GitHub los issues correspondientes:
+- Elementos input de tipo password sin label o sin texto en el atributo label: #44
+- Elementos input de tipo text sin label o sin texto en el atributo label: #46
+- Elementos input de tipo select sin label o sin texto en el atributo label: #47
 
 ### Seguir especificación de estilo
 
@@ -234,6 +234,15 @@ La extension ESLint, se utilizó para integrar ESLint a VS Code y poder utilizar
 La extension Git Graph permite ver de una manera fácil e intuitiva las diferentes ramas del repositorio (remoto y local), y ademas llevar a cabo otras acciones como el checkout, merge, y drop de ramas, creación de ramas y stashes, realizar code reviews desde el IDE cuando existen conflictos en un merge, y más.
 
 ### Estándares de codificación Google (HTML, CSS, JavaScript)
+
+Para cumplir con los estándares de codificación se utilizaron herramientas de análisis estático de código, validadores online.
+
+Para validar los archivos HTML y CSS, se utilizó el validador online 
+
+En la sección 
+
+
+
   - validadores online
   - CSS - todo OK
   - HTML - 19 errores y 10 warnings en un inicio, despues 8 errores 6 warnings
