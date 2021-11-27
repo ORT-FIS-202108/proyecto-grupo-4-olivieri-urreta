@@ -191,8 +191,29 @@ A continuación se detalla el nivel cumplimiento para cada heurística, y se pue
 El resultado final de la evaluación da un total de 56 puntos y muestra que hay varias de las heurísticas que no se cumplen o se cumplen parcialmente. Por lo tanto se deberá trabajar en los issues generados durante esta evaluación y una ves cerrados se deberá volver a hacer la evaluación para validar de que se hayan resuelto las deficiencias de usabilidad.
 
 ### Cumplimiento de estándar de accesibilidad WCAG
-  https://achecker.achecks.ca/checker/index.php
-  
+
+Para la validación del cumplimiento del estándar de accessibilidad, se utilizó la herramienta del sitio [AChecker](https://achecker.achecks.ca/checker/index.php).
+
+Esta herramienta permite subir un archivo (nuestro archivo index.html en este caso), y validar el cumplimiento de estándares de usabilidad. Al momento de validar el archivo se seleccionó el estándar _Web Content Accessibility Guidelines (WCAG), Version 2.0, Level AA_ que es el estándar seleccionado por defecto en el validador.
+
+![Carga de archivo](../docs/accesibilidad/carga-de-archivo.png "Carga de archivo")
+
+**Resultados**
+
+La validación arrojó 28 errores separados en dos categorías:
+- Adaptable: Create content that can be presented in different ways (for example simpler layout) without losing information or structure.
+- Input Assistance: Help users avoid and correct mistakes.
+
+Resumen del resultado:
+
+![Resultados evaluación de accesibilidad](../docs/accesibilidad/resultados-evaluacion.png "Resultados evaluación de accesibilidad")
+
+Para ver un listado detallando cada error, puede acceder al siguiente archivo: [Listado errores](../docs/accesibilidad/resultados-accesibilidad.txt)
+
+En base a los resultados obtenidos, se crearon los issues correspondientes en GitHub:
+- Elementos input de tipo password sin label o sin texto en el atributo label 
+- Elementos input de tipo text sin label o sin texto en el atributo label
+- Elementos input de tipo select sin label o sin texto en el atributo label
 
 ### Seguir especificación de estilo
 
