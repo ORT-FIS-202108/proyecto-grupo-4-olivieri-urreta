@@ -82,7 +82,7 @@ En las sección _Codificación_ se brindan más detalles sobre el impacto de ESL
     "jest": "^26.6.3"
 ```
 
-Jest es un
+Jest es un framework para testing que se utilizó para llevar a cabo las pruebas unitarias. En la sección _Test unitario_ se brindan más detalles sobre el proceso para ejecutar pruebas unitarias con Jest.
 
 **Moment**
 
@@ -90,10 +90,11 @@ Jest es un
     "moment": "^2.29.1"
 ```
 
+Moment es un framework para validar, formatear y mostrar fechas de una manera más fácil. Se utilizó para validar si las fechas ingresadas por interfaz cumplen con el formato válido y detectar errores.
 
 ## Interfaz de usuario
 
-### Interfaz de usuario web / mobile (responsive). 
+### Interfaz de usuario web / mobile (responsive).
 
  AGREGAR - Prt screen de pag, login, reg. usuario y home. En ambos tipos dispositivos
 
