@@ -217,7 +217,11 @@ En base a los resultados obtenidos, se crearon los issues correspondientes en Gi
 
 ### Seguir especificación de estilo
 
-    AGREGAR - Se usaron estilo de la letra
+Se construyó el sitio siguiendo las especificaciones definidas en la letra para la letra, colores y tipos de íconos.
+
+Tanto los colores como la fuente, fueron definidas en el archivo index.scss (líneas 1 a 5 y 37).
+
+Para los íconos, al momento de seleccionarlos en la página de [Google Fonts](https://fonts.google.com/icons), se seleccionó el filtro 'filled'.
 
 ## Codificación
 
