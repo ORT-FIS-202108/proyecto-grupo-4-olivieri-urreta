@@ -227,10 +227,11 @@ Para los íconos, al momento de seleccionarlos en la página de [Google Fonts](h
 
 ### IDE Visual Studio Code: configuración común del equipo
 
-- Extensiones
-  - Git Graph
-  - Git Lens
-  - ESLint
+La configuración en común del equipo para el IDE, implicó la instalación de las extensiones ESLint y GitGraph.
+
+La extension ESLint, se utilizó para integrar ESLint a VS Code y poder utilizar el linting de ESLint en el IDE.
+
+La extension Git Graph permite ver de una manera fácil e intuitiva las diferentes ramas del repositorio (remoto y local), y ademas llevar a cabo otras acciones como el checkout, merge, y drop de ramas, creación de ramas y stashes, realizar code reviews desde el IDE cuando existen conflictos en un merge, y más.
 
 ### Estándares de codificación Google (HTML, CSS, JavaScript)
   - validadores online
@@ -242,8 +243,27 @@ Para los íconos, al momento de seleccionarlos en la página de [Google Fonts](h
 
 ### Buenas prácticas de OOP: separación de lógica e interfaz
 
-    AGREGAR - prt. screens de clases 
-        Funciones en sistema ( y clases) y no en index.js
+Para aplicar buenas prácticas de OOP, se utilizaron archivos específicos para la lógica de la interfaz y otros para la lógica de negocio. Luego, todos los archivos relacionados con la lógica de negocio se ubicaron en la carpeta Dominio y los de la interfaz en la carpeta Interfaz.
+
+![Dominio e interfaz](../docs/codificacion/oop-separacion-interfaz-dominio.png =200x)
+
+Toda la lógica de la interfaz se codificó en el archivo index.js, donde las funciones que manejaran inputs y outputs de la interfaz se encargan de procesar la información ingresada por el usuario, y luego en caso de ser necesario solicitar la información al dominio.
+
+El único punto de entrada para el Dominio es la clase Sistema, a la cual la interfaz le solicita la información. Despues la clase Sistema se encarga de encontrar la información, dentro de la misma clase o pidiendose la a las clases Usuario o Gasto.
+
+Todas las funciones dentro de las clases Usuario o Gasto se encargan de procesar o encontrar información exclusivamente de objetos que pertenezcan a la clase.
+
+**Sistema**
+
+![Clase Sistema](../docs/codificacion/clase-sistema.png =200x)
+
+**Usuario**
+
+![Clase Usuario](../docs/codificacion/clase-usuario.png =200x)
+
+**Gasto**
+
+![Clase Gasto](../docs/codificacion/clase-gasto.png =200x)
 
 ### Análisis estático de código: mostrar reducción de problemas
     AGREGAR QUE USAMOS eslint 
