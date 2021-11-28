@@ -392,10 +392,11 @@ Como se menciona en el punto anterior, luego del code freeze se creó una rama d
 
 ### Generar casos de prueba aplicando técnica partición equivalente
 
+Se llevaron a cabo sets de pruebas planificadas para los diferentes casos de uso definidos en la primer entrega. El tipo de prueba utilizado fue el de _Caja Negra - Partición de Equivalencia_.
 
-    TEST PLANIFICADO
-    TEST EXPLORATORIO
-    EVALUACIÓN DE CALIDAD
+Para cada caso de uso, utilizando la tecnica de partición equivalente se definieron las diferentes clases de equivalencia como se detalla en este [documento](../docs/test-de-sistema/test-planificado/caja-negra/Clases%20de%20equivalencia.xlsx). Esta técnica consiste en crear clases de inputs de acuerdo al comportamiento que esperamos de ellos.
+
+En total se ejutaron las pruebas para 6 casos de usos, con sus respectivas pruebas para cada clase de equivalencia.
 
 ### Detallar sesiones de prueba exploratoria
 
