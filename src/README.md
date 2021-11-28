@@ -398,7 +398,15 @@ Como se menciona en el punto anterior, luego del code freeze se creó una rama d
     EVALUACIÓN DE CALIDAD
 
 ### Detallar sesiones de prueba exploratoria
-- No hacer sesiones cortas de 30 min, pero detallar en el informe que se opto por definir sesiones más cortas
+
+Se llevaron a cabo dos sesiones de pruebas exploratorias (una por cada integrante del equipo). Estas pruebas consistieron en definir una misión y durante una sesión de prueba con un tiempo acotado, realizar la exploración tomando notas de eventos relevantes (defectos encontrados, inconvenientes, aspectos a mejorar, aprendizajes, riesgos).
+
+Debido a la dimensión de nuestra aplicación consideramos que incluso una sesión de prueba corta, que requieren una duración de 30 minutos, era demasiado larga. Por lo tanto, decidimos hacer sesiones cortas pero acotadas a una duración de 20 minutos.
+
+A continuación se encuentran los links a los documentos de cada sesión de prueba:
+- [Prueba exploratoria #1]()
+- [Prueba exploratoria #2]()
+
     - Oportunidades vs Mision (cubrir al menos un % del tiempo en la misión)
     - En el informe detallar como se dividio el tiempo (inv y reporte, diseño y ejecucion, config. pruebas)
     - Usar template 'Sesion de Testing Exploratorio' del Drive
@@ -464,25 +472,25 @@ Para la prioridad se crearon los tres niveles vistos a continuación:
 
 Debajo se detallan los issues que quedaron abiertos para futuras actualizaciónes:
   
-- #17 - Link para recuperar contraseña de la página login. Tags: bug, invalid
-- #22 - Separar pagina de login del home. Tags: invalid
-- #24 - Implementar boton compartir gasto. Tags: wontfix
-- #25 - Mensajes de información y error inconsistentes con estilo general del sitio Tags: enhancement
-- #30 - Implementar gastos en varias divisas. Tags: enhancement 
-- #34 - E-mail confirmacion de cuenta no enviado. Tags: invalid
-- #35 - Botón de logout no ofrece opción para confirmar/cancelar. Tags: bug,usabilidad
-- #36 - Form del login retiene usuario y contraseña luego de hacer login y logout. Tags: bug
-- #37 - Navegación con atajos (teclas tab o flechas) en algunos casos no muestra que elemento tiene el foco. Tags: bug usabilidad
-- #38 - Botón de logout sin tooltip o label para identificarlo de manera clara. Tags: bug usabilidad
-- #39 - Editar gasto no implementado.Tags: usabilidad
-- #40 - Eliminar gasto no implementado. Tags: usabilidad
-- #41 - Creación de manual de usuario.Tags: documentation, usabilidad
-- #42 - Filtrar gastos no permite ingresar un periodo deseado. Tags: invalid, usabilidad
-- #43 - El sistema no muestra el total gastado en el periodo seleccionado. Tags: invalid, usabilidad
-- #44 - Elementos en HTML de tipo password sin labels o sin texto en el atributo label. Tags: accesibilidad, bug
-- #45 - Filtrar gastos no permite ingresar una categoría deseada. Tags: invalid usabilidad
-- #46 - Elementos en HTML de tipo text sin labels o sin texto en el atributo label. Tags: accesibilidad bug
-- #47 - Elementos en HTML de tipo select sin labels o sin texto en el atributo label. Tags: accesibilidad bug
+- #17 - Link para recuperar contraseña de la página login. Tags: bug, invalid.
+- #22 - Separar pagina de login del home. Tags: invalid.
+- #24 - Implementar boton compartir gasto. Tags: wontfix.
+- #25 - Mensajes de información y error inconsistentes con estilo general del sitio Tags: enhancement.
+- #30 - Implementar gastos en varias divisas. Tags: enhancement.
+- #34 - E-mail confirmacion de cuenta no enviado. Tags: invalid.
+- #35 - Botón de logout no ofrece opción para confirmar/cancelar. Tags: bug,usabilidad.
+- #36 - Form del login retiene usuario y contraseña luego de hacer login y logout. Tags: bug.
+- #37 - Navegación con atajos (teclas tab o flechas) en algunos casos no muestra que elemento tiene el foco. Tags: bug, usabilidad.
+- #38 - Botón de logout sin tooltip o label para identificarlo de manera clara. Tags: bug, usabilidad.
+- #39 - Editar gasto no implementado. Tags: usabilidad.
+- #40 - Eliminar gasto no implementado. Tags: usabilidad.
+- #41 - Creación de manual de usuario. Tags: documentation, usabilidad.
+- #42 - Filtrar gastos no permite ingresar un periodo deseado. Tags: invalid, usabilidad.
+- #43 - El sistema no muestra el total gastado en el periodo seleccionado. Tags: invalid, usabilidad.
+- #44 - Elementos en HTML de tipo password sin labels o sin texto en el atributo label. Tags: accesibilidad, bug.
+- #45 - Filtrar gastos no permite ingresar una categoría deseada. Tags: invalid, usabilidad.
+- #46 - Elementos en HTML de tipo text sin labels o sin texto en el atributo label. Tags: accesibilidad, bug.
+- #47 - Elementos en HTML de tipo select sin labels o sin texto en el atributo label. Tags: accesibilidad, bug.
 
 ### Sumarizar número de issues reportados por tipo
 
