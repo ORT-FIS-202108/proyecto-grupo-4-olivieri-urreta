@@ -1,0 +1,87 @@
+1.3 Adaptable: Create content that can be presented in different ways (for example simpler layout) without losing information or structure.
+
+Success Criteria 1.3.1 Info and Relationships (A)
+
+Check 118: input element, type of "password", missing an associated label.
+Repair: Add a label element that surrounds the control's label. Set the for attribute on the label element to the same value as the id attribute of the control. And/or add a title attribute to the input element. And/or create a label element that contains the input element.
+Error Line 114, Column 15:
+<input value="" type="password" id="lpassword" class="fadeIn third" name="login"
+                pla ...
+Error Line 142, Column 15:
+<input type="password" id="cpassword" class="fadeIn fourth" name="new-user" placeholder="Contraseña ...
+Error Line 144, Column 15:
+<input type="password" id="rcpassword" class="fadeIn fourth" name="new-user"
+                placeho ...
+Check 213: input element, type of "text", has no text in label.
+Repair: Add text to the input element's associated label that describes the purpose or function of the control.
+Error Line 112, Column 15:
+<input value="" type="text" id="luser" class="fadeIn second" name="login"
+                placeholde ...
+Error Line 139, Column 15:
+<input type="text" id="cnombre" class="fadeIn second" name="new-user" placeholder="Nombre" required>
+Error Line 140, Column 15:
+<input type="text" id="capellido" class="fadeIn third" name="new-user" placeholder="Apellido" requir ...
+Error Line 141, Column 15:
+<input type="text" id="cemail" class="fadeIn fourth" name="new-user" placeholder="Email" required>
+Error Line 169, Column 15:
+<input type="text" id="gnombre" class="fadeIn second" name="new-gasto" placeholder="Nombre" required ...
+Check 207: input element, type of "password", has no text in label.
+Repair: Add text to the input element's associated label that describes the purpose or function of the control.
+Error Line 114, Column 15:
+<input value="" type="password" id="lpassword" class="fadeIn third" name="login"
+                pla ...
+Error Line 142, Column 15:
+<input type="password" id="cpassword" class="fadeIn fourth" name="new-user" placeholder="Contraseña ...
+Error Line 144, Column 15:
+<input type="password" id="rcpassword" class="fadeIn fourth" name="new-user"
+                placeho ...
+Check 57: input element, type of "text", missing an associated label.
+Repair: Add a label element that surrounds the control's label. Set the for attribute on the label element to the same value as the id attribute of the control. And/or add a title attribute to the input element. And/or create a label element that contains the input element.
+Error Line 112, Column 15:
+<input value="" type="text" id="luser" class="fadeIn second" name="login"
+                placeholde ...
+Error Line 139, Column 15:
+<input type="text" id="cnombre" class="fadeIn second" name="new-user" placeholder="Nombre" required>
+Error Line 140, Column 15:
+<input type="text" id="capellido" class="fadeIn third" name="new-user" placeholder="Apellido" requir ...
+Error Line 141, Column 15:
+<input type="text" id="cemail" class="fadeIn fourth" name="new-user" placeholder="Email" required>
+Error Line 169, Column 15:
+<input type="text" id="gnombre" class="fadeIn second" name="new-gasto" placeholder="Nombre" required ...
+Check 91: select element missing an associated label.
+Repair: Add a label element that surrounds the control's label. Set the for attribute on the label element to the same value as the id attribute of the control. And/or add a title attribute to the input element. And/or create a label element that contains the input element.
+Error Line 174, Column 17:
+<select id="cbxCategoria" class="fadeIn fourth" name="new-gasto" required>
+                  <option ...
+Error Line 186, Column 17:
+<select id="cbxRecurrenciaGasto" class="fadeIn fourth" name="new-gasto" required>
+                   ...
+3.3 Input Assistance: Help users avoid and correct mistakes.
+
+Success Criteria 3.3.2 Labels or Instructions (A)
+
+Check 188: Label text is empty.
+Repair: Add text to the label element.
+Error Line 112, Column 15:
+<input value="" type="text" id="luser" class="fadeIn second" name="login"
+                placeholde ...
+Error Line 114, Column 15:
+<input value="" type="password" id="lpassword" class="fadeIn third" name="login"
+                pla ...
+Error Line 139, Column 15:
+<input type="text" id="cnombre" class="fadeIn second" name="new-user" placeholder="Nombre" required>
+Error Line 140, Column 15:
+<input type="text" id="capellido" class="fadeIn third" name="new-user" placeholder="Apellido" requir ...
+Error Line 141, Column 15:
+<input type="text" id="cemail" class="fadeIn fourth" name="new-user" placeholder="Email" required>
+Error Line 142, Column 15:
+<input type="password" id="cpassword" class="fadeIn fourth" name="new-user" placeholder="Contraseña ...
+Error Line 144, Column 15:
+<input type="password" id="rcpassword" class="fadeIn fourth" name="new-user"
+                placeho ...
+Error Line 169, Column 15:
+<input type="text" id="gnombre" class="fadeIn second" name="new-gasto" placeholder="Nombre" required ...
+Error Line 170, Column 15:
+<input type="number" id="gmonto" class="fadeIn third" name="new-gasto" placeholder="Monto" min="1" r ...
+Error Line 171, Column 15:
+<input type="date" id="gfecha" class="fadeIn fourth" name="new-gasto"  placeholder="Fecha" required>
