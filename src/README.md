@@ -266,7 +266,7 @@ En la sección sobre Análisis estático de código se aborda en detalle el est�
 
 Para aplicar buenas prácticas de OOP, se utilizaron archivos específicos para la lógica de la interfaz y otros para la lógica de negocio. Luego, todos los archivos relacionados con la lógica de negocio se ubicaron en la carpeta Dominio y los de la interfaz en la carpeta Interfaz.
 
-![Dominio e interfaz](../docs/codificacion/oop-separacion-interfaz-dominio.png =200x)
+![Dominio e interfaz](../docs/codificacion/OOP/oop-separacion-interfaz-dominio.png =200x)
 
 Toda la lógica de la interfaz se codificó en el archivo index.js, donde las funciones que manejaran inputs y outputs de la interfaz se encargan de procesar la información ingresada por el usuario, y luego en caso de ser necesario solicitar la información al dominio.
 
