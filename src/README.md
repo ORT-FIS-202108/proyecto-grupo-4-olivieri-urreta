@@ -372,7 +372,7 @@ Cuando finalmente se consiguió la cobertura deseada, nos encargamos de trabajar
 
 ### 100% cobertura en clases de dominio
 
-En total se crearon 49 tests diferentes para todas las clases del Dominio, y estos tests cubren en un %100 las sentencias, ramas, funciones y lineas de todas las clases del Dominio. No se observan líneas no cubiertas.
+En total se crearon 49 tests diferentes para todas las clases del Dominio, y estos tests cubren en un 100% las sentencias, ramas, funciones y lineas de todas las clases del Dominio. No se observan líneas no cubiertas.
 
 ![Test coverage](../docs/test-unitario/test-coverage.png)
 
@@ -492,6 +492,8 @@ Debajo se detallan los issues que quedaron abiertos para futuras actualizacióne
 - #50 - Selects del form crear gasto se muestran justificados hacia la derecha en Microsoft Edge. Tags: bugs, usabilidad.
 - #51 - Listado de gastos no se muestra con el estilo predeterminado de las listas de Material. Tags: bug.
 
+De todos estos issues se resolverán en orden de severidad (de mayor a menor) y a su vez por orden de prioridad (de mayo a menor).
+
 ### Sumarizar número de issues reportados por tipo
 
 Los issues creados se dividen en las distintas categorias como se muestra en la lista y gráfica debajo:
@@ -507,21 +509,68 @@ Los issues creados se dividen en las distintas categorias como se muestra en la 
 ![Grafica issues pendientes](../docs/reporte-issues/grafica.png)
 
 ### Realizar una evaluación global de la calidad
-  - Clase nov 11 luego de la mitad
-  - Cobertura de test y resultado para las las funciones criticas
-  - Cant. de issues reportados y resueltos
-    - Si son issues criticos o no
-  - Funcionalidades criticas, cuantos issues tienen
-  - Mejoras que se pueden hacer a partir de issues
-  - De todos los casos de prueba diseñados, cuantos se pudieron ejecutra
-    - De los ejecutados cuantos pasaron/fallaron
-    - Tiempo utilizado en pruebas
-  - Analisis de estandares
-  - Analisis de usabilidad
-  - Categorias de los issues
-    - Cuantos de usabilidad/accessibilidad/typo
-  - Usar Visualizaciones / Graficas para mostrar los analisis anteriores.
 
+Con todas las etapas del proyecto finalizadas, podemos llevar a cabo una evaluación global de la calidad del producto final. Durante esta evaluación se toman en cuenta aspectos de calidad de la interfaz de la aplicación (usabilidad y accesibilidad), el cumplimiento de estándares y buenas prácticas durante la construcción, la cobertura de las pruebas unitarias, los resultados del test de sistema (pruebas planificadas y no planificadas), y los issues que quedaron sin resolver.
+
+**Usabilidad**
+
+El Análisis Heurístio realizado dio como resultado que tan sólo 3 de las 10 heurísticas de Nielsen se cumplen totalmente. Si bien queda bastante trabajo por delante para que todas las heurísticas se cumplan totalmente, ya se dieron los primeros paso para mejorar esta situación.
+
+Para cada heurística que se identificó un cumplimiento parcial o incumplimiento, ya se crearon los respectivos issues en GitHub para resolver el problema. Estos issues cuentan con un nivel de severidad y prioridad que ayudarán a ir seleccionando cuales issues resolver primero, en la medida que el euipo se libere y cuente con el tiempo necesario.
+
+Nuestra percepción de la usabilidad de la apliación es media, ya que se cumplió aproximadamente un 60% de los objetivos de usabilidad que teníamos.
+
+**Accesibilidad**
+
+La evaluación de accessibilidad devolvió resultados bastante positivos, ya que el análisis arrojó algunos errores de fácil solución. Todos los issues están relacionados a las lables de los componentes de HTML, y ya fueron documentados en sus respectivos issues en GitHub.
+
+**Estándares de Codificación y Buenas Prácticas de OOP**
+
+Este es otro aspecto en cual consideramos que se obtuvieron buenos resultados. Gracias a la utilización de herramientas de análisis estático del código y validadores online, fue posible asegurarse de que el código cumplía con los estándares seleccionados para el proyecto.
+
+En cuanto a las buenas prácticas de Programación Orientada a Objetos, al momento de diseñar la aplicación pusimos mucho foco en mantener una separación clara del Dominio y la Interfaz, de manera que las responsabilidades estuviesen claramente identificadas y no hubiesen casos en los que una clase o la interfaz accediera a información que no correspondía.
+
+En resumen, consideramos que en este aspecto la calidad es buena y se alcanzaron los objetivos que nos propusimos.
+
+**Pruebas Unitarias**
+
+Se logró una cobertura del 100% de las clases del Dominio, igual al objetivo propuesto en la letra. Esto se pudo lograr en parte gracias a que trabajamos con el framework Jest que hace muy fácil la creación de tests unitarios y ayuda a conseguir la cobertura de código deseada. 
+
+Otro punto clave para obtener el 100% de cobertura, fue trabajar desde etapas tempranas del proyecto en las pruebas unitarias. Cada vez que comenzamos a trabajar en una funcionalidad nueva, unos de los primeros pasos era crear los tests unitarios en jest con diferentes casos de prueba, para luego comenzar a desarrollar la funcionalidad en sí.
+
+Sumado a una cobertura del 100%, todas las pruebas ejecutadas de todas las clases dieron como resultado PASSED. Esto significa que tanto las funcionalidades críticas del Dominio como las menos importantes funcionan de manera correcta.
+
+En conclusión, el resultado de la calidad de las pruebas unitarias es bueno.
+
+**Test de Sistema**
+
+Luego del code freeze nos enfocamos en trabjar en las pruebas de sistema. Se realizaron pruebas planificadas (Test de Caja Negra - Partición de Equialencias) y pruebas no planificadas (Pruebas Exploratorias). Ambos tipos de prueba fueron completados exitosamente, ya que ambas descubrieron issues que no estaban reportados aún.
+
+Con respecto a las pruebas de Caja Negra, de todos los 29 casos de prueba diseñados, sólo 21 puedieron ser ejecutados ya que 8 de los casos de prueba eran para probar funciones que no fueron implementadas en esta etapa del proyecto.
+
+El resultado del Test de Sistema es bueno ya que se descubrieron varios issues en ambos tipos de pruebas gracias a la cantidad de tiempo dedicada a las pruebas (aproximadamente 3 días en total). Es importnte tener en cuenta que esto significa que se descubrireron issues de cosas que no están funcionando de la manera esperada o que existe potencial para mejorar la aplicación, por lo tanto la calidad global de la aplicación se verá afectada.
+
+**Issues sin resolver**
+
+En casi todas las etapas mencionadas anteriormente, se descubrieron issues o cosas a mejorar. Esto implicó la creación de varios issues postrirmente al code freeze. Antes del code code freeze se habían creado issues y algunos de ellos incluso fueron cerrados, pero son pocos en comparación con el total de issues del proyecto.
+
+![Issues Reportados](../docs/reporte-issues/total-issues-reportados.png =300x)
+
+De todos los issues con estado 'Open' podemos observar que la mayor cantidad de issues son de severidad Media (amarillo) o Baja (verde).
+
+![Severidad de issues abiertos](../docs/reporte-issues/cant-por-severidad.png =500x)
+
+Y si nos fijamos cuales son las funcionalidades más afectadas vemos que la creación de gastos es la más afectada por issues, seguida por las funciones de login, listar gasto y funciones de la interfaz (problemas generales de la interfaz no especificos a una sola funcionalidad).
+
+![Funciones afectadas por issues](../docs/reporte-issues/funcionalidades-afectadas-issues.png)
+
+Por último si analizamos las categorías de los issues podemos ver que usabilidad es la categoría con mayor cantidad de issues.
+
+![Categorías de issues](../docs/reporte-issues/issues-por-categoria.png)
+
+
+  - Mejoras que se pueden hacer a partir de issues
+ 
 Conclusión - Prox. pasos a seguri (salir a prod. o no) Resolver x cosas antes... etc
 
 ## Reflexión
