@@ -384,10 +384,14 @@ En total se crearon 49 tests diferentes para todas las clases del Dominio, y est
     EVALUACIÓN DE CALIDAD
 ### Ambiente de testing independiente del desarrollo
 
+Luego del code freeze se creó una rama de testing a partir de la rama main donde se encontraban los últimos cambios de desarrollo (rama develop). A partir de este punto, todas las actividades de testing se realizan en esta rama que es independiente de la rama develop.
 
+![Rama de testing](../docs/test-de-sistema/rama-testing-independiente.png)
 
 ### Generar casos de prueba aplicando técnica partición equivalente
-### Detallar sesiones de prueba exploratori
+
+
+### Detallar sesiones de prueba exploratoria
 - No hacer sesiones cortas de 30 min, pero detallar en el informe que se opto por definir sesiones más cortas
     - Oportunidades vs Mision (cubrir al menos un % del tiempo en la misión)
     - En el informe detallar como se dividio el tiempo (inv y reporte, diseño y ejecucion, config. pruebas)
@@ -398,27 +402,56 @@ En total se crearon 49 tests diferentes para todas las clases del Dominio, y est
 
 ### Reportar issues (bugs, improvements, missing features) en GitHub 
 
-    Cod issue y titulo.
-    Link a seccion issues
+A partir de las actividades de testing y evaluaciones de usabilidad y accesibilidad, se identificaron diferentes issues, improvements y missing features, que fueron documentadas en GitHub en la [sección de issues del proyecto](https://github.com/ORT-FIS-202108/proyecto-grupo-4-olivieri-urreta/issues).
+
+Sumado a esto, durante la etapa de desarrollo se fueron identificando problemas a resolver o funcionalidades que no serían implementadas en esta etapa. Para todos estos se fueron creando sus respectivos issues y en caso de que fueran posteriormente resultos, fueron cerrados detallando el cómo y cuando.
 
 ### Aplicar buenas prácticas de reporte de issues
 
-    AGREGAR - describir que agregamos a los issues y por que.
-  
+Para el reporte de issues se siguieron las buenas prácticas aprendidas en clase. Todos los issues de nuestro proyecto debían crearse con al menos estos puntos completos:
+
+- Un título claro y que comunice las características básicas del problema a resolver. (Siempre tiene que completarse)
+- Una descripción clara y detallada del contexto del problema y el efecto que este tiene sobre la aplicación. (Siempre tiene que completarse)
+- La plataforma donde se observa el problema. (Opcional si es un probelma que no esta afectando)
+- La severidad del problema para saber con que gravedad afecta a la aplicación. (Siempre tiene que completarse)
+- La prioridad de resolución del problema para saber con que urgencia se debe resolver y que tantos recursos se deben utilizar. (Siempre tiene que completarse)
+- Pasos detallados para reproducir el problema. (Opcional en caso de que no sea un issue y sea una funcionalidad a implementar)
+- Agregar labels para categorizar el tipo de issue. (Siempre tiene que completarse)
+
 ### Definir labels para tipos de issue y niveles de severidad
 
-    labels - usamos las predeterminadas de github
+**Labels**
+Para la categorización de issues se utilizaron las labels predeterminadas de GitHub y se agregaron algunas que nos parecieron importantes para diferenciar algunos tipos de issues, como por ejemplo issues relacionados con usabilidad y accesibilidad.
+
+Este un listado de las labels utilizadas:
+- Accesibilidad
+- Bug
+- Documentation
+- Duplicate
+- Enhancement
+- Invalid
+- Question
+- Testing
+- Usabilidad
+- Wontfix
+
+En el siguiente [link](https://github.com/ORT-FIS-202108/proyecto-grupo-4-olivieri-urreta/issues/labels) se puede acceder a la lista de issues y su breve descripción.
 
 **Severidad**
-  - Alta - Problemas que impiden el funcionamiento de las funcionalidades base del sistema. (Agregar/Editar/Borrar Gasto, Iniciar Sesión, Registro de Usuario, Recuperar Contraseña).
-  - Media - Problemas en navegación de la interfaz, deficiencias de usabilidad, y requerimientos funcionales no implementados (Mostrar gráfico de torta para categorías de gastos, Mostrar total del mes).
-  - Baja - Problemas de diseño y defectos visuales que no afectan las funciones y/o usabilidad del sistema. Funcionalidades extras a implementar (Creación de gastos con multiples divisas, compartir gasto).
 
-  **Prioridad**
-  - Crítica - Se debe resolver lo más pronto posible. Se detiene el desarrollo en otras áreas para resolver este problema.
-  - Media -  Se debe resolver antes del próximo release.
-  - Baja - Se puede posponer para otro release. Se resulve si hay tiempo.
+Se optó por la utilización de los tres niveles de severidad que se describen a continuación:
 
+  - Alta - Problemas que impiden el funcionamiento de las funcionalidades base del sistema. (Funciones para Iniciar Sesión, Registrar Usuario, Recuperar Contraseña, Agregar/Editar/Borrar Gasto).
+  - Media - Problemas en navegación de la interfaz, deficiencias de usabilidad, y requerimientos funcionales no implementados. (Visualización de gráfico de gastos por categorías, Mostrar total del mes).
+  - Baja - Problemas de diseño y defectos visuales que no afectan las funciones y/o usabilidad del sistema. También funcionalidades extras a implementar. (Creación de gastos en multiples divisas, compartir gasto, envío de recordatorios por email)
+
+**Prioridad**
+
+Para la prioridad se crearon los tres niveles vistos a continuación:
+
+- Crítica - Se debe resolver lo más pronto posible. Se detiene el desarrollo en otras áreas para resolver este problema.
+- Media -  Se debe resolver antes del próximo release.
+- Baja - Se puede posponer para otro release. Se resulve si hay tiempo.
 
 ### Dejar issues abiertos para correcciones o mejoras futuras
 
