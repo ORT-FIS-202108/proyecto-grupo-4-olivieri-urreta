@@ -20,4 +20,4 @@ cd interfaz
 npm run start
 ```
 Abrir en el navegador `localhost:8080`.
-No cambiar la configuración de puertos.
+No cambiar la configuración de puertos.git
