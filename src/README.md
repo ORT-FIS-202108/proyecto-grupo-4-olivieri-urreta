@@ -400,6 +400,8 @@ Luego del code freeze se creó una rama de testing a partir de la rama main dond
 
 ## Reporte de issues
 
+Se realizo el reporte de issues obtenidos através de github que puede ser visualizado en [Reporte de issues](../docs/reporte-issues/reporte.pdf)
+
 ### Reportar issues (bugs, improvements, missing features) en GitHub 
 
 A partir de las actividades de testing y evaluaciones de usabilidad y accesibilidad, se identificaron diferentes issues, improvements y missing features, que fueron documentadas en GitHub en la [sección de issues del proyecto](https://github.com/ORT-FIS-202108/proyecto-grupo-4-olivieri-urreta/issues).
@@ -455,11 +457,32 @@ Para la prioridad se crearon los tres niveles vistos a continuación:
 
 ### Dejar issues abiertos para correcciones o mejoras futuras
 
-    DESCRIBIR QUE QUEDO PARA EL FUTURO
+  Debajo se detallan los issues que quedaron abiertos para futuras actualizaciónes
+  
+#17 - Link para recuperar contraseña de la página login. Tags: bug, invalid
+#22 - Separar pagina de login del home. Tags: invalid
+#24 - Implementar boton compartir gasto. Tags: wontfix
+#25 - Mensajes de información y error inconsistentes con estilo general del sitio Tags: enhancement
+#30 - Implementar gastos en varias divisas. Tags: enhancement 
+#34 - E-mail confirmacion de cuenta no enviado. Tags: invalid
+#35 - Botón de logout no ofrece opción para confirmar/cancelar. Tags: bug,usabilidad
+#36 - Form del login retiene usuario y contraseña luego de hacer login y logout. Tags: bug
+#37 - Navegación con atajos (teclas tab o flechas) en algunos casos no muestra que elemento tiene el foco. Tags: bug usabilidad
+#38 - Botón de logout sin tooltip o label para identificarlo de manera clara. Tags: bug usabilidad
+#39 - Editar gasto no implementado.Tags: usabilidad
+#40 - Eliminar gasto no implementado. Tags: usabilidad
+#41 - Creación de manual de usuario.Tags: documentation, usabilidad
+#42 - Filtrar gastos no permite ingresar un periodo deseado. Tags: invalid, usabilidad
+#43 - El sistema no muestra el total gastado en el periodo seleccionado. Tags: invalid, usabilidad
+#44 - Elementos en HTML de tipo password sin labels o sin texto en el atributo label. Tags: accesibilidad, bug
+#45 - Filtrar gastos no permite ingresar una categoría deseada. Tags: invalid usabilidad
+#46 - Elementos en HTML de tipo text sin labels o sin texto en el atributo label. Tags: accesibilidad bug
+#47 - Elementos en HTML de tipo select sin labels o sin texto en el atributo label. Tags: accesibilidad bug
+
 
 ### Sumarizar número de issues reportados por tipo
 
-    GRAFICA/TABLA - Y breve analisis de issues y sus tipos
+Podran visualizar el resumen detallado, y gráfico de los issues en el siguiente documento [Reporte de issues](../docs/reporte-issues/reporte.pdf)
 
 ### Realizar una evaluación global de la calidad
   - Clase nov 11 luego de la mitad
