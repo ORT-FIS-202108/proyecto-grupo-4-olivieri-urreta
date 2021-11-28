@@ -379,17 +379,23 @@ En total se crearon 49 tests diferentes para todas las clases del Dominio, y est
 ## Test de sistema
 
 ### Realizar test de sistema sobre la versión congelada
-    TEST PLANIFICADO
-    TEST EXPLORATORIO
-    EVALUACIÓN DE CALIDAD
+
+Todos los tests, planificados y exploratorios, fueron llevados a cabo sobre la última versión de la aplicación que fue integrada a la rama main en el commit ```8f52c9fb``` del 22 de noviembre.
+
+Para ejecutar los tests se creó la rama testing a partir de la rama main en ese commit. La rama testing no fue modificada con exepción de aspectos relacionados a la documentación de las pruebas. No se realizaron cambios en el código de ningún tipo.
+
 ### Ambiente de testing independiente del desarrollo
 
-Luego del code freeze se creó una rama de testing a partir de la rama main donde se encontraban los últimos cambios de desarrollo (rama develop). A partir de este punto, todas las actividades de testing se realizan en esta rama que es independiente de la rama develop.
+Como se menciona en el punto anterior, luego del code freeze se creó una rama de testing a partir de la rama main donde se encontraban los últimos cambios de desarrollo (rama develop). A partir de este punto, todas las actividades de testing se realizan en esta rama que es independiente de la rama develop.
 
 ![Rama de testing](../docs/test-de-sistema/rama-testing-independiente.png)
 
 ### Generar casos de prueba aplicando técnica partición equivalente
 
+
+    TEST PLANIFICADO
+    TEST EXPLORATORIO
+    EVALUACIÓN DE CALIDAD
 
 ### Detallar sesiones de prueba exploratoria
 - No hacer sesiones cortas de 30 min, pero detallar en el informe que se opto por definir sesiones más cortas
@@ -399,8 +405,6 @@ Luego del code freeze se creó una rama de testing a partir de la rama main dond
 
 
 ## Reporte de issues
-
-Se realizo el reporte de issues obtenidos através de github que puede ser visualizado en [Reporte de issues](../docs/reporte-issues/reporte.pdf)
 
 ### Reportar issues (bugs, improvements, missing features) en GitHub 
 
@@ -423,6 +427,7 @@ Para el reporte de issues se siguieron las buenas prácticas aprendidas en clase
 ### Definir labels para tipos de issue y niveles de severidad
 
 **Labels**
+
 Para la categorización de issues se utilizaron las labels predeterminadas de GitHub y se agregaron algunas que nos parecieron importantes para diferenciar algunos tipos de issues, como por ejemplo issues relacionados con usabilidad y accesibilidad.
 
 Este un listado de las labels utilizadas:
@@ -457,7 +462,7 @@ Para la prioridad se crearon los tres niveles vistos a continuación:
 
 ### Dejar issues abiertos para correcciones o mejoras futuras
 
-  Debajo se detallan los issues que quedaron abiertos para futuras actualizaciónes
+Debajo se detallan los issues que quedaron abiertos para futuras actualizaciónes:
   
 - #17 - Link para recuperar contraseña de la página login. Tags: bug, invalid
 - #22 - Separar pagina de login del home. Tags: invalid
@@ -479,10 +484,9 @@ Para la prioridad se crearon los tres niveles vistos a continuación:
 - #46 - Elementos en HTML de tipo text sin labels o sin texto en el atributo label. Tags: accesibilidad bug
 - #47 - Elementos en HTML de tipo select sin labels o sin texto en el atributo label. Tags: accesibilidad bug
 
-
 ### Sumarizar número de issues reportados por tipo
 
-De acuerdo con la gráfica que podrán encontrar debajo que totalizamos el proyecto con 
+Los issues creados se dividen en las distintas categorias como se muestra en la lista y gráfica debajo:
 
 - 11 bugs issue
 - 9 usabilidad issue
