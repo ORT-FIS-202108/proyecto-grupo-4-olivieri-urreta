@@ -404,13 +404,8 @@ Se llevaron a cabo dos sesiones de pruebas exploratorias (una por cada integrant
 Debido a la dimensión de nuestra aplicación consideramos que incluso una sesión de prueba corta, que requieren una duración de 30 minutos, era demasiado larga. Por lo tanto, decidimos hacer sesiones cortas pero acotadas a una duración de 20 minutos.
 
 A continuación se encuentran los links a los documentos de cada sesión de prueba:
-- [Prueba exploratoria #1]()
-- [Prueba exploratoria #2]()
-
-    - Oportunidades vs Mision (cubrir al menos un % del tiempo en la misión)
-    - En el informe detallar como se dividio el tiempo (inv y reporte, diseño y ejecucion, config. pruebas)
-    - Usar template 'Sesion de Testing Exploratorio' del Drive
-
+- [Prueba exploratoria #1](../docs/test-de-sistema/testing-exploratorio/#1-Giovanni-Olivieri-Testing-Exploratorio.pdf)
+- [Prueba exploratoria #2](../docs/test-de-sistema/testing-exploratorio/#2-Diego-Urreta-Testing-Exploratorio.pdf)
 
 ## Reporte de issues
 
