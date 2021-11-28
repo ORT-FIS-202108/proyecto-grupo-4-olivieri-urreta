@@ -276,15 +276,15 @@ Todas las funciones dentro de las clases Usuario o Gasto se encargan de procesar
 
 **Sistema**
 
-![Clase Sistema](../docs/codificacion/clase-sistema.png =200x)
+![Clase Sistema](../docs/codificacion/OOP/clase-sistema.png =200x)
 
 **Usuario**
 
-![Clase Usuario](../docs/codificacion/clase-usuario.png =200x)
+![Clase Usuario](../docs/codificacion/OOP/clase-usuario.png =200x)
 
 **Gasto**
 
-![Clase Gasto](../docs/codificacion/clase-gasto.png =200x)
+![Clase Gasto](../docs/codificacion/OOP/clase-gasto.png =200x)
 
 ### Análisis estático de código: mostrar reducción de problemas
 
@@ -362,11 +362,19 @@ En los archivos js se utilizaron exclusivamente commillas simples (single quotes
 
 ### Test unitarios en Jest
 
-    Describir un poco como implementamos los tests
+De acuerdo a lo establecido en la letra, durante la etapa de desarrollo llevamos a cabo varias instancias de pruebas unitarias para funciones de las clases del Dominio. El objetivo principal fue llegar a una cobertura del 100% de las clases del Dominio, para lo cual se crearon tests que cubrieran la totalidad de ramas, sentencias, funciones y líneas.
+
+La manera que abordamos esta tarea fue enfocarnos en crear los tests para cada clase del Dominio con la mayor granularidad posible. Cada clase cuenta su respectivo archivo nombre-clase.test.js donde se codificaron tests para cada función y sus diferentes inputs y outputs. En estos archivos utilizamos el método global _describe_ que se utilizó para agrupar tests que se ecargan de probar una misma funcón pero para diferentes casos de prueba.
+
+Una vez codificados los tests, ejecutamos las pruebas desde la consola y verificamos los resultados. Si la cobertura de test (coverage) no era la esperada, se procedía a hacer ajustes a las pruebas.
+
+Cuando finalmente se consiguió la cobertura deseada, nos encargamos de trabajar en las pruebas y en las funciones de la clase en sí hasta que la mayor cantidad posible tuviesen un status: passed.
 
 ### 100% cobertura en clases de dominio
 
-    MOSTRAR evidencia
+En total se crearon 49 tests diferentes para todas las clases del Dominio, y estos tests cubren en un %100 las sentencias, ramas, funciones y lineas de todas las clases del Dominio. No se observan líneas no cubiertas.
+
+![Test coverage](../docs/test-unitario/test-coverage.png)
 
 ## Test de sistema
 
