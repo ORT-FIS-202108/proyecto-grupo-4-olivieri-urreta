@@ -459,41 +459,40 @@ Para la prioridad se crearon los tres niveles vistos a continuación:
 
   Debajo se detallan los issues que quedaron abiertos para futuras actualizaciónes
   
-#17 - Link para recuperar contraseña de la página login. Tags: bug, invalid
-#22 - Separar pagina de login del home. Tags: invalid
-#24 - Implementar boton compartir gasto. Tags: wontfix
-#25 - Mensajes de información y error inconsistentes con estilo general del sitio Tags: enhancement
-#30 - Implementar gastos en varias divisas. Tags: enhancement 
-#34 - E-mail confirmacion de cuenta no enviado. Tags: invalid
-#35 - Botón de logout no ofrece opción para confirmar/cancelar. Tags: bug,usabilidad
-#36 - Form del login retiene usuario y contraseña luego de hacer login y logout. Tags: bug
-#37 - Navegación con atajos (teclas tab o flechas) en algunos casos no muestra que elemento tiene el foco. Tags: bug usabilidad
-#38 - Botón de logout sin tooltip o label para identificarlo de manera clara. Tags: bug usabilidad
-#39 - Editar gasto no implementado.Tags: usabilidad
-#40 - Eliminar gasto no implementado. Tags: usabilidad
-#41 - Creación de manual de usuario.Tags: documentation, usabilidad
-#42 - Filtrar gastos no permite ingresar un periodo deseado. Tags: invalid, usabilidad
-#43 - El sistema no muestra el total gastado en el periodo seleccionado. Tags: invalid, usabilidad
-#44 - Elementos en HTML de tipo password sin labels o sin texto en el atributo label. Tags: accesibilidad, bug
-#45 - Filtrar gastos no permite ingresar una categoría deseada. Tags: invalid usabilidad
-#46 - Elementos en HTML de tipo text sin labels o sin texto en el atributo label. Tags: accesibilidad bug
-#47 - Elementos en HTML de tipo select sin labels o sin texto en el atributo label. Tags: accesibilidad bug
+- #17 - Link para recuperar contraseña de la página login. Tags: bug, invalid
+- #22 - Separar pagina de login del home. Tags: invalid
+- #24 - Implementar boton compartir gasto. Tags: wontfix
+- #25 - Mensajes de información y error inconsistentes con estilo general del sitio Tags: enhancement
+- #30 - Implementar gastos en varias divisas. Tags: enhancement 
+- #34 - E-mail confirmacion de cuenta no enviado. Tags: invalid
+- #35 - Botón de logout no ofrece opción para confirmar/cancelar. Tags: bug,usabilidad
+- #36 - Form del login retiene usuario y contraseña luego de hacer login y logout. Tags: bug
+- #37 - Navegación con atajos (teclas tab o flechas) en algunos casos no muestra que elemento tiene el foco. Tags: bug usabilidad
+- #38 - Botón de logout sin tooltip o label para identificarlo de manera clara. Tags: bug usabilidad
+- #39 - Editar gasto no implementado.Tags: usabilidad
+- #40 - Eliminar gasto no implementado. Tags: usabilidad
+- #41 - Creación de manual de usuario.Tags: documentation, usabilidad
+- #42 - Filtrar gastos no permite ingresar un periodo deseado. Tags: invalid, usabilidad
+- #43 - El sistema no muestra el total gastado en el periodo seleccionado. Tags: invalid, usabilidad
+- #44 - Elementos en HTML de tipo password sin labels o sin texto en el atributo label. Tags: accesibilidad, bug
+- #45 - Filtrar gastos no permite ingresar una categoría deseada. Tags: invalid usabilidad
+- #46 - Elementos en HTML de tipo text sin labels o sin texto en el atributo label. Tags: accesibilidad bug
+- #47 - Elementos en HTML de tipo select sin labels o sin texto en el atributo label. Tags: accesibilidad bug
 
 
 ### Sumarizar número de issues reportados por tipo
 
-![Grafica issues pendientes](../docs/reporte-issues/grafica.png)
-
 De acuerdo con la gráfica que podrán encontrar debajo que totalizamos el proyecto con 
 
-•	11 bugs issue
-•	9 usabilidad issue
-•	5 invalid issue
-•	3 accesibilidad issue
-•	2 enhancement issue
-•	1 documentation issue 
-•	1 wontfix issue
+- 11 bugs issue
+- 9 usabilidad issue
+- 5 invalid issue
+- 3 accesibilidad issue
+- 2 enhancement issue
+- 1 documentation issue 
+- 1 wontfix issue
 
+![Grafica issues pendientes](../docs/reporte-issues/grafica.png)
 
 ### Realizar una evaluación global de la calidad
   - Clase nov 11 luego de la mitad
