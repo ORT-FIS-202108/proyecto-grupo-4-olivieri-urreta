@@ -552,7 +552,7 @@ El resultado del Test de Sistema es bueno ya que se descubrieron varios issues e
 
 **Issues sin resolver**
 
-En casi todas las etapas mencionadas anteriormente, se descubrieron issues o cosas a mejorar. Esto implicó la creación de varios issues postrirmente al code freeze. Antes del code code freeze se habían creado issues y algunos de ellos incluso fueron cerrados, pero son pocos en comparación con el total de issues del proyecto.
+En casi todas las etapas mencionadas anteriormente, se descubrieron issues o cosas a mejorar. Esto implicó la creación de varios issues postrirmente al code freeze. Antes del code freeze se habían creado issues y algunos de ellos incluso fueron cerrados, pero son pocos en comparación con el total de issues del proyecto.
 
 ![Issues Reportados](../docs/reporte-issues/total-issues-reportados.png =300x)
 
@@ -611,7 +611,7 @@ Giovanni Olivieri
 
 Diego Urreta
 
-- HTML, CSS y JS (funciónes de home page).
+- HTML, CSS y JS (funciones de home page).
 - Implementación del resumen de gastos y sus funciones.
 - Correción/Implementación de funciones login page.
 - Test Unitarios de las funciones creadas.
