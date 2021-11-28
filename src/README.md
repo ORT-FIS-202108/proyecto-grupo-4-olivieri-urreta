@@ -526,8 +526,45 @@ Conclusión - Prox. pasos a seguri (salir a prod. o no) Resolver x cosas antes..
 
 ## Reflexión
 
+Haber trabajado en este proyecto desde cero, cambió significativamente nuestras perspectivas de lo que implica el proceso de desarrollo de software. Nos ayudó a comprender que no solo escribir código es importante para entregar software de calidad y que cumpla con las expectativas de los usuarios. También nos resultó evidente el rol clave que juegan las etapas inciales del proyecto para disminuir el trabajo innecesario en etapas posteriores.
+
+El curso nos parecio muy bueno ya que nos permitio crear soluciones eficientes y eficaces, profesionalizando el desarollo del software. Transformando una idea a una solución informatica de una manera organizada. 
+
 ### Detalle del trabajo individual
+
+Si bien trabajamos juntos en varias oportunidades(videollamadas o reuniones) i verificamos el trabajo que realizaba el otro siguen debajo el detalle individual de cada participante. 
+
+Giovanni Olivieri
+
+- HTML, CSS y JS (funciónes de login page).
+- Implementación del formulario de crear gasto y sus funciones.
+- Correción/Implementación de funciones de home page.
+- Test Unitarios de las funciones creadas.
+- Test de caja negra.
+- Test exploratorio.
+- Reporte de issues, sumarización de issues y gráfica.
+- Documentación.
+
+Diego Urreta
+
+- HTML, CSS y JS (funciónes de home page).
+- Implementación del resumen de gastos y sus funciones.
+- Correción/Implementación de funciones login page.
+- Test Unitarios de las funciones creadas.
+- Evaluación de calidad
+- Test exploratorio.
+- Reporte de issues.
+- Evaluación global de calidad. 
+- Documentación.
 
 
 ### Técnicas aplicadas y aprendizajes
 
+Las técnicas aplicaciadas y aprendizajes que nos deja el curso son las detalladas debajo.
+
+- Correcto uso de GitHub, lo que incluye un eficiente manejo de ramas, versiones y reporte de issues.
+- Requerimientos: Correcta validación de requerimientos aplicando sus tecnicas correspondientes y también sus correspondientes herramientas para válidaras.  
+- Desarollo de una página web (HTML, CSS y JS) en conjunto con NodeJs. 
+- Test Unitario: Jest , herramienta muy potente que nos permite analizar la correcta funcionalidad de nuestro código sin dejar ningúna linea sin verificar. 
+- Calidad del código, aprendimos la importancia de producir software de cálidad para que el mismo sea reutilizable y entendible respetando sus correspondientes estandares. 
+- Testing: Las distintas tecnicas vistas en el curso (test de caja blanca, negra y exploratorio) fueron de mucha utilizadad para encontrar issues en nuestro sistema que en caso de que el mismo no hubiese sido testeado correctamente afectaria negativamente la persepción de nuestros clientes hacia nuestro producto, pudiendo evitar muchos errores a corregir antes de lanzar una aplicación o nueva versión de la misma. 
