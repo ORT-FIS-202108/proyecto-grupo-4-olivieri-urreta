@@ -482,7 +482,18 @@ Para la prioridad se crearon los tres niveles vistos a continuación:
 
 ### Sumarizar número de issues reportados por tipo
 
-Podran visualizar el resumen detallado, y gráfico de los issues en el siguiente documento [Reporte de issues](../docs/reporte-issues/reporte.pdf)
+![Grafica issues pendientes](../docs/reporte-issues/grafica.png)
+
+De acuerdo con la gráfica que podrán encontrar debajo que totalizamos el proyecto con 
+
+•	11 bugs issue
+•	9 usabilidad issue
+•	5 invalid issue
+•	3 accesibilidad issue
+•	2 enhancement issue
+•	1 documentation issue 
+•	1 wontfix issue
+
 
 ### Realizar una evaluación global de la calidad
   - Clase nov 11 luego de la mitad
