@@ -564,14 +564,29 @@ Y si nos fijamos cuales son las funcionalidades más afectadas vemos que la crea
 
 ![Funciones afectadas por issues](../docs/reporte-issues/funcionalidades-afectadas-issues.png)
 
+Vemos que Creación Gasto, Interfaz, Login y Listado Gasto son las funciones con mayor cantidad de issues, entonces analizamos para esas cuatro funcionalidades la severidad de estos issues y se obsevó lo siguiente.
+
+![Funciones mas afectadas - Issues por severidad](../docs/reporte-issues/severidad-issues-func-mas-afectadas.png)
+
 Por último si analizamos las categorías de los issues podemos ver que usabilidad es la categoría con mayor cantidad de issues.
 
 ![Categorías de issues](../docs/reporte-issues/issues-por-categoria.png)
 
+**Conclusión de la evaluación global de la calidad**
 
-  - Mejoras que se pueden hacer a partir de issues
- 
-Conclusión - Prox. pasos a seguri (salir a prod. o no) Resolver x cosas antes... etc
+En base a los puntos mencionados anteriormente podemos conluír que aún queda bastante trabajo para que la aplicación alcance un nivel de excelencia en lo que respecta a la calidad global. 
+
+Esto se debe a la gran cantidad de issues de que afectan a la función Agregar Gasto y a Listar Gastos, dos funciones sumamente críticas para la aplicación. Si bien esos issues son de severidad baja y media, afectan aspectos claves como la usabilidad.
+
+Sumado a lo anterior se observan varios issues vinculados a usabilidad en otras partes de la aplicación, haciendo que en general la usabilidad no sea aceptable. Esto quedó en evidencia durante la evaluación heurística que arrojó un resultado de 56 puntos sobre 100.
+
+En resumen, si tuvieramos que dar un puntaje del 1 al 10 a la calidad global consideramos que el puntaje actual es un 7. En general la aplicación cumple las funciones básicas sin fallas críticas que detengan su funcionamiento, pero se identificaron varias mejoras para hacerle. A pesar de esas mejoras a hacer, consideramos que un puntaje de 7 es adecuado ya que están identificadas las mejoras a hacer y pueden abordarse de manera inmediata.
+
+Desde nuestro punto de vista, previo al release deberían sí o sí resolverse los siguientes issues:
+- Issues de las funciones Crear Gasto y Listar Gasto, principalmente los de Severidad alta y media.
+- Issues de usabilidad y efectuar una nueva evaluación heurística.
+
+El resto de los issues no incluídos en la lista anterior pueden resolverse teniendo en cuenta sus Severidades y Prioridades.
 
 ## Reflexión
 
