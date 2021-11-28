@@ -486,18 +486,22 @@ Debajo se detallan los issues que quedaron abiertos para futuras actualizacióne
 - #45 - Filtrar gastos no permite ingresar una categoría deseada. Tags: invalid, usabilidad.
 - #46 - Elementos en HTML de tipo text sin labels o sin texto en el atributo label. Tags: accesibilidad, bug.
 - #47 - Elementos en HTML de tipo select sin labels o sin texto en el atributo label. Tags: accesibilidad, bug.
+- #48 - Calendario para selección de fecha en crear gasto se muestra lejos de donde se hace click. Tags: but, usabilidad.
+- #49 - Campos categoría y repetir del form Crear Gasto no se muestran del mismo largo que el resto de los campos. Tags: bugs, usabilidad.
+- #50 - Selects del form crear gasto se muestran justificados hacia la derecha en Microsoft Edge. Tags: bugs, usabilidad.
+- #51 - Listado de gastos no se muestra con el estilo predeterminado de las listas de Material. Tags: bug.
 
 ### Sumarizar número de issues reportados por tipo
 
 Los issues creados se dividen en las distintas categorias como se muestra en la lista y gráfica debajo:
 
-- 11 bugs issue
-- 9 usabilidad issue
-- 5 invalid issue
-- 3 accesibilidad issue
-- 2 enhancement issue
-- 1 documentation issue 
-- 1 wontfix issue
+- bug: 12
+- usabilidad: 12
+- invalid: 6
+- accesibilidad: 3
+- enhancement: 2
+- documentation: 1
+- wontfix: 1
 
 ![Grafica issues pendientes](../docs/reporte-issues/grafica.png)
 
