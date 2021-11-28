@@ -532,7 +532,7 @@ El curso nos parecio muy bueno ya que nos permitio crear soluciones eficientes y
 
 ### Detalle del trabajo individual
 
-Si bien trabajamos juntos en varias oportunidades(videollamadas o reuniones) i verificamos el trabajo que realizaba el otro siguen debajo el detalle individual de cada participante. 
+Si bien trabajamos juntos en varias oportunidades(videollamadas o reuniones) o verificamos el trabajo que realizaba el otro, siguen debajo el detalle individual de cada participante. 
 
 Giovanni Olivieri
 
