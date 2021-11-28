@@ -396,7 +396,7 @@ Se llevaron a cabo sets de pruebas planificadas para los diferentes casos de uso
 
 Para cada caso de uso, utilizando la tecnica de partición equivalente se definieron las diferentes clases de equivalencia como se detalla en este [documento](../docs/test-de-sistema/test-planificado/caja-negra/Clases%20de%20equivalencia.xlsx). Esta técnica consiste en crear clases de inputs de acuerdo al comportamiento que esperamos de ellos.
 
-En total se ejutaron las pruebas para 6 casos de usos, con sus respectivas pruebas para cada clase de equivalencia.
+En total se ejutaron las pruebas para 6 casos de usos, con los casos de prueba para cada clase de equivalencia.
 
 ### Detallar sesiones de prueba exploratoria
 
